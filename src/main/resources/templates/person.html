@@ -5,6 +5,44 @@
     <title>Dit is de eerste pagina</title>
 </head>
 <body>
+<nav th:replace="~{fragments/general :: navbar}"></nav>
 
+
+    <div th:replace="~{fragments/person :: personDetail}"></div>
+
+<div>
+    <h2>ID</h2>
+    <p th:text="${person.type.id}"></p>
+</div>
+
+<div>
+    <h2>First Name</h2>
+    <p th:text="${person.type.firstName}"></p>
+</div>
+
+<div>
+    <h2>Affix</h2>
+    <p th:text="${person.type.Affix}"></p>
+</div>
+
+<div>
+    <h2>Last Name</h2>
+    <p th:text="${person.type.lastName}"></p>
+</div>
+
+<div>
+    <h2>Date of Birth</h2>
+    <p th:text="${person.type.dateOfBirth}"></p>
+</div>
+
+<div>
+    <h2>City</h2>
+    <p th:text="${person.type.city}"></p>
+</div>
+
+<div>
+    <h2>Bio</h2>
+    <p th:text="${person.type.bio}"></p>
+</div>
 </body>
 </html>

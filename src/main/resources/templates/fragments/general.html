@@ -1,0 +1,21 @@
+
+<nav th:fragment="navbar">
+    <ul>
+        <div class="nav-links">
+            <a th:href="@{/}">DEMO</a>
+            <a th:href="@{/}">DEMO</a>
+            <a th:href="@{/}">DEMO</a>
+            <a th:href="@{/}">DEMO</a>
+            <a th:href="@{/}">DEMO</a>
+        </div>
+        <div class="nav-actions">
+            <form th:action="@{/logout}" method="post" style="margin: 0;">
+                <button type="submit" class="btn-logout">LOGOUT</button>
+            </form>
+        </div>
+    </ul>
+
+<footer th:fragment="footer">
+    <p>LibraryDemo&mdash; Hanze Groningen</p>
+</footer>
+
