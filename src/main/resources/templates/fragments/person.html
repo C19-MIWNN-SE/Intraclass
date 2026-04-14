@@ -1,11 +1,22 @@
-<!--<div th:fragment="" class="">-->
-<!--  <div class="">-->
-<!--    <span></span>-->
-<!--  </div>-->
-<!--</div>-->
-
-<!--<div th:fragment="personDetail">-->
-<!--&lt;!&ndash;  <div>&ndash;&gt;-->
-<!--&lt;!&ndash;    <h2>Boe</h2>&ndash;&gt;-->
-<!--&lt;!&ndash;  </div>&ndash;&gt;-->
-<!--</div>-->
+<table th:fragment="personTable">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Affix</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th>Bio</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="person: ${people}">
+        <td th:text="${person.id}">Titel</td>
+        <td th:text="${person.firstName}">Auteur</td>
+        <td th:text="${person.affix}">0000</td>
+        <td th:text="${person.lastName}">0000</td>
+        <td th:text="${person.dateOfBirth}">0000</td>
+        <td th:text="${person.bio}">0000</td>
+    </tr>
+    </tbody>
+</table>
