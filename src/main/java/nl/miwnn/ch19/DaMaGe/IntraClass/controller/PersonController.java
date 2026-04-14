@@ -33,7 +33,7 @@ public class PersonController {
 
         people = personRepository.findAll();
 
-        model.addAttribute("pageTitle", "Person Homepage");
+        model.addAttribute("pageTitle", "Person Overview");
         model.addAttribute("people", people);
         return "person";
     }
