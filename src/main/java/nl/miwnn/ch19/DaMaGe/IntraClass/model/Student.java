@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * @author Danylo Dudar
  *Extends Person as a Student(trust me)
+ * Check validation folder for more info
  */
 @Entity
 @Table

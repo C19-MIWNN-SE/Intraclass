@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * @author Danylo Dudar
  *Extends Person as Teacher(in a specific way)
+ * Check validation folder for more info
  */
 
 @Entity
