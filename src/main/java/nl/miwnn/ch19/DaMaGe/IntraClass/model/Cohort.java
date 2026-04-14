@@ -4,6 +4,8 @@ import com.opencsv.bean.CsvDate;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Danylo Dudar
@@ -27,5 +29,9 @@ public class Cohort {
     @CsvDate(value = "yyyy-MM-dd")
     private LocalDate endDate;
 
+    @ManyToMany
+    private List<Student>  student = new ArrayList<>();
 
+    @ManyToMany
+    private List<Teacher> teacher = new ArrayList<>();
 }
