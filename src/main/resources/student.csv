@@ -1,0 +1,12 @@
+firstName,affix,lastName,dateOfBirth,eMail,bio,employer,city
+Jan,van de,Vries,2026-01-01,,this is a bio,,Groningen
+John,,Napier,1550-02-01,JohnNapier@email.com,I love my bones,King of Scotland,Edinburgh
+William,"",Oughtred,1574-03-05,WilliamO@email.com,I love slide rulers,University of Cambridge,Albury
+Blaise,,Pascal,1623-06-19,BPascal@email.com,I love gambling,,Clermont-Ferrand
+Gottfried Wilhelm,,Leibniz,1646-07-01,monad@email.com,The REAL inventor of Calculus,Universität Leipzig,Leipzig
+Joseph Marie,,Jacquard,1752-07-07,loom@email.com,I like weaving,,Lyon
+Charles,,Babage,1871-10-18,bababa@email.com,I like counting,University of Cambridge,London
+George,,Boole,1815-11-02,trueorfalse@email.com,It's either this or that,Lincoln Mechanics' Institute,Lincoln
+Herman,,Hollerith,1860-02-29,Herman@InternationalBusinessMachines,I love making holes in cards,International Business Machines,Buffalo
+Alan,,Turing,1912-06-23,altu@email.com,I love codebreaking,Bletchley Park,Bletchley
+Konrad Ernst Otto,,Zuse,1910-06-22,Konrad@zuse.de,Ich liebe rechnen,,Berlin

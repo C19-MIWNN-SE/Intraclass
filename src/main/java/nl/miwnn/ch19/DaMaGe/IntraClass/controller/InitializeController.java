@@ -38,14 +38,14 @@ public class InitializeController {
     private void seedPeople() {
         try {
             ClassPathResource resource =
-                    new ClassPathResource("people.csv");
+                    new ClassPathResource("student.csv");
             Reader reader = new InputStreamReader(resource.getInputStream());
             CsvToBean<Person> csvToBean = new CsvToBeanBuilder<Person>(reader)
                     .withType(Person.class)
                     .withIgnoreLeadingWhiteSpace(true).build();
             personRepository.saveAll(csvToBean.parse());
         } catch (IOException e) {
-            throw new RuntimeException("Kon people.csv niet inlezen", e);
+            throw new RuntimeException("Kon student.csv niet inlezen", e);
         }
     }
 }

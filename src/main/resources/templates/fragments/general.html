@@ -1,21 +1,97 @@
+<!--NAVBAR VOLGENS HOOFDSTUK 24-->
+<nav class="navbar navbar-expand-lg navbar-darkbg-dark" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <div class="container">
+<!--        <a class="navbar-brand" th:href="@{/}">LibraryDemo</a>-->
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto">
 
-<nav th:fragment="navbar">
-    <ul>
-        <div class="nav-links">
-            <a th:href="@{/}">DEMO</a>
-            <a th:href="@{/}">DEMO</a>
-            <a th:href="@{/}">DEMO</a>
-            <a th:href="@{/}">DEMO</a>
-            <a th:href="@{/}">DEMO</a>
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" th:href="@{/book/all}">Boeken</a>-->
+<!--                </li>-->
+<!--                -->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" th:href="@{/author/all}">Auteurs</a>-->
+<!--                </li>-->
+<!--TODO button van maken-->
+                <li class="nav-item"
+                    sec:authorize="hasRole('TEACHER')">
+                    <a class="nav-link" th:href="@{}">
+                        Add Student
+                    </a>
+                </li>
+<!--TODO Button van maken-->
+                <li class="nav-item"
+                    sec:authorize="hasRole('TEACHER')">
+                    <a class="nav-link" th:href="@{}">
+                        Add Cohort
+                    </a>
+                </li>
+                <li class="nav-item"
+                    sec:authorize="hasRole('TEACHER', 'STUDENT')">
+                    <a class="nav-link" th:href="@{/PersonView}">
+                        Edit my Account
+                    </a>
+                </li>
+                <li class="nav-item"
+                    sec:authorize="hasRole('TEACHER', 'STUDENT')">
+                    <a class="nav-link" th:href="@{/CohortView}">
+                        Cohort
+                    </a>
+                </li>
+                <li class="nav-item"
+                    sec:authorize="hasRole('TEACHER')">
+                    <a class="nav-link" th:href="@{/CohortOverview}">
+                        Cohort Overview
+                    </a>
+                </li>
+<!--TODO Button van maken-->
+                <li class="nav-item"
+                    sec:authorize="hasRole('TEACHER', 'STUDENT')">
+                    <a class="nav-link" th:href="@{}">
+                        Logout
+                    </a>
+                </li>
+            </ul>
+
+<!--            <ul class="navbar-nav">-->
+<!--                <li class="nav-item"-->
+<!--                    sec:authorize="isAuthenticated()">-->
+<!--                    <form th:action="@{/logout}" method="post">-->
+<!--                        <button class="btn btn-outline-light btn-sm"-->
+<!--                                type="submit">Uitloggen</button>-->
+<!--                    </form>-->
+<!--                </li>-->
+<!--                -->
+<!--                <li class="nav-item"-->
+<!--                    sec:authorize="isAnonymous()">-->
+<!--                    <a class="nav-link" th:href="@{/login}">Inloggen</a>-->
+<!--                </li>-->
+<!--                -->
+<!--            </ul>-->
         </div>
-        <div class="nav-actions">
-            <form th:action="@{/logout}" method="post" style="margin: 0;">
-                <button type="submit" class="btn-logout">LOGOUT</button>
-            </form>
-        </div>
-    </ul>
+    </div>
 </nav>
+<!--&lt;!&ndash;NAVBAR OUD&ndash;&gt;-->
+<!--<nav th:fragment="navbar">-->
+<!--    <ul>-->
+<!--        <div class="nav-links">-->
+<!--            <a th:href="@{/}">Add Student</a>-->
+<!--            <a th:href="@{/}">Add Cohort</a>-->
+<!--            <a th:href="@{/}">Edit My Account</a>-->
+<!--            <a th:href="@{/}">Cohort</a>-->
+<!--            <a th:href="@{/}">Cohort Overview</a>-->
+<!--            <a th:href="@{/}">Logout</a>-->
+<!--        </div>-->
+<!--        <div class="nav-actions">-->
+<!--            <form th:action="@{/logout}" method="post" style="margin: 0;">-->
+<!--                <button type="submit" class="btn-logout">LOGOUT</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </ul>-->
+<!--</nav>-->
+
+<!--FOOTER-->
 <footer th:fragment="footer">
-    <p>Dit is de footer</p>
+    <p>IntraClass&trade; Cohort Manager</p>
 </footer>
 
