@@ -1,10 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:fragment="baseheader(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title th:replace="${title}">This is the base title</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+
 <!--NAVBAR VOLGENS HOOFDSTUK 24-->
 <nav class="navbar navbar-expand-lg navbar-darkbg-dark" xmlns:sec="http://www.w3.org/1999/xhtml">
     <div class="container">
-<!--        <a class="navbar-brand" th:href="@{/}">LibraryDemo</a>-->
+        <!--        <a class="navbar-brand" th:href="@{/}">LibraryDemo</a>-->
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav me-auto">
-
 <!--                <li class="nav-item">-->
 <!--                    <a class="nav-link" th:href="@{/book/all}">Boeken</a>-->
 <!--                </li>-->
@@ -69,29 +84,14 @@
 <!--                -->
 <!--            </ul>-->
         </div>
-    </div>
+        <div class="nav-actions">
+            <form th:action="@{/logout}" method="post" style="margin: 0;">
+                <button type="submit" class="btn-logout">LOGOUT</button>
+            </form>
+        </div>
+    </ul>
 </nav>
-<!--&lt;!&ndash;NAVBAR OUD&ndash;&gt;-->
-<!--<nav th:fragment="navbar">-->
-<!--    <ul>-->
-<!--        <div class="nav-links">-->
-<!--            <a th:href="@{/}">Add Student</a>-->
-<!--            <a th:href="@{/}">Add Cohort</a>-->
-<!--            <a th:href="@{/}">Edit My Account</a>-->
-<!--            <a th:href="@{/}">Cohort</a>-->
-<!--            <a th:href="@{/}">Cohort Overview</a>-->
-<!--            <a th:href="@{/}">Logout</a>-->
-<!--        </div>-->
-<!--        <div class="nav-actions">-->
-<!--            <form th:action="@{/logout}" method="post" style="margin: 0;">-->
-<!--                <button type="submit" class="btn-logout">LOGOUT</button>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </ul>-->
-<!--</nav>-->
-
-<!--FOOTER-->
 <footer th:fragment="footer">
-    <p>IntraClass&trade; Cohort Manager</p>
+    <p>Dit is de footer</p>
 </footer>
 

@@ -4,6 +4,9 @@ import com.opencsv.bean.CsvDate;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
+import nl.miwnn.ch19.DaMaGe.IntraClass.validation.ValidationXOR;
 
 import java.time.LocalDate;
 
@@ -13,90 +16,37 @@ import java.time.LocalDate;
  */
 @Entity
 @Table
+@ValidationXOR //This is a custom validator, not fully tested yet
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter @Setter
     private Long id;
 
     @NotBlank(message = "First name can't be blank")
+    @Getter @Setter
     private String firstName;
 
-    @NotBlank(message = "Last name can't be blank")
-    private String lastName;
-
+    @Getter @Setter
     private String affix;
 
-    @NotBlank(message = "City can't be blank")
-    private String city;
-
-//  TODO
-//    @NotBlank(message = "A profile image is required")
-//    private Image profilePicture;
-
-    @NotBlank(message = "Bio can't be blank")
-    private String bio;
-
-//  TODO
-//    @NotBlank(message = "Employer can't be blank")
-//    private Employer employer;
+    @NotBlank(message = "Last name can't be blank")
+    @Getter @Setter
+    private String lastName;
 
     @NotNull(message = "Date of birth can't be blank")
     @CsvDate(value = "yyyy-MM-dd")
+    @Getter @Setter
     private LocalDate dateOfBirth;
 
-    public Long getId() {
-        return id;
-    }
+    @Getter @Setter
+    private String email;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @OneToOne(fetch = FetchType.EAGER)
+    @Getter @Setter
+    private Student student;
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getAffix() {
-        return affix;
-    }
-
-    public void setAffix(String affix) {
-        this.affix = affix;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getBio() {
-        return bio;
-    }
-
-    public void setBio(String bio) {
-        this.bio = bio;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
+    @OneToOne(fetch = FetchType.EAGER)
+    @Getter @Setter
+    private Teacher teacher;
 }
