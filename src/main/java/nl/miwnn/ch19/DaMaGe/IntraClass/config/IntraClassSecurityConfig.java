@@ -23,8 +23,11 @@ public class IntraClassSecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/",
-                                "/person"
+                                "/**",
+                                "/static/css/**",
+                                "/login",
+                                "/person",
+                                "/webjars/**"
                         ).permitAll()
                         .requestMatchers(
                                 "/person-form"
@@ -36,8 +39,8 @@ public class IntraClassSecurityConfig {
                         .permitAll()
                 )
                 .formLogin(form -> form
-                        .loginPage("/")
-                        .defaultSuccessUrl("/person", true)
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/login", true)
                         .permitAll()
                 );
         return http.build();
