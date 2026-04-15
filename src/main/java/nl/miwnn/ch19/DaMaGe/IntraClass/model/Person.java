@@ -20,33 +20,89 @@ import java.time.LocalDate;
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter
     private Long id;
 
     @NotBlank(message = "First name can't be blank")
-    @Getter @Setter
     private String firstName;
 
-    @Getter @Setter
     private String affix;
 
     @NotBlank(message = "Last name can't be blank")
-    @Getter @Setter
     private String lastName;
 
     @NotNull(message = "Date of birth can't be blank")
     @CsvDate(value = "yyyy-MM-dd")
-    @Getter @Setter
     private LocalDate dateOfBirth;
 
-    @Getter @Setter
     private String email;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @Getter @Setter
     private Student student;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @Getter @Setter
     private Teacher teacher;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getAffix() {
+        return affix;
+    }
+
+    public void setAffix(String affix) {
+        this.affix = affix;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
 }

@@ -18,25 +18,67 @@ import java.util.List;
 public class Student{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter
     private Long id;
 
     @NotBlank(message = "Bio can't be blank")
-    @Getter @Setter
     private String bio;
 
-    @Getter @Setter
     private String employer;
 
     @NotBlank(message = "City can't be blank")
-    @Getter @Setter
     private String city;
 
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
-    @Getter @Setter
     private Person person;
 
     @ManyToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @Getter @Setter
     private List<Cohort> cohort = new ArrayList<>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getEmployer() {
+        return employer;
+    }
+
+    public void setEmployer(String employer) {
+        this.employer = employer;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public List<Cohort> getCohort() {
+        return cohort;
+    }
+
+    public void setCohort(List<Cohort> cohort) {
+        this.cohort = cohort;
+    }
 }
