@@ -5,28 +5,43 @@
   <title th:text="${pageTitle}">Person Overview</title>
 </head>
 <body>
-<nav th:replace="~{fragments/general :: navbar}"></nav>
 
-<h1 class="main-title" th:text="${pageTitle}"></h1>
 
-<form th:action="@{/}" method="post">
-  <label for="username">Username</label>
-  <input type="text" id="username" name="username">
+<div class="container-fluid p-0">
+  <div class="d-flex min-vh-100">
 
-  <label for="password">Password</label>
-  <input type="password" id="password" name="password">
+    <!-- LEFT -->
+    <div class="w-50 bg-primary text-white d-flex justify-content-center align-items-center">
+      <h1 class="main-title-light" th:text="${pageTitle}"></h1>
+    </div>
 
-  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <!-- RIGHT -->
+    <div class="w-50 bg-light d-flex justify-content-center align-items-center">
+      <form th:action="@{/login}" method="post">
 
-  <button type="submit">Sign in</button>
+        <label for="username">Username</label>
+        <input type="text" class="form-control rounded-pill" id="username" name="username">
 
-  <div th:if="${param.error}">
-    <p>Login failed. Try again.</p>
+        <label for="password">Password</label>
+        <input type="password" class="form-control rounded-pill" id="password" name="password">
+
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+        <button type="submit" class="form-control rounded-pill">Sign in</button>
+
+        <div th:if="${param.error}">
+          <p>Login failed. Try again.</p>
+        </div>
+
+        <div th:if="${param.logout}">
+          <p>You've been logged out.</p>
+        </div>
+
+      </form>
+    </div>
+
   </div>
-  <div th:if="${param.logout}">
-    <p>You've been logged out.</p>
-  </div>
-</form>
+</div>
 
 <nav th:replace="~{fragments/general :: footer}"></nav>
 

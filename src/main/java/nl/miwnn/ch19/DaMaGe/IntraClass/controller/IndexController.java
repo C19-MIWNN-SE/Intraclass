@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller()
 public class IndexController {
 
-    @GetMapping({ "/"})
+    @GetMapping({"/", "/login"})
     public String showIndex(Model model) {
-        model.addAttribute("pageTitle", "Login - IntraClass");
+        model.addAttribute("pageTitle", "IntraClass™");
         return "index";
     }
 }
