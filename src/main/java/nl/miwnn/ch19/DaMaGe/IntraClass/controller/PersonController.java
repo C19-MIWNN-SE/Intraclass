@@ -35,6 +35,6 @@ public class PersonController {
 
         model.addAttribute("pageTitle", "Person Overview");
         model.addAttribute("people", people);
-        return "person";
+        return "cohortView";
     }
 }
