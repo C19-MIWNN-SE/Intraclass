@@ -19,18 +19,46 @@ import java.util.List;
 public class Teacher{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter
     private Long id;
 
     @NotBlank(message = "Teacher specialty cannot be blank")
-    @Getter @Setter
     private String specialty;
 
     @OneToOne(mappedBy = "teacher", cascade = CascadeType.ALL)
-    @Getter @Setter
     private Person person;
 
     @ManyToMany(mappedBy = "teacher", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @Getter @Setter
     private List<Cohort> cohort = new ArrayList<>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public List<Cohort> getCohort() {
+        return cohort;
+    }
+
+    public void setCohort(List<Cohort> cohort) {
+        this.cohort = cohort;
+    }
 }

@@ -19,28 +19,77 @@ import java.util.List;
 public class Cohort {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter
     private Long id;
 
-    @Getter @Setter
     private String name;
 
-    @Getter @Setter
     private String description;
 
     @CsvDate(value = "yyyy-MM-dd")
-    @Getter @Setter
     private LocalDate startDate;
 
     @CsvDate(value = "yyyy-MM-dd")
-    @Getter @Setter
     private LocalDate endDate;
 
     @ManyToMany
-    @Getter @Setter
     private List<Student>  student = new ArrayList<>();
 
     @ManyToMany
-    @Getter @Setter
     private List<Teacher> teacher = new ArrayList<>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public List<Student> getStudent() {
+        return student;
+    }
+
+    public void setStudent(List<Student> student) {
+        this.student = student;
+    }
+
+    public List<Teacher> getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(List<Teacher> teacher) {
+        this.teacher = teacher;
+    }
 }
