@@ -88,4 +88,8 @@ public class IntraClassUser implements UserDetails {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }
