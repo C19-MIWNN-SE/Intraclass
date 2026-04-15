@@ -24,7 +24,7 @@ public class IntraClassSecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/**",
-                                "/static/css/**",
+                                "/static/static/**",
                                 "/login",
                                 "/person",
                                 "/webjars/**"

@@ -1,5 +1,6 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.model;
 
+import com.opencsv.bean.CsvBindByName;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
@@ -10,33 +11,17 @@ import java.util.List;
 
 /**
  * @author Danylo Dudar
- *Extends Person as Teacher(in a specific way)
- * Check validation folder for more info
+ *
  */
 
 @Entity
-@Table
-public class Teacher{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Teacher extends Person {
 
     @NotBlank(message = "Teacher specialty cannot be blank")
     private String specialty;
 
-    @OneToOne(mappedBy = "teacher", cascade = CascadeType.ALL)
-    private Person person;
-
     @ManyToMany(mappedBy = "teacher", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Cohort> cohort = new ArrayList<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getSpecialty() {
         return specialty;
@@ -44,14 +29,6 @@ public class Teacher{
 
     public void setSpecialty(String specialty) {
         this.specialty = specialty;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
     }
 
     public List<Cohort> getCohort() {

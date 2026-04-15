@@ -4,9 +4,6 @@ import com.opencsv.bean.CsvDate;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
-import nl.miwnn.ch19.DaMaGe.IntraClass.validation.ValidationXOR;
 
 import java.time.LocalDate;
 
@@ -16,7 +13,6 @@ import java.time.LocalDate;
  */
 @Entity
 @Table
-@ValidationXOR //This is a custom validator, not fully tested yet
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,12 +31,6 @@ public class Person {
     private LocalDate dateOfBirth;
 
     private String email;
-
-    @OneToOne(fetch = FetchType.EAGER)
-    private Student student;
-
-    @OneToOne(fetch = FetchType.EAGER)
-    private Teacher teacher;
 
     public Long getId() {
         return id;
@@ -88,21 +78,5 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
     }
 }
