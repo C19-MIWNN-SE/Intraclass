@@ -36,11 +36,23 @@
         <td>
             <a th:href="@{/books/edit/{cohortId}(cohortId=${cohort.id})}">View Cohort</a>
         </td>
+        <td>
+            <button type="button"
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#addEditCohortModal"
+                    sec:authorize="hasRole('ADMIN')">Edit Cohort</button>
+        </td>
     </tr>
     </tbody>
 </table>
 
-<button type="submit">Add Cohort</button>
+<button type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#addEditCohortModal"
+        sec:authorize="hasRole('ADMIN')">Add Cohort</button>
+
 
 <nav th:replace="~{fragments/general :: footer}"></nav>
 </body>
