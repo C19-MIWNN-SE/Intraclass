@@ -64,6 +64,18 @@ public class Person {
         this.lastName = lastName;
     }
 
+    public void setFullName(String firstName, String affix, String lastName){
+        this.firstName = firstName;
+        this.affix = affix;
+        this.lastName = lastName;
+    }
+
+    public String getFullName() {
+        return affix != null ?
+        firstName + " " + affix + " " + lastName :
+        firstName + " " + lastName;
+    }
+
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
