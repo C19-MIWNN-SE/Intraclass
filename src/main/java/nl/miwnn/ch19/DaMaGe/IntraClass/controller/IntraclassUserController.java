@@ -21,7 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class IntraclassUserController {
 
     private final UserRepository userRepository;
@@ -37,27 +37,27 @@ public class IntraclassUserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("")
+    @GetMapping({"/", "/all"})
     public String showUserOverview(Model model) {
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("newUser", new NewIntraclassUserDTO());
-        return "users/overview";
+        return "user-overview";
     }
 
     @GetMapping("/add")
     public String showAddUserForm(Model model) {
         model.addAttribute("newUser", new NewIntraclassUserDTO());
-        return "users/add-user";
+        return "user-add";
     }
 
-    @PostMapping("/add") public
+    @PostMapping("/save") public
     String addUser(@ModelAttribute("newUser")
                    NewIntraclassUserDTO dto,
                    RedirectAttributes redirectAttributes) {
         userRepository.save(userMapper.toLibraryUser(dto, passwordEncoder));
         redirectAttributes.addFlashAttribute("successMessage",
-                "User '" + dto.getUsername() + "'made.");
-        return "redirect:/users";
+                "User '" + dto.getUsername() + "'created.");
+        return "redirect:/user/all";
     }
 
     @PostMapping("/delete/{id}")
@@ -65,7 +65,7 @@ public class IntraclassUserController {
                              RedirectAttributes redirectAttributes)
     {
         userRepository.deleteById(id);
-        redirectAttributes.addFlashAttribute("successMessage", "User removed.");
-        return "redirect:/users";
+        redirectAttributes.addFlashAttribute("successMessage", "User deleted.");
+        return "redirect:/user/all";
     }
 }

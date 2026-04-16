@@ -57,16 +57,14 @@ public class InitializeController {
     @EventListener(ContextRefreshedEvent.class)
     public void seed() {
         if (personRepository.count() == 0) { seedAll();}
-        if (userRepository.count() == 0) { createAdmin();}
-    }
-
-    private void createAdmin() {
-        IntraClassUser admin = new IntraClassUser(
-                "admin",
-                passwordEncoder.encode("geheim123"),
-                "ADMIN"
-        );
-        userRepository.save(admin);
+        if (userRepository.count() == 0) {
+            IntraClassUser admin = new IntraClassUser(
+                    "admin",
+                    passwordEncoder.encode("geheim123"),
+                    "ADMIN"
+            );
+            userRepository.save(admin);
+        }
     }
 
     private void seedAll() {

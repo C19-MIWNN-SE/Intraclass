@@ -23,7 +23,7 @@
         <h1 class="main-title-dark"><i class="bi bi-box-arrow-in-right"></i> Log In</h1>
       </div>
       <div class="d-block p-2 mb-4">
-      <form class="text-center" th:action="@{/login}" method="post">
+      <form sec:authorize="isAnonymous()" class="text-center" th:action="@{/login}" method="post">
 
         <label for="username"></label>
         <input type="text"  class="form-control rounded-pill" id="username" name="username" placeholder="Username">
@@ -44,6 +44,12 @@
         </div>
 
       </form>
+        <div sec:authorize="isFullyAuthenticated()">
+          <p>Welcome, <span sec:authentication="name"></span>!</p>
+          <form th:action="@{/logout}" method="post">
+            <button type="submit">Logout</button>
+          </form>
+        </div>
     </div>
     </div>
   </div>
