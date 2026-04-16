@@ -60,7 +60,13 @@ public class InitializeController {
                     passwordEncoder.encode("geheim123"),
                     "ADMIN"
             );
+            IntraClassUser user = new IntraClassUser(
+                    "user",
+                    passwordEncoder.encode("123"),
+                    "USER"
+            );
             userRepository.save(admin);
+            userRepository.save(user);
         }
     }
 
