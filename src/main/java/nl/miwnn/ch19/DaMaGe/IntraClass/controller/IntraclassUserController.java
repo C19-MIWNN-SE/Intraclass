@@ -3,7 +3,7 @@ package nl.miwnn.ch19.DaMaGe.IntraClass.controller;
 import nl.miwnn.ch19.DaMaGe.IntraClass.dto.NewIntraclassUserDTO;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.*;
 import nl.miwnn.ch19.DaMaGe.IntraClass.service.mapper.IntraclassUserMapper;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,12 +26,12 @@ public class IntraclassUserController {
 
     private final UserRepository userRepository;
     private final IntraclassUserMapper userMapper;
-    private final BCryptPasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     public IntraclassUserController(
             UserRepository userRepository,
             IntraclassUserMapper userMapper,
-            BCryptPasswordEncoder passwordEncoder) {
+            PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
         this.passwordEncoder = passwordEncoder;

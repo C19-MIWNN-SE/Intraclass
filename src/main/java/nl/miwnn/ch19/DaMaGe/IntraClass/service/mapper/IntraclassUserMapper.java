@@ -3,7 +3,7 @@ package nl.miwnn.ch19.DaMaGe.IntraClass.service.mapper;
 
 import nl.miwnn.ch19.DaMaGe.IntraClass.dto.NewIntraclassUserDTO;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.IntraClassUser;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class IntraclassUserMapper {
     public IntraClassUser toLibraryUser(
             NewIntraclassUserDTO dto,
-            BCryptPasswordEncoder passwordEncoder) {
+            PasswordEncoder passwordEncoder) {
 
         IntraClassUser user = new IntraClassUser();
         user.setUsername(dto.getUsername());
