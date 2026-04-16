@@ -24,26 +24,23 @@ import java.io.Reader;
 @Controller
 public class InitializeController {
 
-    @Autowired
     private final CohortRepository cohortRepository;
 
-    @Autowired
     private final PersonRepository personRepository;
 
-    @Autowired
     private final StudentRepository studentRepository;
 
-    @Autowired
     private final TeacherRepository teacherRepository;
 
-    @Autowired
     private final UserRepository userRepository;
 
-    @Autowired
     private final PasswordEncoder passwordEncoder;
 
     public InitializeController(
-            CohortRepository cohortRepository, PersonRepository personRepository, StudentRepository studentRepository, TeacherRepository teacherRepository,
+            CohortRepository cohortRepository,
+            PersonRepository personRepository,
+            StudentRepository studentRepository,
+            TeacherRepository teacherRepository,
             UserRepository userRepository,
             PasswordEncoder passwordEncoder) {
         this.cohortRepository = cohortRepository;
