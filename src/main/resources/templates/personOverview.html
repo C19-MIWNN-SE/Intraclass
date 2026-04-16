@@ -15,7 +15,10 @@
 
 <h1 class="main-title" th:text="${pageTitle}"></h1>
 <table sec:authorize="hasRole('ADMIN')"
-       th:replace="~{fragments/person :: personTable}"></table>
+       th:replace="~{fragments/person :: teacherTable}"></table>
+
+<table sec:authorize="hasRole('ADMIN')"
+       th:replace="~{fragments/person :: studentTable}"></table>
 
 <div sec:authorize="hasRole('ADMIN')">
     <button type="submit">Add Person</button>
