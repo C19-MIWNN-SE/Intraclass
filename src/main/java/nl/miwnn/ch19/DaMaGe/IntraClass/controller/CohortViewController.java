@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class CohortViewController {
 
-    @GetMapping("/cohortView")
-    public String showCohortView(Model model) {
-        model.addAttribute("pageTitle", "Cohort View");
-        model.addAttribute("cohortName", Cohort.getName())
-        return "cohortView";
-    }
+//    @GetMapping("/cohortView")
+//    public String showCohortView(Model model) {
+//        model.addAttribute("pageTitle", "Cohort View");
+//        model.addAttribute("cohortName", Cohort.getName())
+//        return "cohortView";
+//    }
 }

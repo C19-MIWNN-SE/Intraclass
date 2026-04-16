@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <title>User Management</title>
 </head>
 <body>
-$END$
+<h1>Gebruikersbeheer</h1>
+<div th:if="${successMessage}"
+     class="alert alert-success"
+     th:text="${successMessage}"></div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>User</th>
+        <th>Role</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.role}"></td>
+        <td>
+            <form th:action="@{/user/delete/{id}(id=${user.id})}"
+                  method="post">
+                <button type="submit"
+                        class="btn btn-danger btn-sm">
+                    Delete
+                </button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/user/add}" class="btn btn-primary">
+    New User
+</a>
 </body>
 </html>

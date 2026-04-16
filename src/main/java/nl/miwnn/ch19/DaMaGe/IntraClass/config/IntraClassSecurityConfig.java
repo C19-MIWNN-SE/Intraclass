@@ -1,5 +1,6 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.config;
 
+import nl.miwnn.ch19.DaMaGe.IntraClass.service.IntraclassUserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,35 +18,11 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class IntraClassSecurityConfig {
+    private final IntraclassUserService intraclassUserService;
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) {
-        http
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/**",
-                                "/static/static/**",
-                                "/login",
-                                "/person",
-                                "/webjars/**"
-                        ).permitAll()
-                        .requestMatchers(
-                                "/person-form"
-                        ).hasRole("ADMIN")
-                        .anyRequest().authenticated()
-                )
-                .logout(logout -> logout
-                        .logoutSuccessUrl("/person")
-                        .permitAll()
-                )
-                .formLogin(form -> form
-                        .loginPage("/login")
-                        .defaultSuccessUrl("/login", true)
-                        .permitAll()
-                );
-        return http.build();
+    public IntraClassSecurityConfig(IntraclassUserService intraclassUserService) {
+        this.intraclassUserService = intraclassUserService;
     }
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -53,13 +30,33 @@ public class IntraClassSecurityConfig {
     }
 
     @Bean
-    public UserDetailsService userDetailsService(
-            PasswordEncoder encoder) {
-        var beheerder = User.builder()
-                .username("admin")
-                .password(encoder.encode("geheim123"))
-                .roles("ADMIN")
-                .build();
-        return new InMemoryUserDetailsManager(beheerder);
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) {
+        http
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                                "/",
+                                "/css/**",
+                                "/img/**",
+                                "/login",
+                                "/person",
+                                "/webjars/**"
+                        ).permitAll()
+                        .requestMatchers(
+                                "/person-form",
+                                "/user/**"
+                        ).hasRole("ADMIN")
+                        .anyRequest().authenticated()
+                )
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/login")
+                        .permitAll()
+                )
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/user/add", true)
+                        .permitAll()
+                )
+                .userDetailsService(intraclassUserService);
+        return http.build();
     }
 }
