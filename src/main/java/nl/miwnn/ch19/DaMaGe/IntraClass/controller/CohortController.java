@@ -7,13 +7,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author G. Neuteboom
- * For: cohortOverview.html (list of all cohorts) (access by teacher only),
+ * For: cohortOverviewTable.html.html (list of all cohorts) (access by teacher only),
  *      cohortView.html (list of persons in 1 cohort) (access by teacher and student),
  *
  */
@@ -37,6 +39,18 @@ public class CohortController {
         model.addAttribute("pageTitle", "Cohort Overview");
         model.addAttribute("cohorts", cohorts);
         return "cohortOverview";
+    }
+
+    @GetMapping("/cohort/{id}")
+    public String showCohort(@PathVariable Long id, Model model) {
+        Optional<Cohort> cohort = cohortRepository.findById(id);
+
+        if (cohort.isEmpty()) {
+            log.warn("Cohort not found {}", id);
+            return "redirect:/cohort/overview";
+        }
+        model.addAttribute("cohort", cohort);
+        return "cohortView";
     }
 
 }

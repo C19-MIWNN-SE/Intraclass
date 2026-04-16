@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="~{fragments/general :: baseheader(~{:: title})}">
-    <title th:text="${pageTitle}">Person Overview</title>
+    <title th:text="${pageTitle}">Cohort View</title>
 </head>
 
 <body>
@@ -10,8 +10,11 @@
 
 <h1 class="main-title" th:text="${pageTitle}"></h1>
 
-<!--<h2 th:text="${Cohorts.name}">Cohortnaam</h2>-->
-<table th:replace="~{fragments/person :: personTable}"></table>
+<h2 th:text="${cohort.name}">Cohortnaam</h2>
+
+<table th:replace="~{fragments/cohortOverviewTable :: cohortOverviewTable}"></table>
+<table th:replace="~{fragments/teacherOverview :: teacherOverviewTable}"></table>
+<table th:replace="~{fragments/studentOverview :: studentOverviewTable}"></table>
 
 <nav th:replace="~{fragments/general :: footer}"></nav>
 

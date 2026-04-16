@@ -1,0 +1,45 @@
+
+<table th:fragment="cohortOverviewTable" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Affix</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th>E-Mail</th>
+        <th>Biography</th>
+        <th>Employer</th>
+        <th>City</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="student: ${persons}">
+        <td th:text="${person.id}">ID</td>
+        <td th:text="${person.id}">id</td>
+        <td th:text="${person.firstName}">firstName</td>
+        <td th:text="${person.affix}">affix</td>
+        <td th:text="${person.lastName}">lastName</td>
+        <td th:text="${person.dateOfBirth}">dateOfBirth</td>
+        <td th:text="${person.email}">email</td>
+        <td th:text="${person.bio}">email</td>
+        <td th:text="${person.employer}">email</td>
+        <td th:text="${person.city}">email</td>
+
+
+<!--        <td>-->
+<!--            <a th:href="@{/books/edit/{cohortId}(cohortId=${cohort.id})}">View Cohort</a>-->
+<!--        </td>-->
+<!--        <td>-->
+<!--            <button type="button"-->
+<!--                    class="btn btn-primary"-->
+<!--                    data-bs-toggle="modal"-->
+<!--                    data-bs-target="#addEditCohortModal"-->
+<!--                    sec:authorize="hasRole('ADMIN')">Edit Cohort</button>-->
+<!--        </td>-->
+
+
+    </tr>
+    </tbody>
+</table>

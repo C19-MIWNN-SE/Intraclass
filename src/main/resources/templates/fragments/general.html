@@ -20,7 +20,7 @@
             <ul class="navbar-nav me-auto">
                 <li class="nav-item"
                     sec:authorize="hasRole('ADMIN')">
-                    <a class="nav-link" th:href="@{/cohortOverview}">
+                    <a class="nav-link" th:href="@{/templates/fragments/cohortOverviewTable.html}">
                         Cohort Overview
                     </a>
                 </li>
