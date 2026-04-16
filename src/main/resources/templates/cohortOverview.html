@@ -14,33 +14,14 @@
 
 <h1 th:text="${pageTitle}"></h1>
 
-<table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th></th>
-    </tr>
-    </thead>
+<table th:replace="~{fragments/cohortOverviewTable :: cohortOverviewTable}"></table>
 
-    <tbody>
-    <tr th:each="cohort: ${cohorts}">
-        <td th:text="${cohort.id}">ID</td>
-        <td th:text="${cohort.name}">Name</td>
-        <td th:text="${cohort.description}">Description</td>
-        <td th:text="${cohort.startDate}">Start Date</td>
-        <td th:text="${cohort.endDate}">End Date</td>
-        <td>
-            <a th:href="@{/books/edit/{cohortId}(cohortId=${cohort.id})}">View Cohort</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<button type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#addEditCohortModal"
+        sec:authorize="hasRole('ADMIN')">Add Cohort</button>
 
-<button type="submit">Add Cohort</button>
 
 <nav th:replace="~{fragments/general :: footer}"></nav>
 </body>
