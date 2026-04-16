@@ -26,7 +26,7 @@ public class PersonController {
         this.personRepository = personRepository;
     }
 
-    @GetMapping({"", "/"})
+    @GetMapping( "/overview")
     public String personOverview(Model model) {
 
         List<Person> people;
@@ -35,6 +35,6 @@ public class PersonController {
 
         model.addAttribute("pageTitle", "Person Overview");
         model.addAttribute("people", people);
-        return "cohortView";
+        return "personOverview";
     }
 }

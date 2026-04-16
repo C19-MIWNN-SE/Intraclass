@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 /**
  * @author My Linh Lu
@@ -75,6 +76,10 @@ public class Person {
         firstName + " " + affix + " " + lastName :
         firstName + " " + lastName;
     }
+
+    public int getAge(LocalDate currentDate){
+        return Period.between(dateOfBirth, currentDate).getYears();
+    };
 
     public LocalDate getDateOfBirth() {
         return dateOfBirth;

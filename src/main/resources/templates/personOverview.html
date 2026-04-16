@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<!--Made by nimble hands of Danylo Dudar-->
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/general :: baseheader(~{:: title})}">
+    <title th:text="${pageTitle}"></title>>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+<nav th:replace="~{fragments/general :: navbar}"></nav>
+
+<h1 class="main-title" th:text="${pageTitle}"></h1>
+<table sec:authorize="hasRole('ADMIN')"
+       th:replace="~{fragments/person :: personTable}"></table>
+
+<div sec:authorize="hasRole('ADMIN')">
+    <button type="submit">Add Person</button>
+</div>
+
+<nav th:replace="~{fragments/general :: footer}"></nav>
+</body>
+</html>
