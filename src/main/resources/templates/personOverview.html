@@ -12,19 +12,17 @@
 
 <body>
 <nav th:replace="~{fragments/general :: navbar}"></nav>
-
+<div class="container-fluid p-4">
 <h1 class="main-title" th:text="${pageTitle}"></h1>
-<table sec:authorize="hasRole('ADMIN')"
-       th:replace="~{fragments/person :: teacherTable}"></table>
+<table th:replace="~{fragments/person :: teacherTable}"></table>
 
-<table sec:authorize="hasRole('ADMIN')"
-       th:replace="~{fragments/person :: studentTable}"></table>
+<table th:replace="~{fragments/person :: studentTable}"></table>
 
-<div class="mb-3" sec:authorize="hasRole('ADMIN')">
+<div class="mb-3">
     <a th:href="@{/person/add/student}">Add New Student</a>
     <a th:href="@{/person/add/teacher}">Add New Teacher</a>
 </div>
-
+</div>
 <div th:replace="~{fragments/general :: scripts}"></div>
 <footer th:replace="~{fragments/general :: footer}"></footer>
 </body>

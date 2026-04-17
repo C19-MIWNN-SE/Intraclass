@@ -14,6 +14,7 @@
 </head>
 <body>
 
+<!-- Navbar fragment -->
 <nav th:fragment="navbar" class="navbar navbar-expand-lg"
      th:classappend="${activePage == 'login'} ? 'bg-tertiary' : 'bg-primary'">
     <div class="container-fluid">
@@ -28,6 +29,9 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/login">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" th:href="@{/personView}">My Account</a>
                 </li>
                 <li class="nav-item dropdown" sec:authorize="hasRole('TEACHER')">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -59,56 +63,11 @@
     </div>
 </nav>
 
+<!-- Bootstrap js loader -->
 <div th:fragment="scripts">
     <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}">
     </script>
 </div>
-
-<!--<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-darkbg-dark">-->
-<!--    <div class="container">-->
-<!--        <div class="collapse navbar-collapse">-->
-<!--            <ul class="navbar-nav me-auto">-->
-<!--                <li class="nav-item"-->
-<!--                    sec:authorize="hasRole('TEACHER')">-->
-<!--                    <a class="nav-link" th:href="@{/cohort/overview}">-->
-<!--                        Cohort Overview-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li class="nav-item"-->
-<!--                    sec:authorize="hasRole('STUDENT')">-->
-<!--                    <a class="nav-link" th:href="@{/cohort}">-->
-<!--                        Cohort-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li class="nav-item"-->
-<!--                    sec:authorize="hasRole('TEACHER')">-->
-<!--                    <a class="nav-link" th:href="@{/person/overview}">-->
-<!--                        Person Overview-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li class="nav-item"-->
-<!--                    sec:authorize="hasRole('TEACHER')">-->
-<!--                    <a class="nav-link" th:href="@{/user/all}">-->
-<!--                        User Management-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li class="nav-item"-->
-<!--                    sec:authorize="isAuthenticated()">-->
-<!--                    <a class="nav-link" th:href="@{/personView}">-->
-<!--                        My Account-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li class="nav-item"-->
-<!--                    sec:authorize="isAuthenticated()">-->
-<!--                    <form th:action="@{/logout}" method="post">-->
-<!--                        <button class="btn btn-outline-dark btn-sm"-->
-<!--                                type="submit">Uitloggen</button>-->
-<!--                    </form>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</nav>-->
 
 <!-- Dummy content -->
 <div th:fragment="dummy">

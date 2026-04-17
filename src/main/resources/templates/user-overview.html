@@ -36,9 +36,9 @@
         <td>
             <img th:if="${user.image != null}"
                  th:src="@{/images/{id}(id=${user.image.id})}"
-                 class="rounded-circle img-fluid"
+                 class="rounded-circle"
                  th:alt="${user.username}"
-                 style="height: 50px; object-fit: cover;">
+                 style="width: 50px; height: 50px; object-fit: cover;">
         </td>
     </tr>
     </tbody>

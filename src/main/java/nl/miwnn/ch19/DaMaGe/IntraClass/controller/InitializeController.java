@@ -4,6 +4,7 @@ import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.*;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.*;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -25,15 +26,10 @@ import java.io.Reader;
 public class InitializeController {
 
     private final CohortRepository cohortRepository;
-
     private final PersonRepository personRepository;
-
     private final StudentRepository studentRepository;
-
     private final TeacherRepository teacherRepository;
-
     private final UserRepository userRepository;
-
     private final PasswordEncoder passwordEncoder;
 
     public InitializeController(
