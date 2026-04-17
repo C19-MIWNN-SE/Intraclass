@@ -38,14 +38,18 @@ public class IntraClassSecurityConfig {
                                 "/css/**",
                                 "/img/**",
                                 "/login",
-                                "/person",
-                                "/webjars/**",
-                                "/cohort/**"
+                                "/webjars/**"
                         ).permitAll()
                         .requestMatchers(
+                                "/cohort/overview",
+                                "/cohort/**",
                                 "/person-form",
                                 "/user/**"
-                        ).hasRole("ADMIN")
+                        ).hasRole("TEACHER")
+                        .requestMatchers(
+                                "/person",
+                                "/user/**"
+                        ).hasRole("STUDENT")
                         .anyRequest().authenticated()
                 )
                 .logout(logout -> logout
@@ -54,7 +58,7 @@ public class IntraClassSecurityConfig {
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/user/add", true)
+                        .defaultSuccessUrl("/login", true)
                         .permitAll()
                 )
                 .userDetailsService(intraclassUserService);
