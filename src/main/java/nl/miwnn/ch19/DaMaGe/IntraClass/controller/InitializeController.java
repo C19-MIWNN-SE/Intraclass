@@ -2,6 +2,7 @@ package nl.miwnn.ch19.DaMaGe.IntraClass.controller;
 
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
+import jakarta.transaction.Transactional;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.*;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Controller;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Danylo Dudar
@@ -51,6 +54,7 @@ public class InitializeController {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @Transactional
     @EventListener(ContextRefreshedEvent.class)
     public void seed() {
         if (personRepository.count() == 0) { seedAll();}
@@ -68,6 +72,7 @@ public class InitializeController {
             userRepository.save(admin);
             userRepository.save(user);
         }
+        seedManyToMany();
     }
 
     private void seedAll() {
@@ -111,5 +116,62 @@ public class InitializeController {
         } catch (IOException e) {
             throw new RuntimeException("Can not read "+ tableName, e);
         }
+    }
+
+//    TODO dit moet nog eens worden aangepast (t/m regel 176):
+    private int GetStart(int counter, int sublistsize){
+        int retval = counter*sublistsize;
+        return retval;
+    }
+
+    private int GetEnd(int counter, int listsize, int sublistsize){
+        int retval = (counter +1)*sublistsize;
+        if(retval > listsize){
+            retval = listsize;
+        }
+        return retval;
+    }
+
+    private void seedManyToMany(){
+            List<Cohort> cohorts = cohortRepository.findAll();
+            List<Teacher> teachers = teacherRepository.findAll();
+            List<Student> students = studentRepository.findAll();
+
+            int subListSize = (int) Math.ceil((double) students.size() / cohorts.size());
+            int counter = 0;
+                for(Cohort cohort : cohorts){
+
+                    for(Student student : students.subList(GetStart(counter, subListSize),
+                            GetEnd(counter, students.size(), subListSize))){
+                        cohort.getStudent().add(student);
+                    }
+                    counter++;
+                }
+
+            subListSize = (int) Math.ceil((double) teachers.size() / cohorts.size());
+            counter = 0;
+            for(Cohort cohort : cohorts){
+
+                for(Teacher teacher : teachers.subList(GetStart(counter, subListSize),
+                        GetEnd(counter, teachers.size(), subListSize))){
+                    cohort.getTeacher().add(teacher);
+                }
+            counter++;
+            }
+
+//
+//            for (int i = 0; i < cohorts.size(); i++){
+//                for (int j = 0; j < cohorts.size(); j++){
+//                    Cohort cohort = cohorts.get(j);
+//                    cohort.getStudent().add(students.get(i * j));
+//                }
+//            }
+//            for (int i = 0; i < students.size(); i++) {
+//                Cohort cohort = cohorts.get(i);
+//                cohort.getStudent().add(students.get(i));
+//
+//                }
+
+
     }
 }
