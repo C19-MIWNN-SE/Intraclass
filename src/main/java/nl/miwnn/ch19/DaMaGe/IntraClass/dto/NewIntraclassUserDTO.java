@@ -1,5 +1,7 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.dto;
 
+import nl.miwnn.ch19.DaMaGe.IntraClass.model.Image;
+
 /**
  * @author Danylo Dudar
  * <p>
@@ -10,6 +12,7 @@ public class NewIntraclassUserDTO {
     private String username;
     private String plainPassword;
     private String role;
+    private Image image;
 
     public NewIntraclassUserDTO() {
     }
@@ -36,5 +39,13 @@ public class NewIntraclassUserDTO {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 }

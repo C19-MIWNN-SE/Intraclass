@@ -15,6 +15,7 @@
         <th>User</th>
         <th>Role</th>
         <th>Actions</th>
+        <th>Profile Image</th>
     </tr>
     </thead>
     <tbody>
@@ -29,6 +30,13 @@
                     Delete
                 </button>
             </form>
+        </td>
+        <td>
+            <img th:if="${user.image != null}"
+                 th:src="@{/images/{id}(id=${user.image.id})}"
+                 class="card-img-top"
+                 th:alt="${user.username}"
+                 style="height: 50px; object-fit: cover;">
         </td>
     </tr>
     </tbody>

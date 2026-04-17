@@ -30,6 +30,10 @@ public class IntraClassUser implements UserDetails {
 
     private String role;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "image_id")
+    private Image image;
+
     public IntraClassUser() {
     }
 
@@ -96,6 +100,14 @@ public class IntraClassUser implements UserDetails {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 
     @Override

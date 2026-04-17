@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class IntraclassUserMapper {
-    public IntraClassUser toLibraryUser(
+    public IntraClassUser toIntraClassUser(
             NewIntraclassUserDTO dto,
             PasswordEncoder passwordEncoder) {
 
@@ -22,6 +22,7 @@ public class IntraclassUserMapper {
         user.setUsername(dto.getUsername());
         user.setPassword(passwordEncoder.encode(dto.getPlainPassword()));
         user.setRole(dto.getRole());
+        user.setImage(dto.getImage());
         return user;
     }
 }
