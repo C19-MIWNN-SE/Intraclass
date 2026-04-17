@@ -14,13 +14,44 @@
 
 <h1 th:text="${pageTitle}"></h1>
 
-<table th:replace="~{fragments/cohortOverviewTable :: cohortOverviewTable}"></table>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="cohort: ${cohorts}">
+        <td th:text="${cohort.id}">ID</td>
+        <td th:text="${cohort.name}">Name</td>
+        <td th:text="${cohort.description}">Description</td>
+        <td th:text="${cohort.startDate}">Start Date</td>
+        <td th:text="${cohort.endDate}">End Date</td>
+        <td>
+            <a th:href="@{/cohort/{id}(id=${cohort.id})}">View Cohort</a>
+        </td>
+        <td>
+            <button type="button"
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#addEditCohortModal"
+                    sec:authorize="hasRole('TEACHER')">Edit Cohort</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
 <button type="button"
         class="btn btn-primary"
         data-bs-toggle="modal"
         data-bs-target="#addEditCohortModal"
-        sec:authorize="hasRole('ADMIN')">Add Cohort</button>
+        sec:authorize="hasRole('TEACHER')">Add Cohort</button>
 
 
 <nav th:replace="~{fragments/general :: footer}"></nav>

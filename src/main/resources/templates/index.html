@@ -5,57 +5,15 @@
   <title th:text="${pageTitle}"></title>
 </head>
 <body>
-
-
+<!-- Content for logged out -->
 <div class="container-fluid p-0">
   <div class="d-flex min-vh-100">
-
     <!-- LEFT -->
-    <div class="w-50 bg-primary text-white d-flex justify-content-center align-items-center">
-      <div class="w-50 d-flex justify-content-center align-items-center">
-        <img alt="IntraClass™ Logo" src="/img/IntraClass.png" class="img-fluid w-100">
-      </div>
-    </div>
-
+    <div  th:replace="~{fragments/login :: leftSideLogo}"></div>
     <!-- RIGHT -->
-    <div class="w-50 bg-light d-flex flex-column justify-content-center align-items-center">
-      <div class="d-block">
-        <h1 class="main-title-dark"><i class="bi bi-box-arrow-in-right"></i> Log In</h1>
-      </div>
-      <div class="d-block p-2 mb-4">
-      <form sec:authorize="isAnonymous()" class="text-center" th:action="@{/login}" method="post">
-
-        <label for="username"></label>
-        <input type="text"  class="form-control rounded-pill" id="username" name="username" placeholder="Username">
-
-        <label for="password"></label>
-        <input type="password" class="form-control rounded-pill mb-4"
-               id="password" name="password" placeholder="Password">
-        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-
-        <button type="submit" class="btn btn-primary rounded">Sign in</button>
-
-        <div th:if="${param.error}">
-          <p>Login failed. Try again.</p>
-        </div>
-
-        <div th:if="${param.logout}">
-          <p>You've been logged out.</p>
-        </div>
-
-      </form>
-        <div sec:authorize="isFullyAuthenticated()">
-          <p>Welcome, <span sec:authentication="name"></span>!</p>
-          <form th:action="@{/logout}" method="post">
-            <button type="submit">Logout</button>
-          </form>
-        </div>
-    </div>
-    </div>
+    <div  th:replace="~{fragments/login :: rightSide}"></div>
   </div>
 </div>
-
 <nav th:replace="~{fragments/general :: footer}"></nav>
-
 </body>
 </html>

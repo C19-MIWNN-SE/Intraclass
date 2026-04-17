@@ -58,12 +58,12 @@ public class InitializeController {
             IntraClassUser admin = new IntraClassUser(
                     "admin",
                     passwordEncoder.encode("geheim123"),
-                    "ADMIN"
+                    "TEACHER"
             );
             IntraClassUser user = new IntraClassUser(
                     "user",
                     passwordEncoder.encode("123"),
-                    "USER"
+                    "STUDENT"
             );
             userRepository.save(admin);
             userRepository.save(user);

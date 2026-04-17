@@ -15,7 +15,7 @@ import java.util.Optional;
 
 /**
  * @author G. Neuteboom
- * For: cohortOverviewTable.html.html (list of all cohorts) (access by teacher only),
+ * For: cohortOverview.html (list of all cohorts) (access by teacher only),
  *      cohortView.html (list of persons in 1 cohort) (access by teacher and student),
  *
  */
@@ -43,13 +43,15 @@ public class CohortController {
 
     @GetMapping("/cohort/{id}")
     public String showCohort(@PathVariable Long id, Model model) {
+        log.debug("Retrieving details for cohort {}", id);
         Optional<Cohort> cohort = cohortRepository.findById(id);
 
         if (cohort.isEmpty()) {
             log.warn("Cohort not found {}", id);
             return "redirect:/cohort/overview";
         }
-        model.addAttribute("cohort", cohort);
+
+        model.addAttribute("cohort", cohort.get());
         return "cohortView";
     }
 

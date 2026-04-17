@@ -19,20 +19,20 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item"
-                    sec:authorize="hasRole('ADMIN')">
-                    <a class="nav-link" th:href="@{/templates/fragments/cohortOverviewTable.html}">
+                    sec:authorize="hasRole('TEACHER')">
+                    <a class="nav-link" th:href="@{/cohort/overview}">
                         Cohort Overview
                     </a>
                 </li>
                 <li class="nav-item"
-                    sec:authorize="isAuthenticated()">
+                    sec:authorize="hasRole('STUDENT')">
                     <a class="nav-link" th:href="@{/cohortView}">
                         Cohort
                     </a>
                 </li>
                 <li class="nav-item"
-                    sec:authorize="hasRole('ADMIN')">
-                    <a class="nav-link" th:href="@{/personOverview}">
+                    sec:authorize="hasRole('TEACHER')">
+                    <a class="nav-link" th:href="@{/person/overview}">
                         Person Overview
                     </a>
                 </li>
@@ -45,7 +45,7 @@
                 <li class="nav-item"
                     sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" method="post">
-                        <button class="btn btn-outline-light btn-sm"
+                        <button class="btn btn-outline-dark btn-sm"
                                 type="submit">Uitloggen</button>
                     </form>
                 </li>
