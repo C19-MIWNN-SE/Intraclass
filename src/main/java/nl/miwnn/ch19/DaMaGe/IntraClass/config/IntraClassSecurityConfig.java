@@ -40,7 +40,6 @@ public class IntraClassSecurityConfig {
                                 "/login",
                                 "/person",
                                 "/webjars/**",
-                                "/cohort/overview",
                                 "/cohort/**"
                         ).permitAll()
                         .requestMatchers(
