@@ -16,7 +16,7 @@
 
 <!-- Navbar fragment -->
 <nav th:fragment="navbar" class="navbar navbar-expand-lg"
-     th:classappend="${activePage == 'login'} ? 'bg-tertiary' : 'bg-primary'">
+     th:classappend="${activePage == 'login'} ? 'navbar-light bg-tertiary' : 'navbar-dark bg-primary'">
     <div class="container-fluid">
         <a class="navbar-brand" href="/" th:if="${activePage != 'login'}">
             <img src="/img/IntraClass.png" alt="Bootstrap" width="100px">
@@ -28,9 +28,6 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/login">Dashboard</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" aria-current="page" th:href="@{/personView}">My Account</a>
                 </li>
                 <li class="nav-item dropdown" sec:authorize="hasRole('TEACHER')">
@@ -38,7 +35,8 @@
                        aria-expanded="false">
                         Overviews
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu"
+                        th:classappend="${activePage != 'login'} ? ' dropdown-menu-dark' : ''">
                         <li><a class="dropdown-item" th:href="@{/person/overview}">Person Overview</a></li>
                         <li><a class="dropdown-item" th:href="@{/cohort/overview}">Cohort Overview</a></li>
                     </ul>
@@ -49,8 +47,9 @@
                 <li class="nav-item"
                     sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" method="post">
-                        <button class="btn btn-outline-dark btn-sm"
-                                type="submit">Uitloggen
+                        <button class="btn btn-sm"
+                                th:classappend="${activePage != 'login'} ? 'btn-outline-light' : 'btn-outline-dark'"
+                                type="submit">Logout
                         </button>
                     </form>
                 </li>
