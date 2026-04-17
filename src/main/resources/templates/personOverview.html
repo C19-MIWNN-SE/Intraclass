@@ -20,8 +20,9 @@
 <table sec:authorize="hasRole('ADMIN')"
        th:replace="~{fragments/person :: studentTable}"></table>
 
-<div sec:authorize="hasRole('ADMIN')">
-    <button type="submit">Add Person</button>
+<div class="mb-3" sec:authorize="hasRole('ADMIN')">
+    <a th:href="@{/person/add/student}">Add New Student</a>
+    <a th:href="@{/person/add/teacher}">Add New Teacher</a>
 </div>
 
 <nav th:replace="~{fragments/general :: footer}"></nav>
