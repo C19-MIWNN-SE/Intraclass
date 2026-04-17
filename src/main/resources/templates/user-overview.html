@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <title>User Management</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/general :: baseheader(~{:: title})}">
+    <title th:text="${pageTitle}">User Management</title>
 </head>
 <body>
-<h1>Gebruikersbeheer</h1>
+<nav th:replace="~{fragments/general :: navbar}"></nav>
+<div class="container-fluid p-4">
+    <h1>User Management</h1>
 <div th:if="${successMessage}"
      class="alert alert-success"
      th:text="${successMessage}"></div>
@@ -34,7 +36,7 @@
         <td>
             <img th:if="${user.image != null}"
                  th:src="@{/images/{id}(id=${user.image.id})}"
-                 class="card-img-top"
+                 class="rounded-circle img-fluid"
                  th:alt="${user.username}"
                  style="height: 50px; object-fit: cover;">
         </td>
@@ -44,5 +46,8 @@
 <a th:href="@{/user/add}" class="btn btn-primary">
     New User
 </a>
+<div th:replace="~{fragments/general :: scripts}"></div>
+</div>
+<footer th:replace="~{fragments/general :: footer}"></footer>
 </body>
 </html>

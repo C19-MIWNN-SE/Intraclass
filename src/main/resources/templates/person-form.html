@@ -10,7 +10,7 @@
 <h1 class="main-title" th:text="${pageTitle}"></h1>
 <table th:replace="~{fragments/person :: personTable}"></table>
 
-<nav th:replace="~{fragments/general :: footer}"></nav>
-
+<div th:replace="~{fragments/general :: scripts}"></div>
+<footer th:replace="~{fragments/general :: footer}"></footer>
 </body>
 </html>

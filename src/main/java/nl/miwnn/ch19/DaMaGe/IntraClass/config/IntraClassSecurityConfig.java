@@ -47,8 +47,7 @@ public class IntraClassSecurityConfig {
                                 "/user/**"
                         ).hasRole("TEACHER")
                         .requestMatchers(
-                                "/person",
-                                "/user/**"
+                                "/person"
                         ).hasRole("STUDENT")
                         .anyRequest().authenticated()
                 )
