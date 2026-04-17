@@ -53,7 +53,7 @@ public class IntraClassSecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .logout(logout -> logout
-                        .logoutSuccessUrl("/login")
+                        .logoutSuccessUrl("/login?logout")
                         .permitAll()
                 )
                 .formLogin(form -> form

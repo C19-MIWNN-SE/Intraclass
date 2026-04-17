@@ -16,6 +16,10 @@
     <div sec:authorize="isAnonymous()" class="d-block p-2 mb-4">
         <form class="text-center" th:action="@{/login}" method="post">
 
+            <div th:if="${param.error}" class="form-control is-invalid">
+                <p>Login failed. Try again.</p>
+            </div>
+
             <label for="username"></label>
             <input type="text"  class="form-control rounded-pill" id="username" name="username" placeholder="Username">
 
@@ -24,11 +28,7 @@
                    id="password" name="password" placeholder="Password">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 
-            <button type="submit" class="btn btn-primary rounded">Sign in</button>
-
-            <div th:if="${param.error}">
-                <p>Login failed. Try again.</p>
-            </div>
+            <button type="submit" class="btn btn-primary rounded mb-2">Sign in</button>
 
             <div th:if="${param.logout}">
                 <p>You've been logged out.</p>

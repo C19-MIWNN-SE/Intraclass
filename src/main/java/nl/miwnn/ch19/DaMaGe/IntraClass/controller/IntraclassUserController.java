@@ -1,13 +1,17 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.controller;
 
 import nl.miwnn.ch19.DaMaGe.IntraClass.dto.NewIntraclassUserDTO;
+import nl.miwnn.ch19.DaMaGe.IntraClass.model.Image;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.*;
 import nl.miwnn.ch19.DaMaGe.IntraClass.service.mapper.IntraclassUserMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.io.IOException;
 
 /**
  * @author Danylo Dudar
@@ -27,14 +31,17 @@ public class IntraclassUserController {
     private final UserRepository userRepository;
     private final IntraclassUserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
+    private final ImageRepository imageRepository;
 
     public IntraclassUserController(
             UserRepository userRepository,
             IntraclassUserMapper userMapper,
-            PasswordEncoder passwordEncoder) {
+            PasswordEncoder passwordEncoder,
+            ImageRepository imageRepository) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
         this.passwordEncoder = passwordEncoder;
+        this.imageRepository = imageRepository;
     }
 
     @GetMapping({"/", "/all"})
@@ -53,8 +60,18 @@ public class IntraclassUserController {
     @PostMapping("/save") public
     String addUser(@ModelAttribute("newUser")
                    NewIntraclassUserDTO dto,
-                   RedirectAttributes redirectAttributes) {
-        userRepository.save(userMapper.toLibraryUser(dto, passwordEncoder));
+                   RedirectAttributes redirectAttributes,
+                   @RequestParam("imageFile") MultipartFile imageFile) throws IOException {
+
+        if(!imageFile.isEmpty()) {
+            Image image = new Image();
+            image.setData(imageFile.getBytes());
+            image.setContentType((imageFile.getContentType()));
+            imageRepository.save(image);
+            dto.setImage(image);
+        }
+
+        userRepository.save(userMapper.toIntraClassUser(dto, passwordEncoder));
         redirectAttributes.addFlashAttribute("successMessage",
                 "User '" + dto.getUsername() + "'created.");
         return "redirect:/user/all";
