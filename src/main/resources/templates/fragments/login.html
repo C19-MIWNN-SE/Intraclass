@@ -8,7 +8,7 @@
 </div>
 
 <!-- Right container for login page -->
-<div th:fragment="rightSide" class="w-50 bg-light d-flex flex-column justify-content-center align-items-center">
+<div th:fragment="rightSide" class="w-50 bg-light d-flex flex-column justify-content-center align-items-center p-4">
     <div sec:authorize="isAnonymous()" class="d-block">
         <h1 class="main-title-dark"><i class="bi bi-box-arrow-in-right"></i> Log In</h1>
     </div>
@@ -35,21 +35,13 @@
             </div>
         </form>
     </div>
-    <!-- Content for TEACHER -->
-    <div sec:authorize="hasRole('TEACHER')" class="d-block p-2 mb-4">
+    <!-- Content for TEACHER or STUDENT-->
+    <div sec:authorize="isAuthenticated()" class="d-block p-2 mb-4">
         <h1 class="main-title-dark">
             <i class="bi bi-briefcase"></i> Welcome, <span sec:authentication="name"></span>!
         </h1>
         <nav th:replace="~{fragments/general :: navbar}"></nav>
-        <p>TEACHER CONTENT</p>
-    </div>
-    <!-- Content for STUDENT -->
-    <div sec:authorize="hasRole('STUDENT')" class="d-block p-2 mb-4">
-        <h1 class="main-title-dark">
-            <i class="bi bi-briefcase"></i> Welcome, <span sec:authentication="name"></span>!
-        </h1>
-        <nav th:replace="~{fragments/general :: navbar}"></nav>
-        <p>STUDENT CONTENT</p>
+        <div th:replace="~{fragments/general :: dummy}"></div>
     </div>
 </div>
 </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h2 th:text="${person.id == null} ? 'Add Person' : 'Edit Person'">Form</h2>
+
+<form th:action="@{/person/save}" th:object="${person}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <div>
+        <label>First Name:</label>
+        <input type="text" th:field="*{firstName}" required />
+    </div>
+    <div>
+        <label>Affix:</label>
+        <input type="text" th:field="*{affix}" optional />
+    </div>
+    <div>
+        <label>Last Name:</label>
+        <input type="text" th:field="*{lastName}" required />
+    </div>
+    <div>
+        <label>Email:</label>
+        <input type="text" th:field="*{email}" required />
+    </div>
+    <div>
+        <label>Date of Birth:</label>
+        <input type="date" th:field="*{dateOfBirth}"/>
+    </div>
+
+    <div th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Student)}">
+        <div>
+            <label>Bio:</label>
+            <input type="text" th:field="*{bio}" />
+        </div>
+        <div>
+            <label>Employer:</label>
+            <input type="text" th:field="*{employer}" />
+        </div>
+        <div>
+            <label>City:</label>
+            <input type="text" th:field="*{city}" />
+        </div>
+    </div>
+
+    <div th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher)}">
+        <label>Specialty:</label>
+        <input type="text" th:field="*{specialty}" />
+    </div>
+
+    <button type="submit">Save</button>
+    <a th:href="@{/people}">Cancel</a>
+</form>
+<div th:replace="~{fragments/general :: scripts}"></div>
+<footer th:replace="~{fragments/general :: footer}"></footer>
+</body>
+</html>

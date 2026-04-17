@@ -17,6 +17,12 @@
         <td th:text="${person.lastName}">0000</td>
         <td th:text="${person.dateOfBirth}">0000</td>
         <td th:text="${person.getAge(T(java.time.LocalDate).now())}">000</td>
+        <td>
+            <a th:href="@{/person/edit/{id}(id=${person.id})}" class="btn btn-warning">Edit</a>
+            <form th:action="@{/person/delete/{id}(id=${person.id})}" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>
@@ -39,6 +45,12 @@
             <td th:text="${person.lastName}">0000</td>
             <td th:text="${person.dateOfBirth}">0000</td>
             <td th:text="${person.getAge(T(java.time.LocalDate).now())}">000</td>
+            <td>
+                <a th:href="@{/person/edit/{id}(id=${person.id})}" class="btn btn-warning">Edit</a>
+                <form th:action="@{/person/delete/{id}(id=${person.id})}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                </form>
+            </td>
         </tr>
     </tbody>
 </table>

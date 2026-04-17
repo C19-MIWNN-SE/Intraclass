@@ -2,18 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="~{fragments/general :: baseheader(~{:: title})}">
-  <title th:text="${pageTitle}"></title>
+  <title th:text="${pageTitle}">Welcome</title>
 </head>
 <body>
 <!-- Content for logged out -->
 <div class="container-fluid p-0">
   <div class="d-flex min-vh-100">
     <!-- LEFT -->
-    <div  th:replace="~{fragments/login :: leftSideLogo}"></div>
+    <div th:replace="~{fragments/login :: leftSideLogo}"></div>
     <!-- RIGHT -->
-    <div  th:replace="~{fragments/login :: rightSide}"></div>
+    <div th:replace="~{fragments/login :: rightSide}"></div>
   </div>
 </div>
-<nav th:replace="~{fragments/general :: footer}"></nav>
+<div th:replace="~{fragments/general :: scripts}"></div>
+<footer th:replace="~{fragments/general :: footer}"></footer>
 </body>
 </html>
