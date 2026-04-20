@@ -5,8 +5,6 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import jakarta.transaction.Transactional;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.*;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.*;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.io.ClassPathResource;
@@ -17,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -68,7 +65,8 @@ public class InitializeController {
             userRepository.save(admin);
             userRepository.save(user);
         }
-        seedManyToMany();
+        seedManyToManyStudents();
+        seedManyToManyTeachers();
     }
 
     private void seedAll() {
@@ -128,9 +126,8 @@ public class InitializeController {
         return retval;
     }
 
-    private void seedManyToMany(){
+    private void seedManyToManyStudents(){
             List<Cohort> cohorts = cohortRepository.findAll();
-            List<Teacher> teachers = teacherRepository.findAll();
             List<Student> students = studentRepository.findAll();
 
             int subListSize = (int) Math.ceil((double) students.size() / cohorts.size());
@@ -144,16 +141,7 @@ public class InitializeController {
                     counter++;
                 }
 
-            subListSize = (int) Math.ceil((double) teachers.size() / cohorts.size());
-            counter = 0;
-            for(Cohort cohort : cohorts){
 
-                for(Teacher teacher : teachers.subList(GetStart(counter, subListSize),
-                        GetEnd(counter, teachers.size(), subListSize))){
-                    cohort.getTeacher().add(teacher);
-                }
-            counter++;
-            }
 
 //
 //            for (int i = 0; i < cohorts.size(); i++){
@@ -169,5 +157,21 @@ public class InitializeController {
 //                }
 
 
+    }
+
+    private void seedManyToManyTeachers (){
+        List<Cohort> cohorts = cohortRepository.findAll();
+        List<Teacher> teachers = teacherRepository.findAll();
+
+        int subListSize = (int) Math.ceil((double) teachers.size() / cohorts.size());
+        int counter = 0;
+        for(Cohort cohort : cohorts){
+
+            for(Teacher teacher : teachers.subList(GetStart(counter, subListSize),
+                    GetEnd(counter, teachers.size(), subListSize))){
+                cohort.getTeacher().add(teacher);
+            }
+            counter++;
+        }
     }
 }

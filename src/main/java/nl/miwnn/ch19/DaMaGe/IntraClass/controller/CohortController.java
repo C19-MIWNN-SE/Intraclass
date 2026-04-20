@@ -1,7 +1,10 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.controller;
 
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Cohort;
+import nl.miwnn.ch19.DaMaGe.IntraClass.model.Student;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.CohortRepository;
+import nl.miwnn.ch19.DaMaGe.IntraClass.repository.StudentRepository;
+import nl.miwnn.ch19.DaMaGe.IntraClass.repository.TeacherRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -26,10 +29,16 @@ public class CohortController {
     private static final Logger log =
             LoggerFactory.getLogger(CohortController.class);
 
-    private final List<Cohort> cohorts = new ArrayList<>();
+//    private final List<Cohort> cohorts = new ArrayList<>();
     private final CohortRepository cohortRepository;
-    public CohortController(CohortRepository cohortRepository) {
+    private final StudentRepository studentRepository;
+    private final TeacherRepository teacherRepository;
+    public CohortController(CohortRepository cohortRepository,
+                            TeacherRepository teacherRepository,
+                            StudentRepository studentRepository) {
         this.cohortRepository = cohortRepository;
+        this.teacherRepository = teacherRepository;
+        this.studentRepository = studentRepository;
     }
 
     @GetMapping("/cohort/overview")
@@ -51,7 +60,11 @@ public class CohortController {
             return "redirect:/cohort/overview";
         }
 
+        String pageTitle = String.format("Cohort: %s", cohort.get().getName());
+        model.addAttribute("pageTitle", pageTitle);
         model.addAttribute("cohort", cohort.get());
+        model.addAttribute("teachers", teacherRepository.findAll());
+        model.addAttribute("students", studentRepository.findAll());
         return "cohortView";
     }
 
