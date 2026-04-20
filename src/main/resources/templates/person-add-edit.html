@@ -3,48 +3,58 @@
 <body>
 <h2 th:text="${person.id == null} ? 'Add Person' : 'Edit Person'">Form</h2>
 
-<form th:action="@{/person/save}" th:object="${person}" method="post">
+<form th:action="@{/person/save}" th:object="${person}" method="post" enctype="multipart/form-data">
     <input type="hidden" th:field="*{id}" />
 
     <div>
-        <label>First Name:</label>
-        <input type="text" th:field="*{firstName}" required />
+        <label for="username" class="form-label">Username:</label>
+        <input type="text" id="username" th:field="*{username}" required />
     </div>
     <div>
-        <label>Affix:</label>
-        <input type="text" th:field="*{affix}" optional />
+        <label for="password" class="form-label">Password:</label>
+        <input type="text" id="password" th:field="*{password}" required />
     </div>
     <div>
-        <label>Last Name:</label>
-        <input type="text" th:field="*{lastName}" required />
+        <label for="firstName" class="form-label">First Name:</label>
+        <input type="text" id="firstName" th:field="*{firstName}" required />
     </div>
     <div>
-        <label>Email:</label>
-        <input type="text" th:field="*{email}" required />
+        <label for="affix" class="form-label">Affix:</label>
+        <input type="text" id="affix" th:field="*{affix}" optional />
     </div>
     <div>
-        <label>Date of Birth:</label>
-        <input type="date" th:field="*{dateOfBirth}"/>
+        <label for="lastName" class="form-label">Last Name:</label>
+        <input type="text" id="lastName" th:field="*{lastName}" required />
     </div>
-
+    <div>
+        <label for="email" class="form-label">Email:</label>
+        <input type="text" id="email" th:field="*{email}" required />
+    </div>
+    <div>
+        <label for="dob" class="form-label">Date of Birth:</label>
+        <input type="date" id="dob" th:field="*{dateOfBirth}"/>
+    </div>
+    <div class="mb-3">
+        <input type="file" id="imageFile" name="imageFile" accept="image/*">
+    </div>
     <div th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Student)}">
         <div>
-            <label>Bio:</label>
-            <input type="text" th:field="*{bio}" />
+            <label for="bio" class="form-label">Bio:</label>
+            <input type="text" id="bio" th:field="*{bio}" />
         </div>
         <div>
-            <label>Employer:</label>
-            <input type="text" th:field="*{employer}" />
+            <label for="employer" class="form-label">Employer:</label>
+            <input type="text" id="employer" th:field="*{employer}" />
         </div>
         <div>
-            <label>City:</label>
-            <input type="text" th:field="*{city}" />
+            <label for="city" class="form-label">City:</label>
+            <input type="text" id="city" th:field="*{city}" />
         </div>
     </div>
 
     <div th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher)}">
-        <label>Specialty:</label>
-        <input type="text" th:field="*{specialty}" />
+        <label for="speciality" class="form-label">Specialty:</label>
+        <input type="text" id="speciality" th:field="*{specialty}" />
     </div>
 
     <button type="submit">Save</button>

@@ -3,7 +3,7 @@ package nl.miwnn.ch19.DaMaGe.IntraClass.controller;
 import nl.miwnn.ch19.DaMaGe.IntraClass.dto.PersonDTO;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Image;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.*;
-import nl.miwnn.ch19.DaMaGe.IntraClass.service.mapper.PersonMapper;
+import nl.miwnn.ch19.DaMaGe.IntraClass.mapper.PersonMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

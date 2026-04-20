@@ -1,4 +1,4 @@
-package nl.miwnn.ch19.DaMaGe.IntraClass.service.mapper;
+package nl.miwnn.ch19.DaMaGe.IntraClass.mapper;
 
 
 import nl.miwnn.ch19.DaMaGe.IntraClass.dto.PersonDTO;
@@ -20,7 +20,10 @@ public class PersonMapper {
 
         Person user = new Person();
         user.setUsername(dto.getUsername());
-        user.setPassword(passwordEncoder.encode(dto.getPlainPassword()));
+        user.setPassword(passwordEncoder.encode(dto.getPassword()));
+        user.setFirstName(dto.getFirstName());
+        user.setLastName(dto.getLastName());
+        user.setDateOfBirth(dto.getDateOfBirth());
         user.setRole(dto.getRole());
         user.setImage(dto.getImage());
         return user;
