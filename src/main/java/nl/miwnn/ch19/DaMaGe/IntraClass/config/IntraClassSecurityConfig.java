@@ -1,6 +1,6 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.config;
 
-import nl.miwnn.ch19.DaMaGe.IntraClass.service.IntraclassUserService;
+import nl.miwnn.ch19.DaMaGe.IntraClass.service.PersonService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,10 +18,10 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class IntraClassSecurityConfig {
-    private final IntraclassUserService intraclassUserService;
+    private final PersonService personService;
 
-    public IntraClassSecurityConfig(IntraclassUserService intraclassUserService) {
-        this.intraclassUserService = intraclassUserService;
+    public IntraClassSecurityConfig(PersonService personService) {
+        this.personService = personService;
     }
 
     @Bean
@@ -60,7 +60,7 @@ public class IntraClassSecurityConfig {
                         .defaultSuccessUrl("/login", true)
                         .permitAll()
                 )
-                .userDetailsService(intraclassUserService);
+                .userDetailsService(personService);
         return http.build();
     }
 }

@@ -8,13 +8,13 @@ import nl.miwnn.ch19.DaMaGe.IntraClass.model.Image;
  * Sunrise, Parabellum.
  */
 
-public class NewIntraclassUserDTO {
+public class PersonDTO {
     private String username;
     private String plainPassword;
     private String role;
     private Image image;
 
-    public NewIntraclassUserDTO() {
+    public PersonDTO() {
     }
 
     public String getUsername() {
