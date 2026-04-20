@@ -1,9 +1,9 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.controller;
 
-import nl.miwnn.ch19.DaMaGe.IntraClass.dto.NewIntraclassUserDTO;
+import nl.miwnn.ch19.DaMaGe.IntraClass.dto.PersonDTO;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Image;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.*;
-import nl.miwnn.ch19.DaMaGe.IntraClass.service.mapper.IntraclassUserMapper;
+import nl.miwnn.ch19.DaMaGe.IntraClass.mapper.PersonMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,43 +23,43 @@ import java.io.IOException;
  * Master, master
  * Obey your master
  */
-
+//TODO user is being merged with person, things will change here. It will get ugly
 @Controller
 @RequestMapping("/user")
 public class IntraclassUserController {
 
-    private final UserRepository userRepository;
-    private final IntraclassUserMapper userMapper;
+    private final PersonRepository personRepository;
+    private final PersonMapper userMapper;
     private final PasswordEncoder passwordEncoder;
     private final ImageRepository imageRepository;
 
     public IntraclassUserController(
-            UserRepository userRepository,
-            IntraclassUserMapper userMapper,
+            PersonRepository personRepository,
+            PersonMapper personMapper,
             PasswordEncoder passwordEncoder,
             ImageRepository imageRepository) {
-        this.userRepository = userRepository;
-        this.userMapper = userMapper;
+        this.personRepository = personRepository;
+        this.userMapper = personMapper;
         this.passwordEncoder = passwordEncoder;
         this.imageRepository = imageRepository;
     }
 
     @GetMapping({"/", "/all"})
     public String showUserOverview(Model model) {
-        model.addAttribute("users", userRepository.findAll());
-        model.addAttribute("newUser", new NewIntraclassUserDTO());
+        model.addAttribute("users", personRepository.findAll());
+        model.addAttribute("newUser", new PersonDTO());
         return "user-overview";
     }
 
     @GetMapping("/add")
     public String showAddUserForm(Model model) {
-        model.addAttribute("newUser", new NewIntraclassUserDTO());
+        model.addAttribute("newUser", new PersonDTO());
         return "user-add";
     }
 
     @PostMapping("/save") public
     String addUser(@ModelAttribute("newUser")
-                   NewIntraclassUserDTO dto,
+                   PersonDTO dto,
                    RedirectAttributes redirectAttributes,
                    @RequestParam("imageFile") MultipartFile imageFile) throws IOException {
 
@@ -71,7 +71,7 @@ public class IntraclassUserController {
             dto.setImage(image);
         }
 
-        userRepository.save(userMapper.toIntraClassUser(dto, passwordEncoder));
+        personRepository.save(userMapper.toPerson(dto, passwordEncoder));
         redirectAttributes.addFlashAttribute("successMessage",
                 "User '" + dto.getUsername() + "'created.");
         return "redirect:/user/all";
@@ -81,7 +81,7 @@ public class IntraclassUserController {
     public String deleteUser(@PathVariable Long id,
                              RedirectAttributes redirectAttributes)
     {
-        userRepository.deleteById(id);
+        personRepository.deleteById(id);
         redirectAttributes.addFlashAttribute("successMessage", "User deleted.");
         return "redirect:/user/all";
     }

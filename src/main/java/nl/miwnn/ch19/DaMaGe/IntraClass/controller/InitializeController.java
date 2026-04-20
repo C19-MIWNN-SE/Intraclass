@@ -29,7 +29,6 @@ public class InitializeController {
     private final PersonRepository personRepository;
     private final StudentRepository studentRepository;
     private final TeacherRepository teacherRepository;
-    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
     public InitializeController(
@@ -37,13 +36,11 @@ public class InitializeController {
             PersonRepository personRepository,
             StudentRepository studentRepository,
             TeacherRepository teacherRepository,
-            UserRepository userRepository,
             PasswordEncoder passwordEncoder) {
         this.cohortRepository = cohortRepository;
         this.personRepository = personRepository;
         this.studentRepository = studentRepository;
         this.teacherRepository = teacherRepository;
-        this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -51,27 +48,12 @@ public class InitializeController {
     @EventListener(ContextRefreshedEvent.class)
     public void seed() {
         if (personRepository.count() == 0) { seedAll();}
-        if (userRepository.count() == 0) {
-            IntraClassUser admin = new IntraClassUser(
-                    "admin",
-                    passwordEncoder.encode("geheim123"),
-                    "TEACHER"
-            );
-            IntraClassUser user = new IntraClassUser(
-                    "user",
-                    passwordEncoder.encode("123"),
-                    "STUDENT"
-            );
-            userRepository.save(admin);
-            userRepository.save(user);
-        }
-        seedManyToManyStudents();
-        seedManyToManyTeachers();
     }
 
     private void seedAll() {
         seedCohort();
         seedPeople();
+        seedManyToMany();
     }
 
     private void seedPeople() {
