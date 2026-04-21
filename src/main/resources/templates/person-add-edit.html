@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-<h2 th:text="${person.id == null} ? 'Add Person' : 'Edit Person'">Form</h2>
+<h1 class="main-title" th:text="${pageTitle}"></h1>
 
 <form th:action="@{/person/save}" th:object="${person}" method="post" enctype="multipart/form-data">
     <input type="hidden" th:field="*{id}" />

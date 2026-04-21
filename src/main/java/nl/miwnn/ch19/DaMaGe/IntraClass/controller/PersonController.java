@@ -63,10 +63,12 @@ public class PersonController {
 
     @GetMapping("/add/{type}")
     public String showAddForm(@PathVariable String type, Model model) {
-        if ("student".equalsIgnoreCase(type)) {
+        if ("Student".equalsIgnoreCase(type)) {
             model.addAttribute("person", new Student());
-        } else if ("teacher".equalsIgnoreCase(type)) {
+            model.addAttribute("pageTitle", "Add new student");
+        } else if ("Teacher".equalsIgnoreCase(type)) {
             model.addAttribute("person", new Teacher());
+            model.addAttribute("pageTitle", "Add new teacher");
         }
         return "person-add-edit";
     }
