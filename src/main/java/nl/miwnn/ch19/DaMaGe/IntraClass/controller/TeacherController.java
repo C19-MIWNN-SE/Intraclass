@@ -1,0 +1,67 @@
+package nl.miwnn.ch19.DaMaGe.IntraClass.controller;
+
+import nl.miwnn.ch19.DaMaGe.IntraClass.dto.TeacherDTO;
+import nl.miwnn.ch19.DaMaGe.IntraClass.mapper.TeacherMapper;
+import nl.miwnn.ch19.DaMaGe.IntraClass.model.Image;
+import nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher;
+import nl.miwnn.ch19.DaMaGe.IntraClass.repository.ImageRepository;
+import nl.miwnn.ch19.DaMaGe.IntraClass.repository.PersonRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.swing.text.html.parser.Entity;
+import java.io.IOException;
+
+/**
+ * @author My Linh Lu
+ * Manage elements for teachers page
+ */
+@Controller
+@RequestMapping("/teachers")
+public class TeacherController {
+
+    private final TeacherMapper teacherMapper;
+    private final PersonRepository personRepository;
+    private final ImageRepository imageRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    public TeacherController(TeacherMapper teacherMapper,
+                             PersonRepository personRepository,
+                             ImageRepository imageRepository,
+                             PasswordEncoder passwordEncoder) {
+        this.teacherMapper = teacherMapper;
+        this.personRepository = personRepository;
+        this.imageRepository = imageRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    @GetMapping("/add")
+    public String showForm(Model model) {
+        TeacherDTO dto = new TeacherDTO();
+
+        model.addAttribute("teacher", dto);
+        return "teacher-form";
+    }
+
+    @PostMapping("/save")
+    public String save(@ModelAttribute TeacherDTO dto,
+                       @RequestParam("imageFile") MultipartFile imageFile) throws IOException {
+
+        if (!imageFile.isEmpty()) {
+            Image image = new Image();
+            image.setData(imageFile.getBytes());
+            image.setContentType(imageFile.getContentType());
+            imageRepository.save(image);
+            dto.setImage(image);
+        }
+
+        dto.setRole("TEACHER");
+        Teacher teacher = teacherMapper.toTeacher(dto, passwordEncoder);
+        personRepository.save(teacher);
+
+        return "redirect:/teachers";
+    }
+}

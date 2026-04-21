@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="eng">
+<body>
+<h1 class="main-title" th:text="${pageTitle}"></h1>
+
+<form th:action="@{/teachers/save}" th:object="${teacher}" method="post" enctype="multipart/form-data">
+    <div th:replace="~{fragments/person-form :: person-form-fragment}"></div>
+    <div>
+        <label for="specialty" class="form-label">Specialty:</label>
+        <input type="text" id="specialty" th:field="*{specialty}" />
+    </div>
+    <button type="submit">Save</button>
+    <a th:href="@{/people}">Cancel</a>
+</form>
+<div th:replace="~{fragments/general :: scripts}"></div>
+<footer th:replace="~{fragments/general :: footer}"></footer>
+</body>
+</html>

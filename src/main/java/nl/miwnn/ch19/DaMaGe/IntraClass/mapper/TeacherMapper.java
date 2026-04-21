@@ -1,8 +1,7 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.mapper;
 
-import nl.miwnn.ch19.DaMaGe.IntraClass.dto.StudentDTO;
+import nl.miwnn.ch19.DaMaGe.IntraClass.dto.PersonDTO;
 import nl.miwnn.ch19.DaMaGe.IntraClass.dto.TeacherDTO;
-import nl.miwnn.ch19.DaMaGe.IntraClass.model.Student;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -18,7 +17,8 @@ public class TeacherMapper extends PersonMapper {
 
         Teacher teacher = new Teacher();
         personFields(dto, passwordEncoder, teacher);
-        teacher.setSpecialty(dto.getSpeciality());
+
+        teacher.setSpecialty(dto.getSpecialty());
 
         return teacher;
     }

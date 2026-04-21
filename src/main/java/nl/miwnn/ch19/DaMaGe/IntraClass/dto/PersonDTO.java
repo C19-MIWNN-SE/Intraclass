@@ -11,47 +11,50 @@ import java.time.LocalDate;
  */
 
 public class PersonDTO {
+    private Long id;
     private String username;
     private String password;
     private String firstName;
+    private String affix;
     private String lastName;
     private LocalDate dateOfBirth;
     private String role;
     private Image image;
+    private String email;
+
+    // attributes for teacher
+    private String speciality;
+
+    // attributes for student
+    private String bio;
+    private String employer;
+    private String city;
 
     public PersonDTO() {
     }
 
-    public String getUsername() {
-        return username;
+    public Long getId() {
+        return id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getPassword() {
-        return password;
+    public String getBio() {
+        return bio;
     }
 
-    public void setPassword(String plainPassword) {
-        this.password = plainPassword;
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getCity() {
+        return city;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public LocalDate getDateOfBirth() {
@@ -62,12 +65,20 @@ public class PersonDTO {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getRole() {
-        return role;
+    public String getEmployer() {
+        return employer;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setEmployer(String employer) {
+        this.employer = employer;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public Image getImage() {
@@ -76,5 +87,61 @@ public class PersonDTO {
 
     public void setImage(Image image) {
         this.image = image;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getSpeciality() {
+        return speciality;
+    }
+
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getAffix() {
+        return affix;
+    }
+
+    public void setAffix(String affix) {
+        this.affix = affix;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
