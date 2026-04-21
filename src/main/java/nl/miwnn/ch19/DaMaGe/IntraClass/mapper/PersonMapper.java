@@ -24,6 +24,7 @@ public abstract class PersonMapper {
                                 PasswordEncoder encoder,
                                 Person person) {
 
+        person.setId(dto.getId());
         person.setUsername(dto.getUsername());
         person.setPassword(encoder.encode(dto.getPassword()));
         person.setFirstName(dto.getFirstName());

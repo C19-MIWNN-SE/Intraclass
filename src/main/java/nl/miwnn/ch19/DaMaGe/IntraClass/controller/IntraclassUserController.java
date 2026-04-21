@@ -24,6 +24,7 @@
 // * Obey your master
 // */
 ////TODO user is being merged with person, things will change here. It will get ugly
+////IT got ugly, a real shitshow
 //@Controller
 //@RequestMapping("/user")
 //public class IntraclassUserController {

@@ -186,7 +186,9 @@ public class Person implements UserDetails {
         this.image = image;
     }
 
-
+    public String getRole() {
+        return role;
+    }
 
     @Override
     public boolean equals(Object o) {

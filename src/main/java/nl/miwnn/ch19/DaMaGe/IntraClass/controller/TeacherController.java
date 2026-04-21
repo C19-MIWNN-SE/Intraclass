@@ -6,6 +6,7 @@ import nl.miwnn.ch19.DaMaGe.IntraClass.model.Image;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.ImageRepository;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.PersonRepository;
+import nl.miwnn.ch19.DaMaGe.IntraClass.repository.TeacherRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,15 +28,17 @@ public class TeacherController {
     private final PersonRepository personRepository;
     private final ImageRepository imageRepository;
     private final PasswordEncoder passwordEncoder;
+    private final TeacherRepository teacherRepository;
 
     public TeacherController(TeacherMapper teacherMapper,
                              PersonRepository personRepository,
                              ImageRepository imageRepository,
-                             PasswordEncoder passwordEncoder) {
+                             PasswordEncoder passwordEncoder, TeacherRepository teacherRepository) {
         this.teacherMapper = teacherMapper;
         this.personRepository = personRepository;
         this.imageRepository = imageRepository;
         this.passwordEncoder = passwordEncoder;
+        this.teacherRepository = teacherRepository;
     }
 
     @GetMapping("/add")
@@ -63,5 +66,16 @@ public class TeacherController {
         personRepository.save(teacher);
 
         return "redirect:/teachers";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@ModelAttribute TeacherDTO dto,
+                               @PathVariable Long id,
+                               Model model) {
+        Teacher teacher = teacherRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid person Id:" + id));
+
+        model.addAttribute("teacher", teacher);
+        return "teacher-form";
     }
 }

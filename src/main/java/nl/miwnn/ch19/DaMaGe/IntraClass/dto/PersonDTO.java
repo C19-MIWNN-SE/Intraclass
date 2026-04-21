@@ -10,7 +10,7 @@ import java.time.LocalDate;
  * Sunrise, Parabellum.
  */
 
-public class PersonDTO {
+public abstract class PersonDTO {
     private Long id;
     private String username;
     private String password;
@@ -23,12 +23,12 @@ public class PersonDTO {
     private String email;
 
     // attributes for teacher
-    private String speciality;
+   // private String speciality;
 
     // attributes for student
-    private String bio;
-    private String employer;
-    private String city;
+  //  private String bio;
+   // private String employer;
+   // private String city;
 
     public PersonDTO() {
     }
@@ -41,21 +41,21 @@ public class PersonDTO {
         this.id = id;
     }
 
-    public String getBio() {
-        return bio;
-    }
-
-    public void setBio(String bio) {
-        this.bio = bio;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
+//    public String getBio() {
+//        return bio;
+//    }
+//
+//    public void setBio(String bio) {
+//        this.bio = bio;
+//    }
+//
+//    public String getCity() {
+//        return city;
+//    }
+//
+//    public void setCity(String city) {
+//        this.city = city;
+//    }
 
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
@@ -65,13 +65,13 @@ public class PersonDTO {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getEmployer() {
-        return employer;
-    }
-
-    public void setEmployer(String employer) {
-        this.employer = employer;
-    }
+//    public String getEmployer() {
+//        return employer;
+//    }
+//
+//    public void setEmployer(String employer) {
+//        this.employer = employer;
+//    }
 
     public String getFirstName() {
         return firstName;
@@ -113,13 +113,13 @@ public class PersonDTO {
         this.role = role;
     }
 
-    public String getSpeciality() {
-        return speciality;
-    }
-
-    public void setSpeciality(String speciality) {
-        this.speciality = speciality;
-    }
+//    public String getSpeciality() {
+//        return speciality;
+//    }
+//
+//    public void setSpeciality(String speciality) {
+//        this.speciality = speciality;
+//    }
 
     public String getUsername() {
         return username;
@@ -144,4 +144,6 @@ public class PersonDTO {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
 }

@@ -19,7 +19,13 @@ import java.util.List;
  * @author My Linh Lu
  * Manage elements for person page
  * @author Danylo Dudar
- * Manages person changes
+ * Controls people
+ * Master of puppets, I'm pulling your strings
+ * Twisting your mind and smashing your dreams
+ * Blinded by me, you can't see a thing
+ * Just call my name 'cause I'll hear you scream
+ * Master, master
+ * Obey your master
  */
 @Controller
 @RequestMapping("/person")
@@ -32,7 +38,7 @@ public class PersonController {
         this.personRepository = personRepository;
     }
 
-    @GetMapping( "/overview")
+    @GetMapping("/overview")
     public String personOverview(Model model) {
 
         List<Person> people;
@@ -41,27 +47,28 @@ public class PersonController {
 
         model.addAttribute("pageTitle", "Person Overview");
         model.addAttribute("people", people);
-        model.addAttribute("newPerson", new PersonDTO());
+        //model.addAttribute("newPerson", new PersonDTO());
         return "personOverview";
     }
-
-    @GetMapping("/add/{type}")
-    public String showAddForm(@PathVariable String type, Model model) {
-        if ("Student".equalsIgnoreCase(type)) {
-            model.addAttribute("person", new Student());
-            model.addAttribute("pageTitle", "Add new student");
-        } else if ("Teacher".equalsIgnoreCase(type)) {
-            model.addAttribute("person", new Teacher());
-            model.addAttribute("pageTitle", "Add new teacher");
-        }
-        return "person-add-edit";
-    }
-
-    @GetMapping("/edit/{id}")
-    public String showEditForm(@PathVariable Long id, Model model) {
-        Person person = personRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid person Id:" + id));
-        model.addAttribute("person", person);
-        return "person-add-edit";
-    }
 }
+//COMPLETELY USELESS CODE. THEREFORE, I PROCLAIM IT REBUNDANT AND FORSAKEN
+//    @GetMapping("/add/{type}")
+//    public String showAddForm(@PathVariable String type, Model model) {
+//        if ("Student".equalsIgnoreCase(type)) {
+//            model.addAttribute("person", new Student());
+//            model.addAttribute("pageTitle", "Add new student");
+//        } else if ("Teacher".equalsIgnoreCase(type)) {
+//            model.addAttribute("person", new Teacher());
+//            model.addAttribute("pageTitle", "Add new teacher");
+//        }
+//        return "person-add-edit";
+//    }
+//
+//    @GetMapping("/edit/{id}")
+//    public String showEditForm(@PathVariable Long id, Model model) {
+//        Person person = personRepository.findById(id)
+//                .orElseThrow(() -> new IllegalArgumentException("Invalid person Id:" + id));
+//        model.addAttribute("person", person);
+//        return "person-add-edit";
+//    }
+//}
