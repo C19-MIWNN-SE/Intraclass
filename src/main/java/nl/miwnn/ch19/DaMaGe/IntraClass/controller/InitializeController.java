@@ -53,7 +53,8 @@ public class InitializeController {
     private void seedAll() {
         seedCohort();
         seedPeople();
-        seedManyToMany();
+        seedManyToManyStudents();
+        seedManyToManyTeachers();
     }
 
     private void seedPeople() {
