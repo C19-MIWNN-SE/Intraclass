@@ -2,6 +2,7 @@ package nl.miwnn.ch19.DaMaGe.IntraClass.controller;
 
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Cohort;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Student;
+import nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.CohortRepository;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.StudentRepository;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.TeacherRepository;
@@ -63,8 +64,6 @@ public class CohortController {
         String pageTitle = String.format("Cohort: %s", cohort.get().getName());
         model.addAttribute("pageTitle", pageTitle);
         model.addAttribute("cohort", cohort.get());
-        model.addAttribute("teachers", teacherRepository.findAll());
-        model.addAttribute("students", studentRepository.findAll());
         return "cohortView";
     }
 

@@ -47,7 +47,7 @@
     </thead>
 
     <tbody>
-    <tr th:each="teacher: ${teachers}">
+    <tr th:each="teacher: ${cohort.teacher}">
         <td th:text="${teacher.id}">ID</td>
         <td th:text="${teacher.firstName}">First Name</td>
         <td th:text="${teacher.affix}">Affix</td>
@@ -75,13 +75,14 @@
     </thead>
 
     <tbody>
-    <tr th:each="student: ${students}">
+    <tr th:each="student: ${cohort.student}">
         <td th:text="${student.id}">ID</td>
         <td th:text="${student.firstName}">Name</td>
         <td th:text="${student.affix}">Description</td>
         <td th:text="${student.lastName}">Start Date</td>
         <td th:text="${student.dateOfBirth}">End Date</td>
         <td th:text="${student.city}">City</td>
+        <td th:text="${student.employer}">Employer</td>
         <td th:text="${student.bio}">Biography</td>
     </tr>
     </tbody>

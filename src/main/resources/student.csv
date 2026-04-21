@@ -1,6 +1,6 @@
 username,password,role,affix,dateOfBirth,email,firstName,lastName,bio,city,employer
 Student1,$2a$10$bOVTn2gpCgw6bnwuPPluD.4Y9cQqunsC7Mu3.izpdroimel.jjEUy,STUDENT,,1550-02-01,JohnNapier@email.com,John,Napier,I love my bones,Edinburgh,King of Scotland
-Student2,$2a$10$V4IQJJev9GTRojBxWVs4quASFVAT1AEuJTQE//ZI1gcEqmZXcec2e,STUDENT,affix,1574-03-05,WilliamO@email.com,William,Oughtred,I love slide rulers,Albury,University of Cambridge
+Student2,$2a$10$V4IQJJev9GTRojBxWVs4quASFVAT1AEuJTQE//ZI1gcEqmZXcec2e,STUDENT,<null>,1574-03-05,WilliamO@email.com,William,Oughtred,I love slide rulers,Albury,University of Cambridge
 Student3,$2a$10$bw.ADJyoVIovtZOyj/499eSV3gCUdQZccfurE7uF4cr2FvZ5ut062,STUDENT,,1623-06-19,BPascal@email.com,Blaise,Pascal,I love gambling,Clermont-Ferrand,
 Student4,$2a$10$cy3KsCL522Z97I8W0up5aeL23o5RjeXBlzZqF.E.6vHknrg/xsmgy,STUDENT,,1646-07-01,monad@email.com,Gottfried Wilhelm,Leibniz,The REAL inventor of Calculus,Leipzig,Universität Leipzig
 Student5,$2a$10$YQCJylDXzw6460koe9gbFOj.L0u1WeQiLMdfR9CpMZFCxh21eTlUi,STUDENT,,1752-07-07,loom@email.com,Joseph Marie,Jacquard,I like weaving,Lyon,
