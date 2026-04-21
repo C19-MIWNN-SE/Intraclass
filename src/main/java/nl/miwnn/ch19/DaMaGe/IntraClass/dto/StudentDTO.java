@@ -1,7 +1,5 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.dto;
 
-import java.util.function.BinaryOperator;
-
 /**
  * @author My Linh Lu
  */

@@ -1,0 +1,38 @@
+<div th:fragment="person-form-fragment">
+  <div>
+    <input type="hidden" th:field="*{id}" />
+    <input type="hidden" th:field="*{role}" />
+  </div>
+  <div>
+    <label class="form-label">Username:</label>
+    <input th:field="*{username}">
+  </div>
+  <div>
+    <label class="form-label">Password:</label>
+    <input th:field="*{password}">
+  </div>
+  <div>
+    <label class="form-label">First Name:</label>
+    <input th:field="*{firstName}">
+  </div>
+<div>
+  <label class="form-label">Affix:</label>
+  <input th:field="*{affix}">
+</div>
+<div>
+  <label class="form-label">Last Name:</label>
+  <input th:field="*{lastName}">
+</div>
+<div>
+  <label class="form-label">Email:</label>
+  <input type="text" id="email" th:field="*{email}" required />
+</div>
+<div>
+  <label class="form-label">Date of Birth:</label>
+  <input type="date" id="dob" th:field="*{dateOfBirth}"/>
+</div>
+<div>
+  <label class="form-label">Profile Image:</label>
+  <input type="file" id="imageFile" name="imageFile" accept="image/*">
+</div>
+</div>

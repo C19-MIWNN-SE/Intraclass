@@ -18,23 +18,20 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class PersonMapper {
-    public Person toPerson(
-            PersonDTO dto,
-            PasswordEncoder passwordEncoder) {
+public abstract class PersonMapper {
 
-        Person user = new Person();
-        personFields(dto, passwordEncoder, user);
-        return user;
-    }
+    protected void personFields(PersonDTO dto,
+                                PasswordEncoder encoder,
+                                Person person) {
 
-    protected static void personFields(PersonDTO dto, PasswordEncoder passwordEncoder, Person user) {
-        user.setUsername(dto.getUsername());
-        user.setPassword(passwordEncoder.encode(dto.getPassword()));
-        user.setFirstName(dto.getFirstName());
-        user.setLastName(dto.getLastName());
-        user.setDateOfBirth(dto.getDateOfBirth());
-        user.setRole(dto.getRole());
-        user.setImage(dto.getImage());
+        person.setUsername(dto.getUsername());
+        person.setPassword(encoder.encode(dto.getPassword()));
+        person.setFirstName(dto.getFirstName());
+        person.setAffix(dto.getAffix());
+        person.setLastName(dto.getLastName());
+        person.setDateOfBirth(dto.getDateOfBirth());
+        person.setImage(dto.getImage());
+        person.setEmail(dto.getEmail());
+        person.setRole(dto.getRole());
     }
 }

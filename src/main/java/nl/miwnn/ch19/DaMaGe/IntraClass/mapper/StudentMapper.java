@@ -12,10 +12,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class StudentMapper extends PersonMapper {
     public Student toStudent(
-            StudentDTO dto, PasswordEncoder passwordEncoder) {
+            StudentDTO dto,
+            PasswordEncoder passwordEncoder) {
 
         Student student = new Student();
         personFields(dto, passwordEncoder, student);
+
         student.setBio(dto.getBio());
         student.setEmployer(dto.getEmployer());
         student.setCity(dto.getCity());

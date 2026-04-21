@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="eng">
+<body>
+<h1 class="main-title" th:text="${pageTitle}"></h1>
+
+<form th:action="@{/students/save}" th:object="${student}" method="post" enctype="multipart/form-data">
+    <div th:replace="~{fragments/person-form :: person-form-fragment}"></div>
+    <div>
+        <div>
+            <label for="bio" class="form-label">Bio:</label>
+            <input type="text" id="bio" th:field="*{bio}" />
+        </div>
+        <div>
+            <label for="employer" class="form-label">Employer:</label>
+            <input type="text" id="employer" th:field="*{employer}" />
+        </div>
+        <div>
+            <label for="city" class="form-label">City:</label>
+            <input type="text" id="city" th:field="*{city}" />
+        </div>
+    </div>
+    <button type="submit">Save</button>
+    <a th:href="@{/people}">Cancel</a>
+</form>
+<div th:replace="~{fragments/general :: scripts}"></div>
+<footer th:replace="~{fragments/general :: footer}"></footer>
+</body>
+</html>
