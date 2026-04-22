@@ -1,0 +1,29 @@
+<div th:fragment="personCard(person)" class="person-card">
+    <div class="book">
+        <div class="card-content">
+            <div class="profile-img-container">
+                <img src="https://placehold.co/400" alt="Profile" class="profile-img">
+            </div>
+
+            <h5 class="person-name" th:text="${person.fullName}">Name</h5>
+            <div class="person-details">
+                <p>ID: <span th:text="${person.id}">0</span></p>
+                <p>Age: <span th:text="${person.getAge(T(java.time.LocalDate).now())}">0</span></p>
+            </div>
+
+            <div class="card-actions">
+                <a th:href="@{/student/edit/{id}(id=${person.id})}"
+                   th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Student)}"
+                   class="bi bi-pencil-square"></a>
+                <a th:href="@{/teacher/edit/{id}(id=${person.id})}"
+                   th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher)}"
+                   class="bi bi-pencil-square" ></a>
+                <a th:href="@{/person/delete/{id}(id=${person.id})}" class="bi bi-emoji-dizzy"></a>
+            </div>
+        </div>
+
+        <div class="cover">
+            <p>View Profile</p>
+        </div>
+    </div>
+</div>

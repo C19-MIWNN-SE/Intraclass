@@ -1,5 +1,6 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import nl.miwnn.ch19.DaMaGe.IntraClass.dto.PersonDTO;
 import nl.miwnn.ch19.DaMaGe.IntraClass.mapper.PersonMapper;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Person;
@@ -28,7 +29,7 @@ import java.util.List;
  * Obey your master
  */
 @Controller
-@RequestMapping("/person")
+@RequestMapping("")
 public class PersonController {
 
     private static final Logger log = LoggerFactory.getLogger(PersonController.class);
@@ -38,8 +39,8 @@ public class PersonController {
         this.personRepository = personRepository;
     }
 
-    @GetMapping("/overview")
-    public String personOverview(Model model) {
+    @GetMapping({"student/overview", "teacher/overview"})
+    public String personOverview(Model model, HttpServletRequest request) {
 
         List<Person> people;
 
@@ -48,7 +49,12 @@ public class PersonController {
         model.addAttribute("pageTitle", "Person Overview");
         model.addAttribute("people", people);
         //model.addAttribute("newPerson", new PersonDTO());
-        return "personOverview";
+//Funky code:
+        if (request.getRequestURI().contains("/student/")) {
+            return "student-overview";
+        } else{
+            return "teacher-overview";
+        }
     }
 }
 //COMPLETELY USELESS CODE. THEREFORE, I PROCLAIM IT REBUNDANT AND FORSAKEN

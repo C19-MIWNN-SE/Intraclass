@@ -21,7 +21,7 @@ import java.io.IOException;
  * Manage elements for teachers page
  */
 @Controller
-@RequestMapping("/teachers")
+@RequestMapping("/teacher")
 public class TeacherController {
 
     private final TeacherMapper teacherMapper;
@@ -65,7 +65,7 @@ public class TeacherController {
         Teacher teacher = teacherMapper.toTeacher(dto, passwordEncoder);
         personRepository.save(teacher);
 
-        return "redirect:/teachers";
+        return "redirect:/teacher/overview";
     }
 
     @GetMapping("/edit/{id}")

@@ -13,3 +13,112 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-dark a {
     color: #fff;
 }
+
+/* From Uiverse.io by eslam-hany */
+.book {
+    position: relative;
+    border-radius: 10px;
+    width: 220px;
+    height: 300px;
+    background-color: whitesmoke;
+    -webkit-perspective: 2000px;
+    perspective: 2000px;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #000;
+}
+
+.cover {
+    top: 0;
+    position: absolute;
+    background-color: lightgray;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    -webkit-transform-origin: 0;
+    -ms-transform-origin: 0;
+    transform-origin: 0;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.book:hover .cover {
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    -webkit-transform: rotatey(-80deg);
+    -ms-transform: rotatey(-80deg);
+    transform: rotatey(-80deg);
+}
+
+/* Container and Book Sizing */
+.person-card {
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* The revealed content */
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    justify-content: center;
+}
+
+/* Image Styling */
+.profile-img-container {
+    margin-bottom: 15px;
+}
+
+.profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #f0f0f0;
+}
+
+.person-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #003366;
+}
+
+.person-details p {
+    margin: 2px 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Icons */
+.card-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.edit-icon { color: #071cff; }
+.delete-icon { color: #dc3535; }
+
+.cover p {
+    font-weight: bold;
+    color: #444;
+}
