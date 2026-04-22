@@ -22,14 +22,6 @@ public abstract class PersonDTO {
     private Image image;
     private String email;
 
-    // attributes for teacher
-   // private String speciality;
-
-    // attributes for student
-  //  private String bio;
-   // private String employer;
-   // private String city;
-
     public PersonDTO() {
     }
 
@@ -41,22 +33,6 @@ public abstract class PersonDTO {
         this.id = id;
     }
 
-//    public String getBio() {
-//        return bio;
-//    }
-//
-//    public void setBio(String bio) {
-//        this.bio = bio;
-//    }
-//
-//    public String getCity() {
-//        return city;
-//    }
-//
-//    public void setCity(String city) {
-//        this.city = city;
-//    }
-
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
@@ -64,14 +40,6 @@ public abstract class PersonDTO {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-
-//    public String getEmployer() {
-//        return employer;
-//    }
-//
-//    public void setEmployer(String employer) {
-//        this.employer = employer;
-//    }
 
     public String getFirstName() {
         return firstName;
@@ -112,14 +80,6 @@ public abstract class PersonDTO {
     public void setRole(String role) {
         this.role = role;
     }
-
-//    public String getSpeciality() {
-//        return speciality;
-//    }
-//
-//    public void setSpeciality(String speciality) {
-//        this.speciality = speciality;
-//    }
 
     public String getUsername() {
         return username;
