@@ -38,7 +38,7 @@
     <!-- Content for TEACHER or STUDENT-->
     <div sec:authorize="isAuthenticated()" class="d-block p-2 mb-4">
         <h1 class="main-title-dark">
-            <i class="bi bi-briefcase"></i> Welcome, <span sec:authentication="name"></span>!
+            <i class="bi bi-briefcase"></i> Welcome, <span th:text="${#authentication.principal.fullName}"></span>!
         </h1>
         <nav th:replace="~{fragments/general :: navbar}"></nav>
         <div th:replace="~{fragments/general :: dummy}"></div>

@@ -54,7 +54,16 @@ public class Person implements UserDetails {
     public Person() {
     }
 
-    public Person(Long id, String username, String password, String role, Image image, String firstName, String affix, String lastName, LocalDate dateOfBirth, String email) {
+    public Person(Long id,
+                  String username,
+                  String password,
+                  String role,
+                  Image image,
+                  String firstName,
+                  String affix,
+                  String lastName,
+                  LocalDate dateOfBirth,
+                  String email) {
         this.id = id;
         this.username = username;
         this.password = password;
