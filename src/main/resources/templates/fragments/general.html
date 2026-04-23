@@ -37,17 +37,17 @@
 
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" th:href="@{/student/overview}" sec:authorize="hasRole('TEACHER')">
-                        Student Overview
+                        Students
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" th:href="@{/teacher/overview}" sec:authorize="hasRole('TEACHER')">
-                        Teacher Overview
+                        Teachers
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" th:href="@{/cohort/overview}" sec:authorize="hasRole('TEACHER')">
-                        Cohort Overview
+                        Cohorts
                     </a>
                 </li>
                 <li class="nav-item">
