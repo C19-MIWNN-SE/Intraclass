@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Entity
 @Table
-public class Person implements UserDetails {
+public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -74,6 +74,14 @@ public class Person implements UserDetails {
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public Long getId() {
@@ -140,43 +148,8 @@ public class Person implements UserDetails {
         this.email = email;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_" + role));
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
-    }
-
-    @Override
-    public @Nullable String getPassword() {
-        return password;
-    }
-
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    @Override
-    public String getUsername() {
-        return username;
     }
 
     public void setUsername(String username) {
@@ -210,5 +183,4 @@ public class Person implements UserDetails {
     public int hashCode() {
         return getClass().hashCode();
     }
-
 }

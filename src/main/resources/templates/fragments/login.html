@@ -38,10 +38,21 @@
     <!-- Content for TEACHER or STUDENT-->
     <div sec:authorize="isAuthenticated()" class="d-block bg-light p-2 mb-4">
         <h1 class="main-title-dark">
-            <i class="bi bi-briefcase"></i> Welcome, <span th:text="${#authentication.principal.fullName}"></span>!
+            <i class="bi bi-briefcase"></i> Welcome, <span th:text="${#authentication.principal.person.fullName}"></span>!
         </h1>
         <nav th:replace="~{fragments/general :: navbar}"></nav>
-        <div th:replace="~{fragments/general :: dummy}"></div>
+        <div class="d-flex">
+            <div  class="w-50 d-flex flex-column justify-content-center align-items-center p-4">
+                <img th:if="${#authentication.principal.person.image != null}"
+                     th:src="@{/images/{id}(id=${#authentication.principal.person.image.id})}"
+                     class="img-fluid rounded"
+                     style="max-height: 250px; object-fit: cover;" />
+            </div>
+            <div  class="w-50 d-flex flex-column justify-content-center align-items-center p-4">
+                <p>YOUR DETAILS</p>
+            </div>
+        </div>
     </div>
 </div>
+
 </html>
