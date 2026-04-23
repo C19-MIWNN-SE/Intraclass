@@ -18,7 +18,12 @@
                 <a th:href="@{/teacher/edit/{id}(id=${person.id})}"
                    th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher)}"
                    class="bi bi-pencil-square" ></a>
-                <a th:href="@{/person/delete/{id}(id=${person.id})}" class="bi bi-emoji-dizzy"></a>
+                <a th:href="@{/student/delete/{id}(id=${person.id})}"
+                   th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Student)}"
+                   class="bi bi-emoji-dizzy"></a>
+                <a th:href="@{/teacher/delete/{id}(id=${person.id})}"
+                   th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher)}"
+                   class="bi bi-emoji-dizzy"></a>
             </div>
         </div>
 

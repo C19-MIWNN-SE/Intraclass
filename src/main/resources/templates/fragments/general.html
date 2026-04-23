@@ -36,12 +36,12 @@
                 <div class="vr mx-2"></div>
 
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" th:href="@{/person/overview}" sec:authorize="hasRole('TEACHER')">
+                    <a class="nav-link" aria-current="page" th:href="@{/student/overview}" sec:authorize="hasRole('TEACHER')">
                         Student Overview
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#" sec:authorize="hasRole('TEACHER')">
+                    <a class="nav-link" aria-current="page" th:href="@{/teacher/overview}" sec:authorize="hasRole('TEACHER')">
                         Teacher Overview
                     </a>
                 </li>

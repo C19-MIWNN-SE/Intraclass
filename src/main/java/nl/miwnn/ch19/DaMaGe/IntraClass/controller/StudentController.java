@@ -3,7 +3,6 @@ package nl.miwnn.ch19.DaMaGe.IntraClass.controller;
 import nl.miwnn.ch19.DaMaGe.IntraClass.dto.StudentDTO;
 import nl.miwnn.ch19.DaMaGe.IntraClass.mapper.StudentMapper;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Image;
-import nl.miwnn.ch19.DaMaGe.IntraClass.model.Person;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Student;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.ImageRepository;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.PersonRepository;
