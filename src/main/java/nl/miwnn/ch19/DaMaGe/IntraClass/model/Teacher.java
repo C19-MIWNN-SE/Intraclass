@@ -20,6 +20,16 @@ public class Teacher extends Person {
     @NotBlank(message = "Teacher specialty cannot be blank")
     private String specialty;
 
+    private String getImageSource() {
+        return imageSource;
+    }
+
+    public void setImageSource(String imageSource) {
+        this.imageSource = imageSource;
+    }
+
+    private String imageSource;
+
     @ManyToMany(mappedBy = "teacher", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Cohort> cohort = new ArrayList<>();
 
