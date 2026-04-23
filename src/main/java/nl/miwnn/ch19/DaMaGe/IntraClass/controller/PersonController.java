@@ -6,9 +6,12 @@ import nl.miwnn.ch19.DaMaGe.IntraClass.repository.PersonRepository;
 import nl.miwnn.ch19.DaMaGe.IntraClass.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import java.util.List;
 
 /**
@@ -46,23 +49,28 @@ public class PersonController {
         model.addAttribute("pageTitle", "Person Overview");
         model.addAttribute("people", people);
         //model.addAttribute("newPerson", new PersonDTO());
-//Funky code:
-        if (request.getRequestURI().contains("/student/")) {
-            return "student-overview";
-        } else{
-            return "teacher-overview";
-        }
+        //I love ternary operator -(c)Danylo
+        return request.getRequestURI().contains("/student/") ?
+                "student-overview" :
+                "teacher-overview";
     }
 
     @GetMapping({"student/delete/{id}", "teacher/delete/{id}"})
-    public String remove(@PathVariable Long id,  HttpServletRequest request) {
+    public String remove(@PathVariable Long id, HttpServletRequest request, RedirectAttributes redirectAttributes) {
+        String currentUsername = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        personService.deletePerson(id);
+        Person personToDelete = personRepository.findById(id).orElse(null);
 
-        if (request.getRequestURI().contains("/student/")) {
-            return "redirect:/student/overview";
-        } else{
-            return "redirect:/teacher/overview";
+        if (personToDelete != null && personToDelete.getUsername().equals(currentUsername)) {
+            // Kamikaze prevention
+            redirectAttributes.addFlashAttribute("errorMessage", "You cannot delete yourself.");
+        } else {
+            personService.deletePerson(id);
+            redirectAttributes.addFlashAttribute("successMessage", "User deleted.");
         }
+
+        return request.getRequestURI().contains("/student/") ?
+                "redirect:/student/overview" :
+                "redirect:/teacher/overview";
     }
 }

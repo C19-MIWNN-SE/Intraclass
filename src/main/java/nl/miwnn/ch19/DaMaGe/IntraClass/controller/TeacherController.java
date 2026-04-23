@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 
@@ -50,7 +51,8 @@ public class TeacherController {
 
     @PostMapping("/save")
     public String save(@ModelAttribute TeacherDTO dto,
-                       @RequestParam("imageFile") MultipartFile imageFile) throws IOException {
+                       @RequestParam("imageFile") MultipartFile imageFile,
+                       RedirectAttributes redirectAttributes) throws IOException {
 
         if (!imageFile.isEmpty()) {
             Image image = new Image();
@@ -62,6 +64,7 @@ public class TeacherController {
 
         dto.setRole("TEACHER");
         Teacher teacher = teacherMapper.toTeacher(dto, passwordEncoder);
+        redirectAttributes.addFlashAttribute("successMessage", "Change to teachers saved.");
         personRepository.save(teacher);
 
         return "redirect:/teacher/overview";
