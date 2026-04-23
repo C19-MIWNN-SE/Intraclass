@@ -5,6 +5,7 @@ import jakarta.transaction.Transactional;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Person;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Student;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher;
+import nl.miwnn.ch19.DaMaGe.IntraClass.repository.ImageRepository;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.PersonRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -20,9 +21,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersonService implements UserDetailsService {
     private final PersonRepository personRepository;
+    private final ImageRepository imageRepository;
 
-    public PersonService(PersonRepository personRepository) {
+    public PersonService(PersonRepository personRepository, ImageRepository imageRepository) {
         this.personRepository = personRepository;
+        this.imageRepository = imageRepository;
     }
 
     @Override
@@ -37,9 +40,10 @@ public class PersonService implements UserDetailsService {
         Person person = personRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + id));
 
-//        if (person.getImage() != null) {
-//            imageRepository.delete(person.getImage());
-//        }
+
+        if (person.getImage() != null) {
+            imageRepository.delete(person.getImage());
+        }
         if (person instanceof Student student) {
             student.getCohort().forEach(cohort -> cohort.getStudent().remove(student));
             student.getCohort().clear();

@@ -1,20 +1,112 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
-<head th:replace="~{fragments/general :: baseheader(~{:: title})}">
-  <title th:text="${pageTitle}">Welcome</title>
-</head>
+  <head th:replace="~{fragments/general :: baseheader(~{:: title})}">
+    <title th:text="${pageTitle}">Welcome</title>
+  </head>
 <body>
-<!-- Content for logged out -->
-<div class="container-fluid p-0">
-  <div class="d-flex min-vh-100">
-    <!-- LEFT -->
-    <div th:replace="~{fragments/login :: leftSideLogo}"></div>
-    <!-- RIGHT -->
-    <div th:replace="~{fragments/login :: rightSide}"></div>
+
+<canvas id="fluidCanvas"></canvas>
+
+<div class="content">
+  <!-- Content for logged out -->
+  <div class="container-fluid p-0">
+    <div class="d-flex min-vh-100">
+      <!-- LEFT -->
+      <div th:replace="~{fragments/login :: leftSideLogo}"></div>
+      <!-- RIGHT -->
+      <div th:replace="~{fragments/login :: rightSide}"></div>
+    </div>
   </div>
+  <div th:replace="~{fragments/general :: scripts}"></div>
+  <footer th:replace="~{fragments/general :: footer}"></footer>
 </div>
-<div th:replace="~{fragments/general :: scripts}"></div>
-<footer th:replace="~{fragments/general :: footer}"></footer>
+<script>
+  const canvas = document.getElementById("fluidCanvas");
+  const ctx = canvas.getContext("2d");
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  let particles = [];
+  const PARTICLE_COUNT = 1200;
+
+  class Particle {
+    constructor(x, y) {
+      this.x = x;
+      this.y = y;
+      this.vx = 0;
+      this.vy = 0;
+    }
+
+    update() {
+      this.vx *= 0.97;
+      this.vy *= 0.97;
+
+      this.x += this.vx;
+      this.y += this.vy;
+
+      if (this.x < 0) this.x = canvas.width;
+      if (this.x > canvas.width) this.x = 0;
+      if (this.y < 0) this.y = canvas.height;
+      if (this.y > canvas.height) this.y = 0;
+    }
+
+    draw() {
+      ctx.fillRect(this.x, this.y, 1.8, 1.8);
+    }
+  }
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    particles.push(new Particle(
+            Math.random() * canvas.width,
+            Math.random() * canvas.height
+    ));
+  }
+
+  let mouse = { x: null, y: null };
+
+  window.addEventListener("mousemove", e => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  function applyForces(p) {
+    if (mouse.x === null) return;
+
+    let dx = mouse.x - p.x;
+    let dy = mouse.y - p.y;
+    let dist = Math.sqrt(dx * dx + dy * dy);
+
+    if (dist < 120) {
+      let force = (120 - dist) / 120;
+      let angle = Math.atan2(dy, dx);
+
+      p.vx += Math.cos(angle + Math.PI / 2) * force * 0.4;
+      p.vy += Math.sin(angle + Math.PI / 2) * force * 0.4;
+    }
+  }
+
+  function animate() {
+    ctx.fillStyle = "rgba(255, 255, 255, 0.2)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#0b3d91"; // dark blue
+
+    for (let p of particles) {
+      applyForces(p);
+      p.update();
+      p.draw();
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+</script>
+
 </body>
 </html>
