@@ -6,11 +6,13 @@ import nl.miwnn.ch19.DaMaGe.IntraClass.model.Image;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Student;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.ImageRepository;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.PersonRepository;
+import nl.miwnn.ch19.DaMaGe.IntraClass.repository.StudentRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 
@@ -19,36 +21,40 @@ import java.io.IOException;
  * Manage elements for students page
  */
 @Controller
-@RequestMapping("/students")
+@RequestMapping("/student")
 public class StudentController {
 
     private final StudentMapper studentMapper;
     private final PersonRepository personRepository;
     private final ImageRepository imageRepository;
     private final PasswordEncoder passwordEncoder;
+    private final StudentRepository studentRepository;
 
 
     public StudentController(StudentMapper studentMapper,
                              PersonRepository personRepository,
                              ImageRepository imageRepository,
-                             PasswordEncoder passwordEncoder) {
+                             PasswordEncoder passwordEncoder, StudentRepository studentRepository) {
         this.studentMapper = studentMapper;
         this.personRepository = personRepository;
         this.imageRepository = imageRepository;
         this.passwordEncoder = passwordEncoder;
+        this.studentRepository = studentRepository;
     }
 
     @GetMapping("/add")
-    public String showForm(Model model) {
+    public String showForm(@ModelAttribute StudentDTO dto,
+                           Model model) {
         model.addAttribute("student", new StudentDTO());
-        StudentDTO dto = new StudentDTO();
+        dto.setRole("STUDENT");
 
         return "student-form";
     }
 
     @PostMapping("/save")
     public String save(@ModelAttribute StudentDTO dto,
-                       @RequestParam("imageFile") MultipartFile imageFile) throws IOException {
+                       @RequestParam("imageFile") MultipartFile imageFile,
+                       RedirectAttributes redirectAttributes) throws IOException {
 
         if (!imageFile.isEmpty()) {
             Image image = new Image();
@@ -59,8 +65,20 @@ public class StudentController {
         }
         dto.setRole("STUDENT");
         Student student = studentMapper.toStudent(dto, passwordEncoder);
+        redirectAttributes.addFlashAttribute("successMessage", "Change to students saved.");
         personRepository.save(student);
 
-        return "redirect:/students";
+        return "redirect:/student/overview";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@ModelAttribute StudentDTO dto,
+                               @PathVariable Long id,
+                               Model model) {
+        Student student = studentRepository.findById(id)
+               .orElseThrow(() -> new IllegalArgumentException("Invalid person Id:" + id));
+
+        model.addAttribute("student", student);
+        return "student-form";
     }
 }

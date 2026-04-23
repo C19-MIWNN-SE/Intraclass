@@ -3,14 +3,14 @@
 <body>
 <h1 class="main-title" th:text="${pageTitle}"></h1>
 
-<form th:action="@{/teachers/save}" th:object="${teacher}" method="post" enctype="multipart/form-data">
+<form th:action="@{/teacher/save}" th:object="${teacher}" method="post" enctype="multipart/form-data">
     <div th:replace="~{fragments/person-form :: person-form-fragment}"></div>
     <div>
         <label for="specialty" class="form-label">Specialty:</label>
         <input type="text" id="specialty" th:field="*{specialty}" />
     </div>
     <button type="submit">Save</button>
-    <a th:href="@{/people}">Cancel</a>
+    <a th:href="@{/teacher/overview}">Cancel</a>
 </form>
 <div th:replace="~{fragments/general :: scripts}"></div>
 <footer th:replace="~{fragments/general :: footer}"></footer>

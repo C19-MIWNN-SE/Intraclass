@@ -1,6 +1,5 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.mapper;
 
-import nl.miwnn.ch19.DaMaGe.IntraClass.dto.PersonDTO;
 import nl.miwnn.ch19.DaMaGe.IntraClass.dto.TeacherDTO;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher;
 import org.springframework.security.crypto.password.PasswordEncoder;

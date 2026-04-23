@@ -2,8 +2,8 @@ package nl.miwnn.ch19.DaMaGe.IntraClass.model;
 
 import com.opencsv.bean.CsvDate;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -31,9 +31,11 @@ public class Cohort {
     @CsvDate(value = "yyyy-MM-dd")
     private LocalDate endDate;
 
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToMany
     private List<Student>  student = new ArrayList<>();
 
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToMany
     private List<Teacher> teacher = new ArrayList<>();
 

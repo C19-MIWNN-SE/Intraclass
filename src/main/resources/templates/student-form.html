@@ -3,7 +3,7 @@
 <body>
 <h1 class="main-title" th:text="${pageTitle}"></h1>
 
-<form th:action="@{/students/save}" th:object="${student}" method="post" enctype="multipart/form-data">
+<form th:action="@{/student/save}" th:object="${student}" method="post" enctype="multipart/form-data">
     <div th:replace="~{fragments/person-form :: person-form-fragment}"></div>
     <div>
         <div>
@@ -20,7 +20,7 @@
         </div>
     </div>
     <button type="submit">Save</button>
-    <a th:href="@{/people}">Cancel</a>
+    <a th:href="@{/student/overview}">Cancel</a>
 </form>
 <div th:replace="~{fragments/general :: scripts}"></div>
 <footer th:replace="~{fragments/general :: footer}"></footer>

@@ -13,15 +13,17 @@
 <body>
 <nav th:replace="~{fragments/general :: navbar}"></nav>
 <div class="container-fluid p-4">
-<h1 class="main-title" th:text="${pageTitle}"></h1>
-<table th:replace="~{fragments/person :: teacherTable}"></table>
+    <h1 class="main-title" th:text="${pageTitle}"></h1>
+    <div th:each="person : ${people}"
+         th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher)}"
+         class="col-md-4 mb-3">
 
-<table th:replace="~{fragments/person :: studentTable}"></table>
+        <div th:replace="~{fragments/person-card :: personCard(person=${person})}"></div>
+    </div>
 
-<div class="mb-3">
-    <a th:href="@{/students/add}">Add New Student</a>
-    <a th:href="@{/teachers/add}">Add New Teacher</a>
-</div>
+    <div class="mb-3">
+        <a th:href="@{/teacher/add}">Add New Teacher</a>
+    </div>
 </div>
 <div th:replace="~{fragments/general :: scripts}"></div>
 <footer th:replace="~{fragments/general :: footer}"></footer>
