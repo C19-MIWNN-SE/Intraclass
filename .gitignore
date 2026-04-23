@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Spring Boot profiel-bestanden met database-credentials ###
+application-dev.properties
+application-prod.properties
