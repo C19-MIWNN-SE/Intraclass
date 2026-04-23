@@ -56,7 +56,7 @@
         <td th:text="${teacher.dateOfBirth}">Date of Birth</td>
         <td th:text="${teacher.specialty}">Specialty</td>
         <td th:text="${teacher.email}">E-Mail</td>
-        <td><img th:src="@{teacher.imageSource}" alt="Photo"/></td>
+        <td><img th:src="${teacher.imageSource}" alt="Photo" height="200px"/></td>
     </tr>
     </tbody>
 </table>
@@ -73,7 +73,7 @@
         <th>City</th>
         <th>Employer</th>
         <th>Biography</th>
-<!--        <th>Photo</th>-->
+        <th>Photo</th>
     </tr>
     </thead>
 
@@ -87,7 +87,7 @@
         <td th:text="${student.city}">City</td>
         <td th:text="${student.employer}">Employer</td>
         <td th:text="${student.bio}">Biography</td>
-<!--        <td><img th:src="${student.imageSource}" /></td>-->
+        <td><img th:src="${student.imageSource}" alt="Photo" height="200px"/></td>
     </tr>
     </tbody>
 </table>
