@@ -1,6 +1,6 @@
-username,password,role,affix,dateOfBirth,email,firstName,lastName,specialty
-Teacher1,$2a$10$lqKkZdFUe/u3NNpMsiS.Z.Yi3oCGAC7wdm.xT/lLysIkEqSwlNjma,TEACHER,,1969-12-28,Linus@makeitwork.nl,Linus,Torvalds,Linux
-Teacher2,$2a$10$IJpfbBfvyfuPzsrqigIGXO4l4xMLkJ1Set3hRdnVzshcNWTm24K/.,TEACHER,van,1956-01-31,Guido@python.nl,Guido,Rossem,Python
-Teacher3,$2a$10$9H63Eey5aTV.WjuYaSsRVuDlmYZolZ47v4IXvZHyZ/KlxYvWL.vjS,TEACHER,,1955-05-19,James@java.com,James,Gosling,Java
-Teacher4,$2a$10$bLEkjx8dLFXm8yMzhuJiwOkdJzKnViBzfjShxsTSU6vLyeYyeblnm,TEACHER,,1815-12-10,Ada@email.com,Ada,Lovelace,Poetical Science
-Teacher5,$2a$10$YwERXDZWXrFrvgAlAEsSouqdGetFdk.BG7o6CZW0gvAL5QsSGtDhi,TEACHER,von,1903-12-28,John@projectY.com,John,Neumann,Operating Systems
+username,password,role,affix,dateOfBirth,email,firstName,lastName,specialty,imageSource
+Teacher1,$2a$10$lqKkZdFUe/u3NNpMsiS.Z.Yi3oCGAC7wdm.xT/lLysIkEqSwlNjma,TEACHER,,1969-12-28,Linus@makeitwork.nl,Linus,Torvalds,Linux,\\img\\Linus torvalds c3_2018_(263682303)_(cropped).jpeg
+Teacher2,$2a$10$IJpfbBfvyfuPzsrqigIGXO4l4xMLkJ1Set3hRdnVzshcNWTm24K/.,TEACHER,van,1956-01-31,Guido@python.nl,Guido,Rossem,Python,\\img\\Guido_van_Rossum_in_PyConUS24_(cropped).jpg
+Teacher3,$2a$10$9H63Eey5aTV.WjuYaSsRVuDlmYZolZ47v4IXvZHyZ/KlxYvWL.vjS,TEACHER,,1955-05-19,James@java.com,James,Gosling,Java,\\img\\James_Gosling_2008.jpg
+Teacher4,$2a$10$bLEkjx8dLFXm8yMzhuJiwOkdJzKnViBzfjShxsTSU6vLyeYyeblnm,TEACHER,,1815-12-10,Ada@email.com,Ada,Lovelace,Poetical Science,\\img\\Ada_Lovelace_daguerreotype_by_Antoine_Claudet_1843_-_cropped.png
+Teacher5,$2a$10$YwERXDZWXrFrvgAlAEsSouqdGetFdk.BG7o6CZW0gvAL5QsSGtDhi,TEACHER,von,1903-12-28,John@projectY.com,John,Neumann,Operating Systems,\\img\\JohnvonNeumann-LosAlamos.gif

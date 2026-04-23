@@ -22,6 +22,8 @@ public class Student extends Person {
     @NotBlank(message = "City can't be blank")
     private String city;
 
+    private String imageSource;
+
     @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Cohort> cohort = new ArrayList<>();
@@ -48,6 +50,14 @@ public class Student extends Person {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getImageSource() {
+        return imageSource;
+    }
+
+    public void setImageSource(String imageSource) {
+        this.imageSource = imageSource;
     }
 
     public List<Cohort> getCohort() {

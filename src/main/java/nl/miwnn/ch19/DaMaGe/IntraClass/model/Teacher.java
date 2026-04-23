@@ -19,6 +19,8 @@ public class Teacher extends Person {
     @NotBlank(message = "Teacher specialty cannot be blank")
     private String specialty;
 
+    private String imageSource;
+
     @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToMany(mappedBy = "teacher", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Cohort> cohort = new ArrayList<>();
@@ -29,6 +31,14 @@ public class Teacher extends Person {
 
     public void setSpecialty(String specialty) {
         this.specialty = specialty;
+    }
+
+    public String getImageSource() {
+        return imageSource;
+    }
+
+    public void setImageSource(String imageSource) {
+        this.imageSource = imageSource;
     }
 
     public List<Cohort> getCohort() {

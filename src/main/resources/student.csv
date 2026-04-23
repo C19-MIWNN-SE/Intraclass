@@ -1,11 +1,11 @@
-username,password,role,affix,dateOfBirth,email,firstName,lastName,bio,city,employer
-Student1,$2a$10$bOVTn2gpCgw6bnwuPPluD.4Y9cQqunsC7Mu3.izpdroimel.jjEUy,STUDENT,,1550-02-01,JohnNapier@email.com,John,Napier,I love my bones,Edinburgh,King of Scotland
-Student2,$2a$10$V4IQJJev9GTRojBxWVs4quASFVAT1AEuJTQE//ZI1gcEqmZXcec2e,STUDENT,<null>,1574-03-05,WilliamO@email.com,William,Oughtred,I love slide rulers,Albury,University of Cambridge
-Student3,$2a$10$bw.ADJyoVIovtZOyj/499eSV3gCUdQZccfurE7uF4cr2FvZ5ut062,STUDENT,,1623-06-19,BPascal@email.com,Blaise,Pascal,I love gambling,Clermont-Ferrand,
-Student4,$2a$10$cy3KsCL522Z97I8W0up5aeL23o5RjeXBlzZqF.E.6vHknrg/xsmgy,STUDENT,,1646-07-01,monad@email.com,Gottfried Wilhelm,Leibniz,The REAL inventor of Calculus,Leipzig,Universität Leipzig
-Student5,$2a$10$YQCJylDXzw6460koe9gbFOj.L0u1WeQiLMdfR9CpMZFCxh21eTlUi,STUDENT,,1752-07-07,loom@email.com,Joseph Marie,Jacquard,I like weaving,Lyon,
-Student6,$2a$10$qXh6nOAJU0MjPZ56.QZTOeSPM9KB1PAeYClX1ijldeq7XlwQdccPS,STUDENT,,1815-11-02,trueorfalse@email.com,George,Boole,I like counting,London,University of Cambridge
-Student7,$2a$10$zBAsA8zW4uJ6SI5dW7QvPOgKBK4q7uDlqzq12/tnddjscMQioVvZG,STUDENT,,1860-02-29,Herman@InternationalBusinessMachines,Herman,Hollerith,I love making holes in cards,Buffalo,International Business Machines
-Student8,$2a$10$rnsPBVlcD/5apos.Sa7KKOvZDQZ8oqSCHbO8mnAvA.ny8Q2y5oVwu,STUDENT,,1912-06-23,altu@email.com,Alan,Turing,I love codebreaking,Bletchley,Bletchley Park
-Student9,$2a$10$CMboZ2AOvZvkl4hK48T2tOEp66HrRwXtr5rh2K2XBhdjfPc2Mfs1y,STUDENT,,1910-06-22,Konrad@zuse.de,Konrad Ernst Otto,Zuse,Ich liebe rechnen,Berlin,
-Student0,$2a$10$9KyIuhMYRTD/mhc.kIwzl.0/Wi0qGevRaPkfKtm8D6DfYtgnMK9ey,STUDENT,,1923-08-19,EFCodd@IBM.com,Edgar,Codd,I love database normalization,Fortuneswell,IBM
+username,password,role,affix,dateOfBirth,email,firstName,lastName,bio,city,employer,imageSource
+Student1,$2a$10$bOVTn2gpCgw6bnwuPPluD.4Y9cQqunsC7Mu3.izpdroimel.jjEUy,STUDENT,,1550-02-01,JohnNapier@email.com,John,Napier,I love my bones,Edinburgh,King of Scotland,"\\img\\John_Napier_of_Merchiston,_1616.jpg"
+Student2,$2a$10$V4IQJJev9GTRojBxWVs4quASFVAT1AEuJTQE//ZI1gcEqmZXcec2e,STUDENT,"",1574-03-05,WilliamO@email.com,William,Oughtred,I love slide rulers,Albury,University of Cambridge,"\\img\\Portret_van_William_Oughtred,_RP-P-1907-2855.jpg"
+Student3,$2a$10$bw.ADJyoVIovtZOyj/499eSV3gCUdQZccfurE7uF4cr2FvZ5ut062,STUDENT,,1623-06-19,BPascal@email.com,Blaise,Pascal,I love gambling,Clermont-Ferrand,,\\img\\Blaise_Pascal_Versailles.JPG
+Student4,$2a$10$cy3KsCL522Z97I8W0up5aeL23o5RjeXBlzZqF.E.6vHknrg/xsmgy,STUDENT,,1646-07-01,monad@email.com,Gottfried Wilhelm,Leibniz,The REAL inventor of Calculus,Leipzig,Universität Leipzig,\\img\\Christoph_Bernhard_Francke_-_Bildnis_des_Philosophen_Leibniz_(ca._1695).jpg
+Student5,$2a$10$YQCJylDXzw6460koe9gbFOj.L0u1WeQiLMdfR9CpMZFCxh21eTlUi,STUDENT,,1752-07-07,loom@email.com,Joseph Marie,Jacquard,I like weaving,Lyon,,\\img\\Joseph_Marie_Jacquard.jpg
+Student6,$2a$10$qXh6nOAJU0MjPZ56.QZTOeSPM9KB1PAeYClX1ijldeq7XlwQdccPS,STUDENT,,1815-11-02,trueorfalse@email.com,George,Boole,I like counting,London,University of Cambridge,\\img\\Portrait_of_George_Boole.png
+Student7,$2a$10$zBAsA8zW4uJ6SI5dW7QvPOgKBK4q7uDlqzq12/tnddjscMQioVvZG,STUDENT,,1860-02-29,Herman@InternationalBusinessMachines,Herman,Hollerith,I love making holes in cards,Buffalo,International Business Machines,\\img\\Hollerith.jpg
+Student8,$2a$10$rnsPBVlcD/5apos.Sa7KKOvZDQZ8oqSCHbO8mnAvA.ny8Q2y5oVwu,STUDENT,,1912-06-23,altu@email.com,Alan,Turing,I love codebreaking,Bletchley,Bletchley Park,\\img\\Alan_turing_header.jpg
+Student9,$2a$10$CMboZ2AOvZvkl4hK48T2tOEp66HrRwXtr5rh2K2XBhdjfPc2Mfs1y,STUDENT,,1910-06-22,Konrad@zuse.de,Konrad Ernst Otto,Zuse,Ich liebe rechnen,Berlin,,\\img\\Konrad_Zuse_(1992).jpg
+Student0,$2a$10$9KyIuhMYRTD/mhc.kIwzl.0/Wi0qGevRaPkfKtm8D6DfYtgnMK9ey,STUDENT,,1923-08-19,EFCodd@IBM.com,Edgar,Codd,I love database normalization,Fortuneswell,IBM,\\img\\Edgar_F_Codd.jpg
