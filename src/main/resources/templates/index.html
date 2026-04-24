@@ -20,6 +20,46 @@
   <div th:replace="~{fragments/general :: scripts}"></div>
   <footer th:replace="~{fragments/general :: footer}"></footer>
 </div>
+<!-- Edit Modal -->
+<!-- De modal (initieel verborgen) -->
+<div class="modal fade" id="editPersonModal"
+     tabindex="-1"
+     aria-labelledby="editPersonModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Header -->
+      <div class="modal-header">
+        <h5 class="modal-title"
+            id="editPersonModalLabel">
+          Edit Personal Details
+        </h5>
+        <button type="button" class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form sec:authorize="hasRole('STUDENT')" th:action="@{/student/save}"
+              th:object="${person}" method="post" enctype="multipart/form-data">
+          <div th:replace="~{fragments/person-form :: person-form-fragment}"></div>
+          <div th:replace="~{fragments/person-form :: student-form-fragment}"></div>
+          <button class="btn btn-m btn-outline-dark" type="submit"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+        </form>
+      </div>
+      <!-- Footer (optioneel) -->
+      <div class="modal-footer">
+        <button type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal">
+          Annuleren
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Fancy background -->
 <script>
   const canvas = document.getElementById("fluidCanvas");
   const ctx = canvas.getContext("2d");

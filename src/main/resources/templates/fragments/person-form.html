@@ -36,3 +36,20 @@
   <input type="file" id="imageFile" name="imageFile" accept="image/*">
 </div>
 </div>
+
+<div th:fragment="student-form-fragment">
+  <div>
+    <div>
+      <label for="bio" class="form-label">Bio:</label>
+      <input type="text" id="bio" th:field="*{bio}" />
+    </div>
+    <div>
+      <label for="employer" class="form-label">Employer:</label>
+      <input type="text" id="employer" th:field="*{employer}" />
+    </div>
+    <div>
+      <label for="city" class="form-label">City:</label>
+      <input type="text" id="city" th:field="*{city}" />
+    </div>
+  </div>
+</div>

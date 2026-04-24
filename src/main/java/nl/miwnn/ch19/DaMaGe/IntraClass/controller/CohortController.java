@@ -47,6 +47,7 @@ public class CohortController {
         List<Cohort> cohorts = cohortRepository.findAll();
         log.debug("Cohort Overview called, {} Cohorts in database", cohorts.size());
         model.addAttribute("pageTitle", "Cohort Overview");
+        model.addAttribute("activePage", "cohorts");
         model.addAttribute("cohorts", cohorts);
         return "cohortOverview";
     }

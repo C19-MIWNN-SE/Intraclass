@@ -6,6 +6,14 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0.5rem;
 }
 
+h1 {
+    font-size: 3.5em;
+}
+
+h2 {
+    font-size: 2.5em;
+}
+
 .cohortViewTable {
     width: 50%;
 }
@@ -134,96 +142,23 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: 100%;
     background: #f8f9fa;
-    border-radius: 10px;
-    transform-origin: left;
-    transition: transform 0.6s;
-    z-index: 2;
-    backface-visibility: hidden;
-    border: 1px solid #ddd;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
 }
 
-.cover-top-half {
-    height: 50%;
-    overflow: hidden;
+.active {
+    font-weight: bold;
 }
 
-.cover-img {
+.navbar {
+    font-size: 1.5em;
+}
+
+.profile-img-wrapper {
+    width: 75%;
+    aspect-ratio: 1 / 1;
+}
+
+.profile-img-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.cover-bottom-half {
-    text-align: center;
-}
-
-.status-badge {
-    font-size: 0.7rem;
-    background: #00b8ff;
-    color: white;
-    padding: 2px 8px;
-    border-radius: 10px;
-    display: inline-block;
-}
-
-.role-info {
-    margin-top: 8px;
-    font-size: 0.8rem;
-    text-align: left;
-}
-
-.cohort-list {
-    margin: 0;
-    padding-left: 15px;
-    font-size: 0.75rem;
-}
-
-/* Inside Content Styling */
-.card-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.mini-profile-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.details-title {
-    font-weight: bold;
-    border-bottom: 1px solid #eee;
-    width: 100%;
-    text-align: center;
-    padding-bottom: 5px;
-}
-
-.parameter-list {
-    list-style: none;
-    padding: 0;
-    width: 100%;
-    font-size: 0.85rem;
-}
-
-.parameter-list li {
-    padding: 4px 0;
-    border-bottom: 1px dashed #eee;
-}
-
-.parameter-list .label {
-    font-weight: bold;
-    color: #555;
-}
-
-.card-actions {
-    margin-top: auto;
-    padding-top: 10px;
-    font-size: 1.2rem;
-    gap: 15px;
-    display: flex;
 }

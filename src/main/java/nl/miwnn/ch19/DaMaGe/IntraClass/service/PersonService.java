@@ -7,6 +7,7 @@ import nl.miwnn.ch19.DaMaGe.IntraClass.model.Student;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.ImageRepository;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.PersonRepository;
+import nl.miwnn.ch19.DaMaGe.IntraClass.security.CustomUserDetails;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,20 +20,13 @@ import org.springframework.stereotype.Service;
  * Not all those who wander are lost.
  */
 @Service
-public class PersonService implements UserDetailsService {
+public class PersonService {
     private final PersonRepository personRepository;
     private final ImageRepository imageRepository;
 
     public PersonService(PersonRepository personRepository, ImageRepository imageRepository) {
         this.personRepository = personRepository;
         this.imageRepository = imageRepository;
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return personRepository
-                .findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
     }
 
     @Transactional
