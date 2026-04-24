@@ -6,14 +6,17 @@
   <div>
     <label class="form-label">Username:</label>
     <input th:field="*{username}">
+    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></span>
   </div>
   <div>
     <label class="form-label">Password:</label>
-    <input th:field="*{password}">
+    <input type="password" th:field="*{password}" placeholder="Leave empty to keep current password">
+    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></span>
   </div>
   <div>
     <label class="form-label">First Name:</label>
     <input th:field="*{firstName}">
+    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error"></span>
   </div>
 <div>
   <label class="form-label">Affix:</label>
@@ -22,6 +25,7 @@
 <div>
   <label class="form-label">Last Name:</label>
   <input th:field="*{lastName}">
+  <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error"></span>
 </div>
 <div>
   <label class="form-label">Email:</label>
@@ -30,6 +34,7 @@
 <div>
   <label class="form-label">Date of Birth:</label>
   <input type="date" id="dob" th:field="*{dateOfBirth}"/>
+  <span th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}" class="error"></span>
 </div>
 <div>
   <label class="form-label">Profile Image:</label>
@@ -42,6 +47,7 @@
     <div>
       <label for="bio" class="form-label">Bio:</label>
       <input type="text" id="bio" th:field="*{bio}" />
+      <span th:if="${#fields.hasErrors('bio')}" th:errors="*{bio}" class="error"></span>
     </div>
     <div>
       <label for="employer" class="form-label">Employer:</label>
@@ -50,6 +56,7 @@
     <div>
       <label for="city" class="form-label">City:</label>
       <input type="text" id="city" th:field="*{city}" />
+      <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="error"></span>
     </div>
   </div>
 </div>
@@ -57,4 +64,5 @@
 <div th:fragment="teacher-form-fragment">
   <label for="specialty" class="form-label">Specialty:</label>
   <input type="text" id="specialty" th:field="*{specialty}" />
+  <span th:if="${#fields.hasErrors('specialty')}" th:errors="*{specialty}" class="error"></span>
 </div>

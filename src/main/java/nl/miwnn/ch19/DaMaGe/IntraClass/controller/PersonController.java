@@ -31,20 +31,16 @@ import java.util.List;
 public class PersonController {
 
     private static final Logger log = LoggerFactory.getLogger(PersonController.class);
-    private final PersonRepository personRepository;
     private final PersonService personService;
 
-    public PersonController(PersonRepository personRepository, PersonService personService) {
-        this.personRepository = personRepository;
+    public PersonController(PersonService personService) {
         this.personService = personService;
     }
 
     @GetMapping({"student/overview", "teacher/overview"})
     public String personOverview(Model model, HttpServletRequest request) {
 
-        List<Person> people;
-
-        people = personRepository.findAll();
+        List<Person> people = personService.getAllPeople();
 
         model.addAttribute("pageTitle", "Person Overview");
         model.addAttribute("people", people);
@@ -61,16 +57,17 @@ public class PersonController {
     }
 
     @GetMapping({"student/delete/{id}", "teacher/delete/{id}"})
-    public String remove(@PathVariable Long id, HttpServletRequest request, RedirectAttributes redirectAttributes) {
+    public String remove(@PathVariable Long id,
+                         HttpServletRequest request,
+                         RedirectAttributes redirectAttributes) {
         String currentUsername = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        Person personToDelete = personRepository.findById(id).orElse(null);
+        boolean delete = personService.personAllowedToDelete(id,currentUsername);
 
-        if (personToDelete != null && personToDelete.getUsername().equals(currentUsername)) {
+        if (!delete) {
             // Kamikaze prevention
             redirectAttributes.addFlashAttribute("errorMessage", "You cannot delete yourself.");
         } else {
-            personService.deletePerson(id);
             redirectAttributes.addFlashAttribute("successMessage", "User deleted.");
         }
 

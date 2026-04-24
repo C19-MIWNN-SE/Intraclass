@@ -1,13 +1,8 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.controller;
 
 import nl.miwnn.ch19.DaMaGe.IntraClass.dto.TeacherDTO;
-import nl.miwnn.ch19.DaMaGe.IntraClass.mapper.TeacherMapper;
-import nl.miwnn.ch19.DaMaGe.IntraClass.model.Image;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher;
-import nl.miwnn.ch19.DaMaGe.IntraClass.repository.ImageRepository;
-import nl.miwnn.ch19.DaMaGe.IntraClass.repository.PersonRepository;
-import nl.miwnn.ch19.DaMaGe.IntraClass.repository.TeacherRepository;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import nl.miwnn.ch19.DaMaGe.IntraClass.service.TeacherService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,21 +19,10 @@ import java.io.IOException;
 @RequestMapping("/teacher")
 public class TeacherController {
 
-    private final TeacherMapper teacherMapper;
-    private final PersonRepository personRepository;
-    private final ImageRepository imageRepository;
-    private final PasswordEncoder passwordEncoder;
-    private final TeacherRepository teacherRepository;
+    private final TeacherService teacherService;
 
-    public TeacherController(TeacherMapper teacherMapper,
-                             PersonRepository personRepository,
-                             ImageRepository imageRepository,
-                             PasswordEncoder passwordEncoder, TeacherRepository teacherRepository) {
-        this.teacherMapper = teacherMapper;
-        this.personRepository = personRepository;
-        this.imageRepository = imageRepository;
-        this.passwordEncoder = passwordEncoder;
-        this.teacherRepository = teacherRepository;
+    public TeacherController(TeacherService teacherService) {
+        this.teacherService = teacherService;
     }
 
     @GetMapping("/add")
@@ -54,18 +38,8 @@ public class TeacherController {
                        @RequestParam("imageFile") MultipartFile imageFile,
                        RedirectAttributes redirectAttributes) throws IOException {
 
-        if (!imageFile.isEmpty()) {
-            Image image = new Image();
-            image.setData(imageFile.getBytes());
-            image.setContentType(imageFile.getContentType());
-            imageRepository.save(image);
-            dto.setImage(image);
-        }
-
-        dto.setRole("TEACHER");
-        Teacher teacher = teacherMapper.toTeacher(dto, passwordEncoder);
+        teacherService.saveTeacher(dto,imageFile);
         redirectAttributes.addFlashAttribute("successMessage", "Change to teachers saved.");
-        personRepository.save(teacher);
 
         return "redirect:/teacher/overview";
     }
@@ -74,10 +48,9 @@ public class TeacherController {
     public String showEditForm(@ModelAttribute TeacherDTO dto,
                                @PathVariable Long id,
                                Model model) {
-        Teacher teacher = teacherRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid person Id:" + id));
-
+        Teacher teacher = teacherService.getTeacherById(id);
         model.addAttribute("teacher", teacher);
+
         return "teacher-form";
     }
 }
