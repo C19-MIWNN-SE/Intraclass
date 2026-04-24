@@ -5,20 +5,7 @@
 
 <form th:action="@{/student/save}" th:object="${student}" method="post" enctype="multipart/form-data">
     <div th:replace="~{fragments/person-form :: person-form-fragment}"></div>
-    <div>
-        <div>
-            <label for="bio" class="form-label">Bio:</label>
-            <input type="text" id="bio" th:field="*{bio}" />
-        </div>
-        <div>
-            <label for="employer" class="form-label">Employer:</label>
-            <input type="text" id="employer" th:field="*{employer}" />
-        </div>
-        <div>
-            <label for="city" class="form-label">City:</label>
-            <input type="text" id="city" th:field="*{city}" />
-        </div>
-    </div>
+    <div th:replace="~{fragments/person-form :: student-form-fragment}"></div>
     <button type="submit">Save</button>
     <a th:href="@{/student/overview}">Cancel</a>
 </form>

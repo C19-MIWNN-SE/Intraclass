@@ -6,6 +6,14 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0.5rem;
 }
 
+h1 {
+    font-size: 3.5em;
+}
+
+h2 {
+    font-size: 2.5em;
+}
+
 .cohortViewTable {
     width: 50%;
 }
@@ -144,4 +152,23 @@ h1, h2, h3, h4, h5, h6 {
 
 .custom-bg-fluid {
     backface-visibility: hidden;
+}
+
+.active {
+    font-weight: bold;
+}
+
+.navbar {
+    font-size: 1.5em;
+}
+
+.profile-img-wrapper {
+    width: 75%;
+    aspect-ratio: 1 / 1;
+}
+
+.profile-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

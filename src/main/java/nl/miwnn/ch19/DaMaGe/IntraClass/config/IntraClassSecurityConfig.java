@@ -19,28 +19,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class IntraClassSecurityConfig {
-    private final PersonService personService;
-    private final CustomUserDetailsService customUserDetailsService;
-
-    public IntraClassSecurityConfig(PersonService personService,
-                                    CustomUserDetailsService customUserDetailsService) {
-        this.personService = personService;
-        this.customUserDetailsService = customUserDetailsService;
-    }
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
-        return config.getAuthenticationManager();
-    }
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return customUserDetailsService;
     }
 
     @Bean
@@ -73,8 +54,7 @@ public class IntraClassSecurityConfig {
                         .loginPage("/login")
                         .defaultSuccessUrl("/login", true)
                         .permitAll()
-                )
-                .userDetailsService(personService);
+                );
         return http.build();
     }
 }

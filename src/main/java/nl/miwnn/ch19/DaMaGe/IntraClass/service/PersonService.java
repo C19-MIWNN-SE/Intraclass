@@ -20,23 +20,13 @@ import org.springframework.stereotype.Service;
  * Not all those who wander are lost.
  */
 @Service
-public class PersonService implements UserDetailsService {
+public class PersonService {
     private final PersonRepository personRepository;
     private final ImageRepository imageRepository;
 
     public PersonService(PersonRepository personRepository, ImageRepository imageRepository) {
         this.personRepository = personRepository;
         this.imageRepository = imageRepository;
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Person person = personRepository.findByUsername(username)
-                .orElseThrow(() ->
-                        new UsernameNotFoundException("User not found: " + username)
-                );
-
-        return new CustomUserDetails(person);
     }
 
     @Transactional

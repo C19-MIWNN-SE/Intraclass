@@ -8,7 +8,7 @@
 </div>
 
 <!-- Right container for login page -->
-<div th:fragment="rightSide" class="w-50 d-flex flex-column justify-content-center align-items-center p-4">
+<div th:fragment="rightSide" class="w-50 d-flex flex-column justify-content-center align-items-center p-4 rounded">
     <div sec:authorize="isAnonymous()" class="d-block">
         <h1 class="main-title-dark"><i class="bi bi-box-arrow-in-right"></i> Log In</h1>
     </div>
@@ -38,18 +38,42 @@
     <!-- Content for TEACHER or STUDENT-->
     <div sec:authorize="isAuthenticated()" class="d-block bg-light p-2 mb-4">
         <h1 class="main-title-dark">
-            <i class="bi bi-briefcase"></i> Welcome, <span th:text="${#authentication.principal.person.fullName}"></span>!
+            <i class="bi bi-mortarboard-fill" sec:authorize="hasRole('STUDENT')"></i>
+            <i class="fa-solid fa-chalkboard-user" sec:authorize="hasRole('TEACHER')"></i>
+            Welcome, <span th:text="${#authentication.principal.person.fullName}"></span>!
         </h1>
         <nav th:replace="~{fragments/general :: navbar}"></nav>
         <div class="d-flex">
             <div  class="w-50 d-flex flex-column justify-content-center align-items-center p-4">
-                <img th:if="${#authentication.principal.person.image != null}"
-                     th:src="@{/images/{id}(id=${#authentication.principal.person.image.id})}"
-                     class="img-fluid rounded"
-                     style="max-height: 250px; object-fit: cover;" />
+                <div class="profile-img-wrapper">
+                <img th:if="${person.image != null}"
+                     th:src="@{/images/{id}(id=${person.image.id})}" class="rounded-circle">
+                </div>
             </div>
-            <div  class="w-50 d-flex flex-column justify-content-center align-items-center p-4">
-                <p>YOUR DETAILS</p>
+            <div  class="w-50 d-flex flex-column justify-content-top align-items-left p-4">
+                <h2>Personal Details</h2>
+                <p>
+                    <b>Full Name:</b> <span th:text="${person.getFullName}"></span><br>
+                    <b>Date of Birth:</b>
+                    <span th:text="${#temporals.format(person.dateOfBirth, 'dd-MM-yyyy')}">
+                    </span><br>
+                    <b>Email:</b> <span th:text="${person.getEmail}"></span><br>
+                    <span sec:authorize="hasRole('STUDENT')">
+                        <b>Bio:</b> <span th:text="${person.getBio}"></span><br>
+                        </span>
+                    <span sec:authorize="hasRole('STUDENT')">
+                        <b>City:</b> <span th:text="${person.getCity}"></span><br>
+                        </span>
+                    <span sec:authorize="hasRole('STUDENT')">
+                        <b>Employer:</b> <span th:text="${person.getEmployer}"></span><br>
+                        </span>
+                    <span sec:authorize="hasRole('TEACHER')">
+                        <b>Specialty:</b> <span th:text="${person.getSpecialty}"></span><br>
+                        </span>
+                    <br>
+                    <i class="bi bi-pencil-square"></i> <a data-bs-toggle="modal"
+                                                           data-bs-target="#editPersonModal">Edit details</a>
+                </p>
             </div>
         </div>
     </div>
