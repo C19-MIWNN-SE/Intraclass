@@ -14,38 +14,53 @@
 
 <h1 th:text="${pageTitle}"></h1>
 
-<table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th></th>
-    </tr>
-    </thead>
+<div class="container-fluid p-4">
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+        <h1 class="main-title text-primary m-0">Cohort Overview</h1>
+        <a th:href="@{/cohort/add}" class="btn btn-primary shadow-sm">
+            <i class="bi bi-plus-lg me-1"></i> Add New Cohort
+        </a>
+    </div>
 
-    <tbody>
-    <tr th:each="cohort: ${cohorts}">
-        <td th:text="${cohort.id}">ID</td>
-        <td th:text="${cohort.name}">Name</td>
-        <td th:text="${cohort.description}">Description</td>
-        <td th:text="${cohort.startDate}">Start Date</td>
-        <td th:text="${cohort.endDate}">End Date</td>
-        <td>
-            <a th:href="@{/cohort/{id}(id=${cohort.id})}">View Cohort</a>
-        </td>
-        <td>
-            <button type="button"
-                    class="btn btn-primary"
-                    data-bs-toggle="modal"
-                    data-bs-target="#addEditCohortModal"
-                    sec:authorize="hasRole('TEACHER')">Edit Cohort</button>
-        </td>
-    </tr>
-    </tbody>
-</table>
+    <div class="row row-cols-1 g-4">
+        <div class="col" th:each="cohort : ${cohorts}">
+            <div class="cohort-banner-block shadow-sm">
+
+                <div class="banner-visual bg-light d-none d-md-flex">
+                    <i class="bi bi-folder-fill display-4 text-muted"></i>
+                </div>
+
+                <div class="banner-content p-4 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div>
+                            <h4 class="mb-1 text-dark fw-bold" th:text="${cohort.name}">Y2K Preparation</h4>
+                            <small class="text-muted">ID: <span th:text="${cohort.id}">1</span></small>
+                        </div>
+                        <p class="status-badge active m-0">Active</p>
+                    </div>
+
+                    <p class="description-text flex-grow-1 text-secondary" th:text="${cohort.description}">
+                        This is a cohort focused on preparation for the Y2K computer bug.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-4 pt-3 border-top mt-auto fs-7">
+                        <div class="text-muted">
+                            <strong>Start:</strong> [[${cohort.startDate}]]
+                        </div>
+                        <div class="text-muted">
+                            <strong>End:</strong> [[${cohort.endDate}]]
+                        </div>
+                        <div class="ms-auto btn-group-sm">
+                            <a th:href="@{/cohort/view/{id}(id=${cohort.id})}" class="btn btn-sm btn-outline-primary px-3">View</a>
+                            <a th:href="@{/cohort/edit/{id}(id=${cohort.id})}" class="btn btn-sm btn-outline-secondary px-3">Edit</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <button type="button"
         class="btn btn-primary"

@@ -82,3 +82,19 @@
         </div>
     </div>
 </div>
+
+<div th:fragment="addPersonCard(type)" class="person-card add-new-card">
+    <a th:href="@{/{role}/add(role=${type})}" class="text-decoration-none">
+        <div class="book">
+            <div class="card-content d-flex flex-column align-items-center justify-content-center">
+                <i class="bi bi-plus-circle-dotted display-1 text-primary"></i>
+                <p class="mt-2 fw-bold text-uppercase" th:text="'Add ' + ${type}">You are not supposed to see this text</p>
+            </div>
+
+            <div class="cover d-flex flex-column align-items-center justify-content-center">
+                <i class="bi bi-plus-lg display-3 text-muted"></i>
+                <p class="h5 mt-3 text-muted">Add</p>
+            </div>
+        </div>
+    </a>
+</div>
