@@ -1,15 +1,41 @@
 <div th:fragment="personCard(person)" class="person-card">
     <div class="book">
         <div class="card-content">
-            <div class="profile-img-container">
-                <img src="https://placehold.co/400" alt="Profile" class="profile-img">
-            </div>
-            <h6 class="details-title">Detailed Info</h6>
+            <h6 class="details-title " th:text="${person.getFullName}">Full Name</h6>
             <ul class="parameter-list">
-                <li><span class="label">Full Name:</span> [[${person.getFullName}]]</li>
-                <li><span class="label">Unique ID:</span> [[${person.id}]]</li>
-                <li><span class="label">Current Age:</span> [[${person.getAge(T(java.time.LocalDate).now())}]]</li>
-                <li><span class="label">Date of Birth:</span> [[${person.dateOfBirth}]]</li>
+                <li th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Student)}" class="bio-row">
+                    <small class="text-muted d-block">Bio</small>
+                    <span th:text="${person.bio}">bio</span>
+                </li>
+
+                <li th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Student)}" class="bio-row">
+                    <small class="text-muted d-block">City</small>
+                    <span th:text="${person.city}">city</span>
+                </li>
+
+                <li th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Student)}" class="bio-row">
+                    <small class="text-muted d-block">Employer</small>
+                    <span th:text="${person.employer}">-</span>
+                </li>
+
+                <li>
+                    <span class="label">ID:</span>
+                    <span class="value" th:text="${person.id}">0</span>
+                </li>
+                <li>
+                    <span class="label">Age:</span>
+                    <span class="value" th:text="${person.getAge(T(java.time.LocalDate).now())}">0</span>
+                </li>
+
+                <li  th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher)}" class="cohort-section">
+                    <span class="label">Cohorts:</span>
+                    <div class="cohort-tags">
+                <span th:each="cohort : ${person.cohort}"
+                      th:text="${cohort.name}"
+                      class="badge bg-light text-dark border me-1">Cohort</span>
+                        <span th:if="${#lists.isEmpty(person.cohort)}" class="text-muted small">None</span>
+                    </div>
+                </li>
             </ul>
 
             <div class="card-actions">
@@ -28,32 +54,30 @@
             </div>
         </div>
 
-        <div class="cover">
+        <div class="cover bg-primary">
             <div class="cover-top-half">
-                <img src="https://ui-avatars.com/api/?name=User&background=333&color=fff" class="cover-img">
+                <img src="https://placehold.co/4000" class="cover-img">
             </div>
             <div class="cover-bottom-half">
                 <h5 th:text="${person.fullName}">Name</h5>
                 <p th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher)}"
                         class="status-badge">Teacher</p>
-                <p th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Student)}"
-                   class="status-badge">Student</p>
 
                 <div th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher)}" class="role-info">
                     <strong>Specialty:</strong>
                     <span th:text="${person.specialty ?: 'General'}">Specialty</span>
                 </div>
 
-                <div th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Student)}" class="role-info">
-                    <strong>Cohorts:</strong>
-                    <ul class="cohort-list">
-                        <li th:each="cohort : ${person.cohort}" th:text="${cohort.name}">Cohort Name</li>
-                    </ul>
-                    <strong>Employer:</strong>
-                    <span th:text="${person.employer}">Employer</span>
-                    <strong>City:</strong>
-                    <span th:text="${person.city}">City</span>
-                </div>
+                <li  th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Student)}"
+                     class="cohort-section parameter-list">
+                    <span class="label">Cohorts:</span>
+                    <div class="cohort-tags">
+                <span th:each="cohort : ${person.cohort}"
+                      th:text="${cohort.name}"
+                      class="badge bg-light text-dark border me-1">Cohort</span>
+                        <span th:if="${#lists.isEmpty(person.cohort)}" class="text-muted small">None</span>
+                    </div>
+                </li>
             </div>
         </div>
     </div>

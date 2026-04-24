@@ -56,11 +56,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .book:hover .cover {
-    -webkit-transition: all 0.5s;
     transition: all 0.5s;
-    -webkit-transform: rotatey(-80deg);
-    -ms-transform: rotatey(-80deg);
-    transform: rotatey(-80deg);
+    transform: rotatey(-85deg);
 }
 
 /* Container and Book Sizing */
@@ -73,26 +70,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* The revealed content */
 .card-content {
-    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     height: 100%;
     justify-content: center;
-}
-
-/* Image Styling */
-.profile-img-container {
-    margin-bottom: 15px;
-}
-
-.profile-img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #f0f0f0;
 }
 
 .person-name {
@@ -174,13 +157,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cover-bottom-half {
-    padding: 12px;
     text-align: center;
 }
 
 .status-badge {
     font-size: 0.7rem;
-    background: #27ae60;
+    background: #00b8ff;
     color: white;
     padding: 2px 8px;
     border-radius: 10px;
@@ -201,7 +183,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Inside Content Styling */
 .card-content {
-    padding: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
