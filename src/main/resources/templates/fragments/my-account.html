@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<form th:fragment="student-edit-form" th:action="@{/student/save}"
+      th:object="${person}" method="post" enctype="multipart/form-data">
+  <div th:replace="~{fragments/person-form :: person-form-fragment}"></div>
+  <div th:replace="~{fragments/person-form :: student-form-fragment}"></div>
+  <button class="btn btn-m btn-outline-dark" type="submit"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+</form>
+
+<form th:fragment="teacher-edit-form" sec:authorize="hasRole('TEACHER')" th:action="@{/teacher/save}"
+      th:object="${person}" method="post" enctype="multipart/form-data">
+  <div th:replace="~{fragments/person-form :: person-form-fragment}"></div>
+  <div th:replace="~{fragments/person-form :: teacher-form-fragment}"></div>
+  <button class="btn btn-m btn-outline-dark" type="submit"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+</form>
+
+</html>

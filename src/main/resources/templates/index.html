@@ -39,12 +39,8 @@
                 aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form sec:authorize="hasRole('STUDENT')" th:action="@{/student/save}"
-              th:object="${person}" method="post" enctype="multipart/form-data">
-          <div th:replace="~{fragments/person-form :: person-form-fragment}"></div>
-          <div th:replace="~{fragments/person-form :: student-form-fragment}"></div>
-          <button class="btn btn-m btn-outline-dark" type="submit"><i class="fa-solid fa-floppy-disk"></i> Save</button>
-        </form>
+        <form sec:authorize="hasRole('STUDENT')" th:replace="~{fragments/my-account :: student-edit-form}"></form>
+        <form sec:authorize="hasRole('TEACHER')" th:replace="~{fragments/my-account :: teacher-edit-form}"></form>
       </div>
       <!-- Footer (optioneel) -->
       <div class="modal-footer">

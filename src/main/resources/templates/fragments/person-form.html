@@ -53,3 +53,8 @@
     </div>
   </div>
 </div>
+
+<div th:fragment="teacher-form-fragment">
+  <label for="specialty" class="form-label">Specialty:</label>
+  <input type="text" id="specialty" th:field="*{specialty}" />
+</div>
