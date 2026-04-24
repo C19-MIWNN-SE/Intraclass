@@ -40,7 +40,7 @@
         <h1 class="main-title-dark">
             <i class="bi bi-mortarboard-fill" sec:authorize="hasRole('STUDENT')"></i>
             <i class="fa-solid fa-chalkboard-user" sec:authorize="hasRole('TEACHER')"></i>
-            Welcome, <span th:text="${#authentication.principal.person.fullName}"></span>!
+            Welcome, <span th:text="${person.fullName}"></span>!
         </h1>
         <nav th:replace="~{fragments/general :: navbar}"></nav>
         <div class="d-flex">

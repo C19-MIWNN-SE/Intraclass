@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * @author My Linh Lu
- * Handles custom settings for users (student or teacher)
+ * Adapts Person for authentication and authorization
  */
 public class CustomUserDetails implements UserDetails {
 
@@ -33,26 +33,6 @@ public class CustomUserDetails implements UserDetails {
     @Override
     public String getUsername() {
         return person.getUsername();
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
     }
 
     public Person getPerson() {
