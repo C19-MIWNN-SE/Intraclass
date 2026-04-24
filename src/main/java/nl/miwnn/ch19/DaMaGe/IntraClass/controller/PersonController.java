@@ -42,7 +42,9 @@ public class PersonController {
 
         List<Person> people = personService.getAllPeople();
 
-        model.addAttribute("pageTitle", "Person Overview");
+        model.addAttribute("pageTitle", request.getRequestURI().contains("/student/") ?
+                "Student Overview":
+                "Teacher Overview");
         model.addAttribute("people", people);
 
         model.addAttribute("activePage", request.getRequestURI().contains("/student/") ?
