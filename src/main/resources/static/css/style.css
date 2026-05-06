@@ -392,3 +392,15 @@ h1, h2, h3, h4, h5, h6 {
     gap: 15px;
     display: flex;
 }
+
+.form-label {
+    font-weight: bold;
+}
+
+.modal-header {
+    background-color: #0d6efd;
+}
+
+.modal-title {
+    color: #fff;
+}
