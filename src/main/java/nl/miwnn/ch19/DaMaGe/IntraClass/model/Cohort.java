@@ -39,6 +39,10 @@ public class Cohort {
     @ManyToMany
     private List<Teacher> teacher = new ArrayList<>();
 
+    public Cohort () {
+
+    }
+
     public Long getId() {
         return id;
     }
