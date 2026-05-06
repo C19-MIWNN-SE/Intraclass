@@ -47,11 +47,12 @@ public class CohortController {
         List<Cohort> cohorts = cohortRepository.findAll();
         log.debug("Cohort Overview called, {} Cohorts in database", cohorts.size());
         model.addAttribute("pageTitle", "Cohort Overview");
+        model.addAttribute("activePage", "cohorts");
         model.addAttribute("cohorts", cohorts);
         return "cohortOverview";
     }
 
-    @GetMapping("/cohort/{id}")
+    @GetMapping("/cohort/view/{id}")
     public String showCohort(@PathVariable Long id, Model model) {
         log.debug("Retrieving details for cohort {}", id);
         Optional<Cohort> cohort = cohortRepository.findById(id);

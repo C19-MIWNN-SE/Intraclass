@@ -13,18 +13,24 @@
 <body>
 <nav th:replace="~{fragments/general :: navbar}"></nav>
 <div class="container-fluid p-4">
-<h1 class="main-title" th:text="${pageTitle}"></h1>
-    <div th:each="person : ${people}"
-         th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Student)}"
-         class="col-md-4 mb-3">
+    <h3 class="mb-4 text-primary">
+        <i class="fa-solid fa-chalkboard-user"></i>
+        <span th:text="${pageTitle}">Overview</span>
+    </h3>
 
-        <div th:replace="~{fragments/person-card :: personCard(person=${person})}"></div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+        <div class="col" th:each="p : ${people}"
+             th:if="${p instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Student)}">
+
+            <div th:replace="~{fragments/person-card :: personCard(person=${p})}"></div>
+        </div>
+
+        <div class="col">
+            <div th:replace="~{fragments/person-card :: addPersonCard(type='student')}"></div>
+        </div>
     </div>
+</div>
 
-<div class="mb-3">
-    <a th:href="@{/student/add}">Add New Student</a>
-</div>
-</div>
 <div th:replace="~{fragments/general :: scripts}"></div>
 <footer th:replace="~{fragments/general :: footer}"></footer>
 </body>

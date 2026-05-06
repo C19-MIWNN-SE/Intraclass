@@ -1,16 +1,14 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.service;
 
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.transaction.Transactional;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Person;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Student;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.ImageRepository;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.PersonRepository;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author My Linh Lu
@@ -19,23 +17,20 @@ import org.springframework.stereotype.Service;
  * Not all those who wander are lost.
  */
 @Service
-public class PersonService implements UserDetailsService {
+public class PersonService {
     private final PersonRepository personRepository;
     private final ImageRepository imageRepository;
 
-    public PersonService(PersonRepository personRepository, ImageRepository imageRepository) {
+    public PersonService(PersonRepository personRepository,
+                         ImageRepository imageRepository) {
         this.personRepository = personRepository;
         this.imageRepository = imageRepository;
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return personRepository
-                .findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
+    public List<Person> getAllPeople() {
+        return personRepository.findAll();
     }
 
-    @Transactional
     public void deletePerson(Long id) {
         Person person = personRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + id));
@@ -54,5 +49,20 @@ public class PersonService implements UserDetailsService {
         }
 
         personRepository.delete(person);
+    }
+
+    public boolean personAllowedToDelete(Long id, String username) {
+        Person person = personRepository.findById(id).orElse(null);
+
+        if (person == null) {
+            return false;
+        }
+        if (person.getUsername().equals(username)) {
+            // Kamikaze prevention
+            return false;
+        }
+
+        deletePerson(id);
+        return true;
     }
 }

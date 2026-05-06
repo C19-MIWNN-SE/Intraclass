@@ -5,10 +5,7 @@
 
 <form th:action="@{/teacher/save}" th:object="${teacher}" method="post" enctype="multipart/form-data">
     <div th:replace="~{fragments/person-form :: person-form-fragment}"></div>
-    <div>
-        <label for="specialty" class="form-label">Specialty:</label>
-        <input type="text" id="specialty" th:field="*{specialty}" />
-    </div>
+    <div th:replace="~{fragments/person-form :: teacher-form-fragment}"></div>
     <button type="submit">Save</button>
     <a th:href="@{/teacher/overview}">Cancel</a>
 </form>

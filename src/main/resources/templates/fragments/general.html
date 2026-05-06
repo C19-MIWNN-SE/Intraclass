@@ -11,6 +11,7 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
@@ -40,30 +41,34 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" th:href="@{/personView}">
+                    <a class="nav-link" aria-current="page" th:classappend="${activePage == 'login'} ? 'active' : ''"
+                       th:href="@{/login}">
                         <i class="bi bi-file-earmark-person-fill"></i> My Account</a>
                 </li>
 
                 <div class="vr mx-2"></div>
 
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" th:href="@{/student/overview}" sec:authorize="hasRole('TEACHER')">
-                        Students
+                    <a class="nav-link" aria-current="page" th:classappend="${activePage == 'students'} ? 'active' : ''"
+                       th:href="@{/student/overview}" sec:authorize="hasRole('TEACHER')">
+                        <i class="bi bi-mortarboard-fill"></i> Students
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" th:href="@{/teacher/overview}" sec:authorize="hasRole('TEACHER')">
-                        Teachers
+                    <a class="nav-link" aria-current="page" th:classappend="${activePage == 'teachers'} ? 'active' : ''"
+                       th:href="@{/teacher/overview}" sec:authorize="hasRole('TEACHER')">
+                        <i class="fa-solid fa-chalkboard-user"></i> Teachers
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" th:href="@{/cohort/overview}" sec:authorize="hasRole('TEACHER')">
-                        Cohorts
+                    <a class="nav-link" aria-current="page" th:classappend="${activePage == 'cohorts'} ? 'active' : ''"
+                       th:href="@{/cohort/overview}" sec:authorize="hasRole('TEACHER')">
+                        <i class="fa-solid fa-building-columns"></i> Cohorts
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="#" sec:authorize="hasRole('STUDENT')">
-                        Enrolled Cohorts
+                        <i class="fa-solid fa-link"></i> Enrolled Cohorts
                     </a>
                 </li>
             </ul>
@@ -83,14 +88,6 @@
     </script>
 </div>
 
-<!-- Dummy content -->
-<div th:fragment="dummy">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-</div>
 <footer th:fragment="footer" class="bg-info text-light text-center py-3 mt-auto">
     <div class="container">
         <small>&copy; 2026 IntraClass™ Internal Face Book. All rights reserved.</small>

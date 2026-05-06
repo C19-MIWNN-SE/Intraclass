@@ -13,84 +13,30 @@
 <nav th:replace="~{fragments/general :: navbar}"></nav>
 
 <h2>Cohort:  <span th:text="${cohort.name}"></span></h2>
-<table style="width:33%">
-    <tr>
-        <td>ID:</td>
-        <td th:text="${cohort.id}"></td>
-    </tr>
-    <tr>
-        <td>Description:</td>
-        <td th:text="${cohort.description}"></td>
-    </tr>
-    <tr>
-        <td>Start Date:</td>
-        <td th:text="${cohort.startDate}"></td>
-    </tr>
-    <tr>
-        <td>End Date:</td>
-        <td th:text="${cohort.endDate}"></td>
-    </tr>
-</table>
 
-<h3>Teachers in this cohort:</h3>
-<table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>First Name</th>
-        <th>Affix</th>
-        <th>Last Name</th>
-        <th>Date of Birth</th>
-        <th>Specialty</th>
-        <th>E-Mail</th>
-        <th>Photo</th>
-    </tr>
-    </thead>
+<div class="container mt-4">
+    <div class="p-5 mb-4 bg-light rounded-3 shadow-sm border-start border-primary border-5">
+        <h1 class="display-5 fw-bold" th:text="'Cohort: ' + ${cohort.name}">Cohort Name</h1>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <p class="mb-1"><strong>ID:</strong> <span th:text="${cohort.id}">1</span></p>
+                <p class="mb-1"><strong>Description:</strong> <span th:text="${cohort.description}">Description</span></p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <p class="mb-1 text-muted"><strong>Start:</strong> <span th:text="${cohort.startDate}">1997-01-01</span></p>
+                <p class="mb-1 text-muted"><strong>End:</strong> <span th:text="${cohort.endDate}">1999-12-31</span></p>
+            </div>
+        </div>
+    </div>
 
-    <tbody>
-    <tr th:each="teacher: ${cohort.teacher}">
-        <td th:text="${teacher.id}">ID</td>
-        <td th:text="${teacher.firstName}">First Name</td>
-        <td th:text="${teacher.affix}">Affix</td>
-        <td th:text="${teacher.lastName}">Last Name</td>
-        <td th:text="${teacher.dateOfBirth}">Date of Birth</td>
-        <td th:text="${teacher.specialty}">Specialty</td>
-        <td th:text="${teacher.email}">E-Mail</td>
-        <td><img th:src="${teacher.imageSource}" alt="Photo" height="200px"/></td>
-    </tr>
-    </tbody>
-</table>
+    <h3 class="mb-4 text-primary"><i class="fa-solid fa-chalkboard-user"></i> Teachers in this cohort</h3>
+    <div th:replace="~{fragments/carousel :: peopleCarousel(people=${cohort.teacher}, id='teacherCarousel')}"></div>
 
-<h3>Students in this cohort:</h3>
-<table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>First Name</th>
-        <th>Affix</th>
-        <th>Last Name</th>
-        <th>Date of Birth</th>
-        <th>City</th>
-        <th>Employer</th>
-        <th>Biography</th>
-        <th>Photo</th>
-    </tr>
-    </thead>
+    <hr class="my-5">
 
-    <tbody>
-    <tr th:each="student: ${cohort.student}">
-        <td th:text="${student.id}">ID</td>
-        <td th:text="${student.firstName}">Name</td>
-        <td th:text="${student.affix}">Description</td>
-        <td th:text="${student.lastName}">Start Date</td>
-        <td th:text="${student.dateOfBirth}">End Date</td>
-        <td th:text="${student.city}">City</td>
-        <td th:text="${student.employer}">Employer</td>
-        <td th:text="${student.bio}">Biography</td>
-        <td><img th:src="${student.imageSource}" alt="Photo" height="200px"/></td>
-    </tr>
-    </tbody>
-</table>
+    <h3 class="mb-4 text-info"><i class="bi bi-mortarboard-fill"></i> Students in this cohort</h3>
+    <div th:replace="~{fragments/carousel :: peopleCarousel(people=${cohort.student}, id='studentCarousel')}"></div>
+</div>
 
 <div th:replace="~{fragments/general :: scripts}"></div>
 <footer th:replace="~{fragments/general :: footer}"></footer>

@@ -1,5 +1,6 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.controller;
 
+import jakarta.validation.Valid;
 import nl.miwnn.ch19.DaMaGe.IntraClass.dto.StudentDTO;
 import nl.miwnn.ch19.DaMaGe.IntraClass.mapper.StudentMapper;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Image;
@@ -7,9 +8,12 @@ import nl.miwnn.ch19.DaMaGe.IntraClass.model.Student;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.ImageRepository;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.PersonRepository;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.StudentRepository;
+import nl.miwnn.ch19.DaMaGe.IntraClass.service.PersonService;
+import nl.miwnn.ch19.DaMaGe.IntraClass.service.StudentService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -24,22 +28,10 @@ import java.io.IOException;
 @RequestMapping("/student")
 public class StudentController {
 
-    private final StudentMapper studentMapper;
-    private final PersonRepository personRepository;
-    private final ImageRepository imageRepository;
-    private final PasswordEncoder passwordEncoder;
-    private final StudentRepository studentRepository;
+    private final StudentService studentService;
 
-
-    public StudentController(StudentMapper studentMapper,
-                             PersonRepository personRepository,
-                             ImageRepository imageRepository,
-                             PasswordEncoder passwordEncoder, StudentRepository studentRepository) {
-        this.studentMapper = studentMapper;
-        this.personRepository = personRepository;
-        this.imageRepository = imageRepository;
-        this.passwordEncoder = passwordEncoder;
-        this.studentRepository = studentRepository;
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
     }
 
     @GetMapping("/add")
@@ -52,21 +44,12 @@ public class StudentController {
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute StudentDTO dto,
+    public String save(@Valid @ModelAttribute StudentDTO dto,
                        @RequestParam("imageFile") MultipartFile imageFile,
                        RedirectAttributes redirectAttributes) throws IOException {
 
-        if (!imageFile.isEmpty()) {
-            Image image = new Image();
-            image.setData(imageFile.getBytes());
-            image.setContentType(imageFile.getContentType());
-            imageRepository.save(image);
-            dto.setImage(image);
-        }
-        dto.setRole("STUDENT");
-        Student student = studentMapper.toStudent(dto, passwordEncoder);
+        studentService.saveStudent(dto, imageFile);
         redirectAttributes.addFlashAttribute("successMessage", "Change to students saved.");
-        personRepository.save(student);
 
         return "redirect:/student/overview";
     }
@@ -75,10 +58,9 @@ public class StudentController {
     public String showEditForm(@ModelAttribute StudentDTO dto,
                                @PathVariable Long id,
                                Model model) {
-        Student student = studentRepository.findById(id)
-               .orElseThrow(() -> new IllegalArgumentException("Invalid person Id:" + id));
-
+        Student student = studentService.getStudentById(id);
         model.addAttribute("student", student);
+
         return "student-form";
     }
 }

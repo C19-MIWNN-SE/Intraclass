@@ -1,15 +1,42 @@
 <div th:fragment="personCard(person)" class="person-card">
     <div class="book">
         <div class="card-content">
-            <div class="profile-img-container">
-                <img src="https://placehold.co/400" alt="Profile" class="profile-img">
-            </div>
+            <h6 class="details-title " th:text="${person.getFullName}">Full Name</h6>
+            <ul class="parameter-list">
+                <li th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Student)}" class="bio-row">
+                    <small class="text-muted d-block">Bio</small>
+                    <span th:text="${person.bio}">bio</span>
+                </li>
 
-            <h5 class="person-name" th:text="${person.fullName}">Name</h5>
-            <div class="person-details">
-                <p>ID: <span th:text="${person.id}">0</span></p>
-                <p>Age: <span th:text="${person.getAge(T(java.time.LocalDate).now())}">0</span></p>
-            </div>
+                <li th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Student)}" class="bio-row">
+                    <small class="text-muted d-block">City</small>
+                    <span th:text="${person.city}">city</span>
+                </li>
+
+                <li th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Student)}" class="bio-row">
+                    <small class="text-muted d-block">Employer</small>
+                    <span th:text="${person.employer}">-</span>
+                </li>
+
+                <li>
+                    <span class="label">ID:</span>
+                    <span class="value" th:text="${person.id}">0</span>
+                </li>
+                <li>
+                    <span class="label">Age:</span>
+                    <span class="value" th:text="${person.getAge(T(java.time.LocalDate).now())}">0</span>
+                </li>
+
+                <li  th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher)}" class="cohort-section">
+                    <span class="label">Cohorts:</span>
+                    <div class="cohort-tags">
+                <span th:each="cohort : ${person.cohort}"
+                      th:text="${cohort.name}"
+                      class="badge bg-light text-dark border me-1">Cohort</span>
+                        <span th:if="${#lists.isEmpty(person.cohort)}" class="text-muted small">None</span>
+                    </div>
+                </li>
+            </ul>
 
             <div class="card-actions">
                 <a th:href="@{/student/edit/{id}(id=${person.id})}"
@@ -27,8 +54,47 @@
             </div>
         </div>
 
-        <div class="cover">
-            <p>View Profile</p>
+        <div class="cover bg-primary">
+            <div class="cover-top-half">
+                <img src="https://placehold.co/4000" class="cover-img">
+            </div>
+            <div class="cover-bottom-half">
+                <h5 th:text="${person.fullName}">Name</h5>
+                <p th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher)}"
+                        class="status-badge">Teacher</p>
+
+                <div th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher)}" class="role-info">
+                    <strong>Specialty:</strong>
+                    <span th:text="${person.specialty ?: 'General'}">Specialty</span>
+                </div>
+
+                <li  th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Student)}"
+                     class="cohort-section parameter-list">
+                    <span class="label">Cohorts:</span>
+                    <div class="cohort-tags">
+                <span th:each="cohort : ${person.cohort}"
+                      th:text="${cohort.name}"
+                      class="badge bg-light text-dark border me-1">Cohort</span>
+                        <span th:if="${#lists.isEmpty(person.cohort)}" class="text-muted small">None</span>
+                    </div>
+                </li>
+            </div>
         </div>
     </div>
+</div>
+
+<div th:fragment="addPersonCard(type)" class="person-card add-new-card">
+    <a th:href="@{/{role}/add(role=${type})}" class="text-decoration-none">
+        <div class="book">
+            <div class="card-content d-flex flex-column align-items-center justify-content-center">
+                <i class="bi bi-plus-circle-dotted display-1 text-primary"></i>
+                <p class="mt-2 fw-bold text-uppercase" th:text="'Add ' + ${type}">You are not supposed to see this text</p>
+            </div>
+
+            <div class="cover d-flex flex-column align-items-center justify-content-center">
+                <i class="bi bi-plus-lg display-3 text-muted"></i>
+                <p class="h5 mt-3 text-muted">Add</p>
+            </div>
+        </div>
+    </a>
 </div>
