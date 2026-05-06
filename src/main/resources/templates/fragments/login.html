@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <!-- Left container with logo for login page -->
-<div th:fragment="leftSideLogo" class="w-50 bg-primary text-white d-flex justify-content-center align-items-center">
-    <div class="w-50 d-flex justify-content-center align-items-center">
+<div th:fragment="leftSideLogo" class="d-flex bg-primary text-white d-flex justify-content-center align-items-center"
+     style="width: 40%">
+    <div class="w-75 d-flex justify-content-center align-items-center">
         <img alt="IntraClass™ Logo" src="/img/IntraClass.png" class="img-fluid w-100">
     </div>
 </div>
 
 <!-- Right container for login page -->
-<div th:fragment="rightSide" class="w-50 d-flex flex-column justify-content-center align-items-center p-4 rounded">
+<div th:fragment="rightSide" class="d-flex flex-column justify-content-center align-items-center p-4 rounded"
+     style="width: 100%">
     <div sec:authorize="isAnonymous()" class="d-block">
         <h1 class="main-title-dark"><i class="bi bi-box-arrow-in-right"></i> Log In</h1>
     </div>
@@ -36,15 +38,15 @@
         </form>
     </div>
     <!-- Content for TEACHER or STUDENT-->
-    <div sec:authorize="isAuthenticated()" class="d-block bg-light p-2 mb-4">
-        <h1 class="main-title-dark">
+    <div sec:authorize="isAuthenticated()" class="d-block p-2 mb-4 my-account" style="width: 100%">
+        <h1 class="main-title-account">
             <i class="bi bi-mortarboard-fill" sec:authorize="hasRole('STUDENT')"></i>
             <i class="fa-solid fa-chalkboard-user" sec:authorize="hasRole('TEACHER')"></i>
             Welcome, <span th:text="${person.fullName}"></span>!
         </h1>
         <nav th:replace="~{fragments/general :: navbar}"></nav>
         <div class="d-flex">
-            <div  class="w-50 d-flex flex-column justify-content-center align-items-center p-4">
+            <div  class="w-25 d-flex flex-column justify-content-center align-items-center p-4">
                 <div class="profile-img-wrapper">
                 <img th:if="${person.image != null}"
                      th:src="@{/images/{id}(id=${person.image.id})}" class="rounded-circle">
