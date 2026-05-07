@@ -30,16 +30,11 @@ public class CohortController {
     private static final Logger log =
             LoggerFactory.getLogger(CohortController.class);
 
-//    private final List<Cohort> cohorts = new ArrayList<>();
     private final CohortRepository cohortRepository;
-    private final StudentRepository studentRepository;
-    private final TeacherRepository teacherRepository;
     public CohortController(CohortRepository cohortRepository,
                             TeacherRepository teacherRepository,
                             StudentRepository studentRepository) {
         this.cohortRepository = cohortRepository;
-        this.teacherRepository = teacherRepository;
-        this.studentRepository = studentRepository;
     }
 
     @GetMapping("/cohort/overview")
