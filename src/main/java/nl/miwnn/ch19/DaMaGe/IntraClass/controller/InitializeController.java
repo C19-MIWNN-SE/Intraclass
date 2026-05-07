@@ -44,6 +44,8 @@ public class InitializeController {
         this.passwordEncoder = passwordEncoder;
     }
 
+
+//    TODO @ transactional kan mogelijk weg.
     @Transactional
     @EventListener(ContextRefreshedEvent.class)
     public void seed() {
@@ -123,23 +125,6 @@ public class InitializeController {
                     }
                     counter++;
                 }
-
-
-
-//
-//            for (int i = 0; i < cohorts.size(); i++){
-//                for (int j = 0; j < cohorts.size(); j++){
-//                    Cohort cohort = cohorts.get(j);
-//                    cohort.getStudent().add(students.get(i * j));
-//                }
-//            }
-//            for (int i = 0; i < students.size(); i++) {
-//                Cohort cohort = cohorts.get(i);
-//                cohort.getStudent().add(students.get(i));
-//
-//                }
-
-
     }
 
     private void seedManyToManyTeachers (){
@@ -156,5 +141,17 @@ public class InitializeController {
             }
             counter++;
         }
+    }
+
+    private Image loadImage(String imageUrl) throws IOException {
+        String filename = "seedData" + imageUrl;
+        ClassPathResource resource = new ClassPathResource(filename);
+
+        String contentType = imageUrl.toLowerCase().endsWith(".png") ? "image/png" : "image/jpeg";
+
+        Image image = new Image();
+        image.setData(resource.getInputStream().readAllBytes());
+        image.setContentType(contentType);
+        return image;
     }
 }

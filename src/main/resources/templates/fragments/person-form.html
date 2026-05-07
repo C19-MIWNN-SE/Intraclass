@@ -1,68 +1,86 @@
 <div th:fragment="person-form-fragment">
-  <div>
+  <div class="card shadow-sm p-4 mb-4">
     <input type="hidden" th:field="*{id}" />
     <input type="hidden" th:field="*{role}" />
+
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Username</label>
+        <input class="form-control rounded-pill mb-2" th:field="*{username}">
+        <div class="text-danger small" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control rounded-pill mb-2" th:field="*{password}" placeholder="Leave empty to keep current password">
+        <div class="text-danger small" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">First Name</label>
+        <input class="form-control rounded-pill mb-2" th:field="*{firstName}">
+        <div class="text-danger small" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+      </div>
+
+      <div class="col-md-2">
+        <label class="form-label">Affix</label>
+        <input class="form-control rounded-pill mb-2" th:field="*{affix}">
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Last Name</label>
+        <input class="form-control rounded-pill mb-2" th:field="*{lastName}">
+        <div class="text-danger small" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control rounded-pill mb-2" th:field="*{email}" required />
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Date of Birth</label>
+        <input type="date" class="form-control rounded-pill mb-2" th:field="*{dateOfBirth}"/>
+        <div class="text-danger small" th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"></div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Profile Image</label>
+        <input type="file" class="form-control rounded-pill mb-2" name="imageFile" accept="image/*">
+      </div>
+    </div>
   </div>
-  <div>
-    <label class="form-label">Username:</label>
-    <input th:field="*{username}">
-    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></span>
-  </div>
-  <div>
-    <label class="form-label">Password:</label>
-    <input type="password" th:field="*{password}" placeholder="Leave empty to keep current password">
-    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></span>
-  </div>
-  <div>
-    <label class="form-label">First Name:</label>
-    <input th:field="*{firstName}">
-    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error"></span>
-  </div>
-<div>
-  <label class="form-label">Affix:</label>
-  <input th:field="*{affix}">
 </div>
-<div>
-  <label class="form-label">Last Name:</label>
-  <input th:field="*{lastName}">
-  <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error"></span>
-</div>
-<div>
-  <label class="form-label">Email:</label>
-  <input type="text" id="email" th:field="*{email}" required />
-</div>
-<div>
-  <label class="form-label">Date of Birth:</label>
-  <input type="date" id="dob" th:field="*{dateOfBirth}"/>
-  <span th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}" class="error"></span>
-</div>
-<div>
-  <label class="form-label">Profile Image:</label>
-  <input type="file" id="imageFile" name="imageFile" accept="image/*">
-</div>
-</div>
+
 
 <div th:fragment="student-form-fragment">
-  <div>
-    <div>
-      <label for="bio" class="form-label">Bio:</label>
-      <input type="text" id="bio" th:field="*{bio}" />
-      <span th:if="${#fields.hasErrors('bio')}" th:errors="*{bio}" class="error"></span>
-    </div>
-    <div>
-      <label for="employer" class="form-label">Employer:</label>
-      <input type="text" id="employer" th:field="*{employer}" />
-    </div>
-    <div>
-      <label for="city" class="form-label">City:</label>
-      <input type="text" id="city" th:field="*{city}" />
-      <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="error"></span>
+  <div class="card shadow-sm p-4 mb-4">
+    <div class="row g-3">
+      <div class="col-12">
+        <label class="form-label">Bio</label>
+        <input type="text" class="form-control rounded-pill mb-2" th:field="*{bio}" />
+        <div class="text-danger small" th:if="${#fields.hasErrors('bio')}" th:errors="*{bio}"></div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Employer</label>
+        <input type="text" class="form-control rounded-pill mb-2" th:field="*{employer}" />
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">City</label>
+        <input type="text" class="form-control rounded-pill mb-2" th:field="*{city}" />
+        <div class="text-danger small" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></div>
+      </div>
     </div>
   </div>
 </div>
 
+
 <div th:fragment="teacher-form-fragment">
-  <label for="specialty" class="form-label">Specialty:</label>
-  <input type="text" id="specialty" th:field="*{specialty}" />
-  <span th:if="${#fields.hasErrors('specialty')}" th:errors="*{specialty}" class="error"></span>
+  <div class="card shadow-sm p-4 mb-4">
+    <label class="form-label">Specialty</label>
+    <input type="text" class="form-control rounded-pill mb-2" th:field="*{specialty}" />
+    <div class="text-danger small" th:if="${#fields.hasErrors('specialty')}" th:errors="*{specialty}"></div>
+  </div>
 </div>

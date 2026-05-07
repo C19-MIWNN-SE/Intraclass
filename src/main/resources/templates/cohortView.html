@@ -12,11 +12,10 @@
 <body>
 <nav th:replace="~{fragments/general :: navbar}"></nav>
 
-<h2>Cohort:  <span th:text="${cohort.name}"></span></h2>
-
 <div class="container mt-4">
     <div class="p-5 mb-4 bg-light rounded-3 shadow-sm border-start border-primary border-5">
         <h1 class="display-5 fw-bold" th:text="'Cohort: ' + ${cohort.name}">Cohort Name</h1>
+
         <div class="row mt-3">
             <div class="col-md-6">
                 <p class="mb-1"><strong>ID:</strong> <span th:text="${cohort.id}">1</span></p>
@@ -26,6 +25,13 @@
                 <p class="mb-1 text-muted"><strong>Start:</strong> <span th:text="${cohort.startDate}">1997-01-01</span></p>
                 <p class="mb-1 text-muted"><strong>End:</strong> <span th:text="${cohort.endDate}">1999-12-31</span></p>
             </div>
+            <p> </p>
+            <button type="button"
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#addEditCohortModal"
+                    sec:authorize="hasRole('TEACHER')">Edit Cohort
+            </button>
         </div>
     </div>
 
