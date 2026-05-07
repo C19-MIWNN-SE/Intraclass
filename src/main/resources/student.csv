@@ -1,11 +1,61 @@
-username,password,role,affix,dateOfBirth,email,firstName,lastName,bio,city,employer,imageSource
-Student1,$2a$10$bOVTn2gpCgw6bnwuPPluD.4Y9cQqunsC7Mu3.izpdroimel.jjEUy,STUDENT,,1550-02-01,JohnNapier@email.com,John,Napier,I love my bones,Edinburgh,King of Scotland,"\\img\\John_Napier_of_Merchiston,_1616.jpg"
-Student2,$2a$10$V4IQJJev9GTRojBxWVs4quASFVAT1AEuJTQE//ZI1gcEqmZXcec2e,STUDENT,"",1574-03-05,WilliamO@email.com,William,Oughtred,I love slide rulers,Albury,University of Cambridge,"\\img\\Portret_van_William_Oughtred,_RP-P-1907-2855.jpg"
-Student3,$2a$10$bw.ADJyoVIovtZOyj/499eSV3gCUdQZccfurE7uF4cr2FvZ5ut062,STUDENT,,1623-06-19,BPascal@email.com,Blaise,Pascal,I love gambling,Clermont-Ferrand,,\\img\\Blaise_Pascal_Versailles.JPG
-Student4,$2a$10$cy3KsCL522Z97I8W0up5aeL23o5RjeXBlzZqF.E.6vHknrg/xsmgy,STUDENT,,1646-07-01,monad@email.com,Gottfried Wilhelm,Leibniz,The REAL inventor of Calculus,Leipzig,Universität Leipzig,\\img\\Christoph_Bernhard_Francke_-_Bildnis_des_Philosophen_Leibniz_(ca._1695).jpg
-Student5,$2a$10$YQCJylDXzw6460koe9gbFOj.L0u1WeQiLMdfR9CpMZFCxh21eTlUi,STUDENT,,1752-07-07,loom@email.com,Joseph Marie,Jacquard,I like weaving,Lyon,,\\img\\Joseph_Marie_Jacquard.jpg
-Student6,$2a$10$qXh6nOAJU0MjPZ56.QZTOeSPM9KB1PAeYClX1ijldeq7XlwQdccPS,STUDENT,,1815-11-02,trueorfalse@email.com,George,Boole,I like counting,London,University of Cambridge,\\img\\Portrait_of_George_Boole.png
-Student7,$2a$10$zBAsA8zW4uJ6SI5dW7QvPOgKBK4q7uDlqzq12/tnddjscMQioVvZG,STUDENT,,1860-02-29,Herman@InternationalBusinessMachines,Herman,Hollerith,I love making holes in cards,Buffalo,International Business Machines,\\img\\Hollerith.jpg
-Student8,$2a$10$rnsPBVlcD/5apos.Sa7KKOvZDQZ8oqSCHbO8mnAvA.ny8Q2y5oVwu,STUDENT,,1912-06-23,altu@email.com,Alan,Turing,I love codebreaking,Bletchley,Bletchley Park,\\img\\Alan_turing_header.jpg
-Student9,$2a$10$CMboZ2AOvZvkl4hK48T2tOEp66HrRwXtr5rh2K2XBhdjfPc2Mfs1y,STUDENT,,1910-06-22,Konrad@zuse.de,Konrad Ernst Otto,Zuse,Ich liebe rechnen,Berlin,,\\img\\Konrad_Zuse_(1992).jpg
-Student0,$2a$10$9KyIuhMYRTD/mhc.kIwzl.0/Wi0qGevRaPkfKtm8D6DfYtgnMK9ey,STUDENT,,1923-08-19,EFCodd@IBM.com,Edgar,Codd,I love database normalization,Fortuneswell,IBM,\\img\\Edgar_F_Codd.jpg
+username,password,role,affix,dateOfBirth,email,firstName,lastName,bio,city,employer
+Student1,$2a$10$bOVTn2gpCgw6bnwuPPluD.4Y9cQqunsC7Mu3.izpdroimel.jjEUy,STUDENT,,1550-02-01,JohnNapier@email.com,John,Napier,I love my bones,Edinburgh,King of Scotland
+Student2,$2a$10$V4IQJJev9GTRojBxWVs4quASFVAT1AEuJTQE//ZI1gcEqmZXcec2e,STUDENT,"",1574-03-05,WilliamO@email.com,William,Oughtred,I love slide rulers,Albury,University of Cambridge
+Student3,$2a$10$bw.ADJyoVIovtZOyj/499eSV3gCUdQZccfurE7uF4cr2FvZ5ut062,STUDENT,,1623-06-19,BPascal@email.com,Blaise,Pascal,I love gambling,Clermont-Ferrand,
+Student4,$2a$10$cy3KsCL522Z97I8W0up5aeL23o5RjeXBlzZqF.E.6vHknrg/xsmgy,STUDENT,,1646-07-01,monad@email.com,Gottfried Wilhelm,Leibniz,The REAL inventor of Calculus,Leipzig,Universität Leipzig
+Student5,$2a$10$YQCJylDXzw6460koe9gbFOj.L0u1WeQiLMdfR9CpMZFCxh21eTlUi,STUDENT,,1752-07-07,loom@email.com,Joseph Marie,Jacquard,I like weaving,Lyon,
+Student6,$2a$10$qXh6nOAJU0MjPZ56.QZTOeSPM9KB1PAeYClX1ijldeq7XlwQdccPS,STUDENT,,1815-11-02,trueorfalse@email.com,George,Boole,I like counting,London,University of Cambridge
+Student7,$2a$10$zBAsA8zW4uJ6SI5dW7QvPOgKBK4q7uDlqzq12/tnddjscMQioVvZG,STUDENT,,1860-02-29,Herman@InternationalBusinessMachines,Herman,Hollerith,I love making holes in cards,Buffalo,International Business Machines
+Student8,$2a$10$rnsPBVlcD/5apos.Sa7KKOvZDQZ8oqSCHbO8mnAvA.ny8Q2y5oVwu,STUDENT,,1912-06-23,altu@email.com,Alan,Turing,I love codebreaking,Bletchley,Bletchley Park
+Student9,$2a$10$CMboZ2AOvZvkl4hK48T2tOEp66HrRwXtr5rh2K2XBhdjfPc2Mfs1y,STUDENT,,1910-06-22,Konrad@zuse.de,Konrad Ernst Otto,Zuse,Ich liebe rechnen,Berlin,
+Student0,$2a$10$9KyIuhMYRTD/mhc.kIwzl.0/Wi0qGevRaPkfKtm8D6DfYtgnMK9ey,STUDENT,,1923-08-19,EFCodd@IBM.com,Edgar,Codd,I love database normalization,Fortuneswell,IBM
+Student001,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,van,1998-01-12,student001@email.nl,Bram,Dijk,Software engineering student,Groningen,TechNova BV
+Student002,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,de,1997-03-25,student002@email.nl,Lisa,Vries,Finance student,Amsterdam,DeltaFinance Group
+Student003,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1999-07-14,student003@email.nl,Tom,Bakker,Frontend development enthusiast,Utrecht,WebCore Solutions
+Student004,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1998-11-03,student004@email.nl,Emma,Visser,Data science student,Rotterdam,NeuroTech Labs
+Student005,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1996-05-21,student005@email.nl,Daan,Kok,Cloud computing learner,Eindhoven,CloudNation NL
+Student006,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1997-09-09,student006@email.nl,Sophie,Jansen,Project management student,The Hague,FinEdge BV
+Student007,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1998-12-30,student007@email.nl,Mark,Smit,Systems engineering student,Haarlem,SecureNet BV
+Student008,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1999-02-17,student008@email.nl,Noa,Mulder,Full stack development student,Leiden,CodeBase NL
+Student009,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,de,1997-06-08,student009@email.nl,Rick,Boer,Backend development student,Delft,TechFlow Systems
+Student010,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1998-10-27,student010@email.nl,Anneke,Meijer,UX design student,Zwolle,DesignWorks NL
+Student011,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1996-04-19,student011@email.nl,Jeroen,Bos,Database systems student,Arnhem,DataBridge NL
+Student012,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1999-08-05,student012@email.nl,Femke,Hendriks,QA engineering student,Maastricht,QualitySoft BV
+Student013,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1997-01-22,student013@email.nl,Bas,Jacobs,DevOps student,Amersfoort,CloudNation NL
+Student014,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1998-06-11,student014@email.nl,Lotte,Schouten,React developer student,Leeuwarden,WebCore Solutions
+Student015,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1996-09-02,student015@email.nl,Mark,Vos,IT consulting student,Almere,TechFlow Systems
+Student016,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1999-03-29,student016@email.nl,Iris,Kuipers,Data analysis student,Enschede,DataBridge NL
+Student017,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1997-11-18,student017@email.nl,Thijs,Prins,Software engineering student,Breda,FinEdge BV
+Student018,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,van,1998-07-07,student018@email.nl,Kim,Loon,HR tech student,Tilburg,PeopleSoft NL
+Student019,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1996-02-13,student019@email.nl,Wouter,Vermeer,Networking student,Apeldoorn,SecureNet BV
+Student020,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1999-05-25,student020@email.nl,Daan,Peters,Microservices learner,Nijmegen,CodeBase NL
+Student021,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1997-10-01,student021@email.nl,Sophie,Dijkstra,Agile product student,Hilversum,AgileWorks NL
+Student022,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1998-03-16,student022@email.nl,Kevin,Gerrits,SQL student,Den Bosch,DataBridge NL
+Student023,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,van den,1999-12-12,student023@email.nl,Nina,Berg,Marketing tech student,Alkmaar,MarketTech NL
+Student024,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1996-06-06,student024@email.nl,Stefan,Hofman,Security student,Zaandam,SecureNet BV
+Student025,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1997-08-28,student025@email.nl,Robin,Kramer,Mobile dev student,Gouda,FinEdge BV
+Student026,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,de,1998-01-30,student026@email.nl,Emma,Jong,AI research student,Leiden,NeuroTech Labs
+Student027,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,van,1996-04-04,student027@email.nl,Tim,Vliet,Software architecture student,Utrecht,TechNova BV
+Student028,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1999-09-19,student028@email.nl,Eva,Blom,Fintech student,Rotterdam,DeltaFinance Group
+Student029,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1997-02-07,student029@email.nl,Lars,Postma,Backend systems student,Groningen,TechFlow Systems
+Student030,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1998-05-14,student030@email.nl,Sanne,Hoekstra,UX research student,Amsterdam,DesignWorks NL
+Student031,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1996-11-22,student031@email.nl,Koen,Brouwer,DevOps student,Eindhoven,CloudNation NL
+Student032,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1999-03-03,student032@email.nl,Fleur,Smits,Frontend student,Utrecht,WebCore Solutions
+Student033,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1997-07-26,student033@email.nl,Milan,Willems,API developer student,Delft,TechFlow Systems
+Student034,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,de,1998-10-10,student034@email.nl,Romy,Graaf,Data science student,Leiden,DataBridge NL
+Student035,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1996-12-01,student035@email.nl,Niels,Koster,Infrastructure student,Arnhem,SecureNet BV
+Student036,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1999-06-15,student036@email.nl,Lynn,Verhoeven,QA student,Maastricht,QualitySoft BV
+Student037,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1997-01-09,student037@email.nl,Sven,Peeters,Cloud student,Amersfoort,CloudNation NL
+Student038,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,de,1998-08-23,student038@email.nl,Amber,Wit,Design student,Zwolle,DesignWorks NL
+Student039,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1996-03-18,student039@email.nl,Joost,Hendriks,Security student,Haarlem,SecureNet BV
+Student040,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,van,1999-11-05,student040@email.nl,Isa,Rijn,AI student,Rotterdam,NeuroTech Labs
+Student041,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1997-04-27,student041@email.nl,Dirk,Scholten,Backend student,Groningen,TechNova BV
+Student042,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1998-02-20,student042@email.nl,Elise,Bakker,Frontend student,Utrecht,WebCore Solutions
+Student043,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1996-09-14,student043@email.nl,Ruben,Meijer,Full stack student,Delft,CodeBase NL
+Student044,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1999-07-01,student044@email.nl,Maud,Visser,Data student,Leiden,DataBridge NL
+Student045,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,van,1997-05-30,student045@email.nl,Jelle,Dam,DevOps student,Eindhoven,CloudNation NL
+Student046,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,de,1998-12-24,student046@email.nl,Noor,Groot,UX student,Amsterdam,DesignWorks NL
+Student047,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1996-08-12,student047@email.nl,Arjan,Koning,IT student,Almere,TechFlow Systems
+Student048,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1999-10-08,student048@email.nl,Roos,Bosman,QA student,Maastricht,QualitySoft BV
+Student049,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1997-03-11,student049@email.nl,Bart,Verbeek,Backend student,Nijmegen,CodeBase NL
+Student050,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1998-06-27,student050@email.nl,Fenna,Smit,Software student,Groningen,TechNova BV
