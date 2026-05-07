@@ -8,12 +8,66 @@
 
 <body>
 <nav th:replace="~{fragments/general :: navbar}"></nav>
+
+<div class="container-fluid p-4">
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+        <h1 class="main-title text-primary m-0">Cohort Overview</h1>
+        <a th:href="@{/cohort/add}"
+           class="btn btn-primary shadow-sm"
+           data-bs-toggle="modal"
+           data-bs-target="#cohortAddEditModal"
+           sec:authorize="hasRole('TEACHER')">
+            <i class="bi bi-plus-lg me-1"></i> Add New Cohort
+        </a>
+    </div>
+
+    <div class=" cohort-banner-block shadow-sm">
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th></th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="cohort: ${cohorts}">
+        <td><i class="bi bi-folder-fill"></i></td>
+        <td th:text="${cohort.id}">ID</td>
+        <td th:text="${cohort.name}">Name</td>
+        <td th:text="${cohort.description}">Description</td>
+        <td th:text="${cohort.startDate}">Start Date</td>
+        <td th:text="${cohort.endDate}">End Date</td>
+        <td>
+            <div class="ms-auto btn-group-sm">
+                <a th:href="@{/cohort/view/{id}(id=${cohort.id})}" class="btn btn-sm btn-outline-primary px-3">View</a>
+                <a th:href="@{/cohort/edit/{id}(id=${cohort.id})}" class="btn btn-sm btn-outline-secondary px-3">Edit</a>
+            </div>
+        </td>
+        <td><span class="status-badge active m-0">Active</span></td>
+    </tr>
+    </tbody>
+</table>
+    </div>
+</div>
+
+<!-- TODO deze code tot en met regel 115 kan weg mits de nieuwe table bevalt. -->
 <div class="container-fluid p-4">
 
 <div class="container-fluid p-4">
     <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
         <h1 class="main-title text-primary m-0">Cohort Overview</h1>
-        <a th:href="@{/cohort/add}" class="btn btn-primary shadow-sm">
+        <a th:href="@{/cohort/add}"
+           class="btn btn-primary shadow-sm"
+           data-bs-toggle="modal"
+           data-bs-target="#cohortAddEditModal"
+           sec:authorize="hasRole('TEACHER')">
             <i class="bi bi-plus-lg me-1"></i> Add New Cohort
         </a>
     </div>
@@ -56,18 +110,15 @@
                 </div>
             </div>
         </div>
-        <button type="button"
-                class="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#addEditCohortModal"
-                sec:authorize="hasRole('TEACHER')">Add New Cohort
-        </button>
+
+    </div>
+
+
+</div>
+    <div class="col text-center">
+        <a href="#top" class="btn btn-primary shadow-sm">Go to Top</a>
     </div>
 </div>
-</div>
-
-
-
 
 <div th:replace="~{fragments/general :: scripts}"></div>
 <footer th:replace="~{fragments/general :: footer}"></footer>
