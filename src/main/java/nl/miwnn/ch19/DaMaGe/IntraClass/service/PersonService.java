@@ -35,17 +35,8 @@ public class PersonService {
         Person person = personRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + id));
 
-
         if (person.getImage() != null) {
             imageRepository.delete(person.getImage());
-        }
-        if (person instanceof Student student) {
-            student.getCohort().forEach(cohort -> cohort.getStudent().remove(student));
-            student.getCohort().clear();
-
-        } else if (person instanceof Teacher teacher) {
-            teacher.getCohort().forEach(cohort -> cohort.getTeacher().remove(teacher));
-            teacher.getCohort().clear();
         }
 
         personRepository.delete(person);

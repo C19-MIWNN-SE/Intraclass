@@ -23,6 +23,8 @@ public class Cohort {
 
     private String name;
 
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     @CsvDate(value = "yyyy-MM-dd")
@@ -33,11 +35,12 @@ public class Cohort {
 
     @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToMany
-    private List<Student>  student = new ArrayList<>();
-
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @ManyToMany
-    private List<Teacher> teacher = new ArrayList<>();
+    @JoinTable(
+            name = "cohort_person",
+            joinColumns = @JoinColumn(name = "cohort_id"),
+            inverseJoinColumns = @JoinColumn(name = "person_id")
+    )
+    private List<Person> participant = new ArrayList<>();
 
     public Cohort () {
 
@@ -83,19 +86,10 @@ public class Cohort {
         this.endDate = endDate;
     }
 
-    public List<Student> getStudent() {
-        return student;
+    public List<Person> getParticipant() {
+        return participant;
     }
-
-    public void setStudent(List<Student> student) {
-        this.student = student;
-    }
-
-    public List<Teacher> getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(List<Teacher> teacher) {
-        this.teacher = teacher;
+    public void setParticipant(List<Person> participants) {
+        this.participant = participants;
     }
 }

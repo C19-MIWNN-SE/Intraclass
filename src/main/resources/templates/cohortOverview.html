@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-
-<!--Author: G. Neuteboom-->
-
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="~{fragments/general :: baseheader(~{:: title})}">
@@ -50,8 +47,10 @@
                             <strong>End:</strong> [[${cohort.endDate}]]
                         </div>
                         <div class="ms-auto btn-group-sm">
-                            <a th:href="@{/cohort/view/{id}(id=${cohort.id})}" class="btn btn-sm btn-outline-primary px-3">View</a>
-                            <a th:href="@{/cohort/edit/{id}(id=${cohort.id})}" class="btn btn-sm btn-outline-secondary px-3">Edit</a>
+                            <a th:href="@{/cohort/view/{id}(id=${cohort.id})}"
+                               class="btn btn-sm btn-outline-primary px-3">View</a>
+                            <a th:href="@{/cohort/edit/{id}(id=${cohort.id})}"
+                               class="btn btn-sm btn-outline-secondary px-3">Edit</a>
                         </div>
                     </div>
                 </div>
