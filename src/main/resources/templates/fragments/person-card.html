@@ -1,6 +1,7 @@
 <div th:fragment="personCard(person)" class="person-card">
     <div class="book">
         <div class="card-content">
+
             <h6 class="details-title " th:text="${person.getFullName}">Full Name</h6>
             <ul class="parameter-list">
                 <li th:if="${person instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Student)}" class="bio-row">

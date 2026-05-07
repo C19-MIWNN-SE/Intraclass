@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -29,18 +30,20 @@ public class InitializeController {
     private final PersonRepository personRepository;
     private final StudentRepository studentRepository;
     private final TeacherRepository teacherRepository;
+    private final ImageRepository imageRepository;
     private final PasswordEncoder passwordEncoder;
 
     public InitializeController(
             CohortRepository cohortRepository,
             PersonRepository personRepository,
             StudentRepository studentRepository,
-            TeacherRepository teacherRepository,
+            TeacherRepository teacherRepository, ImageRepository imageRepository,
             PasswordEncoder passwordEncoder) {
         this.cohortRepository = cohortRepository;
         this.personRepository = personRepository;
         this.studentRepository = studentRepository;
         this.teacherRepository = teacherRepository;
+        this.imageRepository = imageRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -55,6 +58,7 @@ public class InitializeController {
     private void seedAll() {
         seedCohort();
         seedPeople();
+        seedImagesFromCsv();
         seedManyToManyStudents();
         seedManyToManyTeachers();
     }
@@ -144,14 +148,58 @@ public class InitializeController {
     }
 
     private Image loadImage(String imageUrl) throws IOException {
-        String filename = "seedData" + imageUrl;
+        String filename = "static/img/" + imageUrl;
         ClassPathResource resource = new ClassPathResource(filename);
 
-        String contentType = imageUrl.toLowerCase().endsWith(".png") ? "image/png" : "image/jpeg";
+        //triple embedded ternary operator. Sorry for adding this - Danylo
+        String contentType = imageUrl.toLowerCase().endsWith(".png") ? "image/png" :
+                        imageUrl.toLowerCase().endsWith(".gif") ? "image/gif" :
+                        imageUrl.toLowerCase().endsWith(".jpg")? "image/jpg" : "image/jpeg";
 
         Image image = new Image();
         image.setData(resource.getInputStream().readAllBytes());
         image.setContentType(contentType);
         return image;
+    }
+
+    public void seedImagesFromCsv() {
+        String csvFile = "image-mapping.csv";
+
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(
+                new ClassPathResource(csvFile).getInputStream()))) {
+
+            String line;
+            boolean isHeader = true;
+
+            while ((line = reader.readLine()) != null) {
+                if (isHeader) {
+                    isHeader = false;
+                    continue;
+                }
+
+                String[] data = line.split(",");
+                if (data.length < 2) continue;
+
+                Long id = Long.parseLong(data[0].trim());
+                String fileName = data[1].trim();
+
+                personRepository.findById(id).ifPresent(person -> {
+                    assignImageToPerson(person, fileName);
+                    personRepository.save(person);
+                });
+            }
+        } catch (IOException e) {
+            System.err.println("Could not load image mapping CSV: " + e.getMessage());
+        }
+    }
+
+    //I am ungodly frustrated while writing this - Danylo
+    private void assignImageToPerson(Person person, String imagePath) {
+        try {
+            Image image = loadImage(imagePath);
+            ((Person) person).setImage(image);//for future cleanup, Person cast is not rebundant
+        } catch (IOException e) {
+            System.err.println("Skipping image: " + imagePath + " (File not found)");
+        }
     }
 }

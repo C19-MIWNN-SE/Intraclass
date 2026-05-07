@@ -11,11 +11,13 @@
 <!-- Right container for login page -->
 <div th:fragment="rightSide" class="d-flex flex-column justify-content-center align-items-center p-4 rounded"
      style="width: 100%">
-    <div sec:authorize="isAnonymous()" class="d-block">
+    <div sec:authorize="isAnonymous()" class="d-block p-2 mb-4 my-account">
+        <div class="d-flex flex-column justify-content-center align-items-center p-4 rounded" style="width: 100%">
+    <div class="d-block">
         <h1 class="main-title-dark"><i class="bi bi-box-arrow-in-right"></i> Log In</h1>
     </div>
     <!-- Content for visitor without login -->
-    <div sec:authorize="isAnonymous()" class="d-block p-2 mb-4">
+    <div sec:authorize="isAnonymous()" class="d-block p-2 mb-4" style="width: 20%">
         <form class="text-center" th:action="@{/login}" method="post">
 
             <div th:if="${param.error}" class="form-control is-invalid">
@@ -37,6 +39,8 @@
             </div>
         </form>
     </div>
+    </div>
+    </div>
     <!-- Content for TEACHER or STUDENT-->
     <div sec:authorize="isAuthenticated()" class="d-block p-2 mb-4 my-account" style="width: 100%">
         <h1 class="main-title-account">
@@ -52,7 +56,7 @@
                      th:src="@{/images/{id}(id=${person.image.id})}" class="rounded-circle">
                 </div>
             </div>
-            <div  class="w-50 d-flex flex-column justify-content-top align-items-left p-4">
+            <div class="w-50 d-flex flex-column justify-content-top align-items-left p-4">
                 <h2>Personal Details</h2>
                 <p>
                     <b>Full Name:</b> <span th:text="${person.getFullName}"></span><br>

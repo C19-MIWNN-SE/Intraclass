@@ -408,4 +408,7 @@ h1, h2, h3, h4, h5, h6 {
 .my-account {
     background-color: #effafd;
     border-radius: 10px;
+    height: 80%;
+    width: 100%;
+    align-content: center;
 }

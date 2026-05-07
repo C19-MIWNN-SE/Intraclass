@@ -55,6 +55,7 @@
 
 <div th:fragment="student-form-fragment">
   <div class="card shadow-sm p-4 mb-4">
+    <h4>Student specific information</h4>
     <div class="row g-3">
       <div class="col-12">
         <label class="form-label">Bio</label>
@@ -79,6 +80,7 @@
 
 <div th:fragment="teacher-form-fragment">
   <div class="card shadow-sm p-4 mb-4">
+    <h4>Teacher specific information</h4>
     <label class="form-label">Specialty</label>
     <input type="text" class="form-control rounded-pill mb-2" th:field="*{specialty}" />
     <div class="text-danger small" th:if="${#fields.hasErrors('specialty')}" th:errors="*{specialty}"></div>

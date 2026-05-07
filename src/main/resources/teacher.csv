@@ -1,6 +1,16 @@
-username,password,role,affix,dateOfBirth,email,firstName,lastName,specialty,imageSource
-Teacher1,$2a$10$lqKkZdFUe/u3NNpMsiS.Z.Yi3oCGAC7wdm.xT/lLysIkEqSwlNjma,TEACHER,,1969-12-28,Linus@makeitwork.nl,Linus,Torvalds,Linux,Linus torvalds c3_2018_(263682303)_(cropped).jpeg
-Teacher2,$2a$10$IJpfbBfvyfuPzsrqigIGXO4l4xMLkJ1Set3hRdnVzshcNWTm24K/.,TEACHER,van,1956-01-31,Guido@python.nl,Guido,Rossem,Python,Guido_van_Rossum_in_PyConUS24_(cropped).jpg
-Teacher3,$2a$10$9H63Eey5aTV.WjuYaSsRVuDlmYZolZ47v4IXvZHyZ/KlxYvWL.vjS,TEACHER,,1955-05-19,James@java.com,James,Gosling,Java,James_Gosling_2008.jpg
-Teacher4,$2a$10$bLEkjx8dLFXm8yMzhuJiwOkdJzKnViBzfjShxsTSU6vLyeYyeblnm,TEACHER,,1815-12-10,Ada@email.com,Ada,Lovelace,Poetical Science,Ada_Lovelace_daguerreotype_by_Antoine_Claudet_1843_-_cropped.png
-Teacher5,$2a$10$YwERXDZWXrFrvgAlAEsSouqdGetFdk.BG7o6CZW0gvAL5QsSGtDhi,TEACHER,von,1903-12-28,John@projectY.com,John,Neumann,Operating Systems,JohnvonNeumann-LosAlamos.gif
+username,password,role,affix,dateOfBirth,email,firstName,lastName,specialty
+Teacher1,$2a$10$lqKkZdFUe/u3NNpMsiS.Z.Yi3oCGAC7wdm.xT/lLysIkEqSwlNjma,TEACHER,,1969-12-28,Linus@makeitwork.nl,Linus,Torvalds,Linux
+Teacher2,$2a$10$IJpfbBfvyfuPzsrqigIGXO4l4xMLkJ1Set3hRdnVzshcNWTm24K/.,TEACHER,van,1956-01-31,Guido@python.nl,Guido,Rossem,Python
+Teacher3,$2a$10$9H63Eey5aTV.WjuYaSsRVuDlmYZolZ47v4IXvZHyZ/KlxYvWL.vjS,TEACHER,,1955-05-19,James@java.com,James,Gosling,Java
+Teacher4,$2a$10$bLEkjx8dLFXm8yMzhuJiwOkdJzKnViBzfjShxsTSU6vLyeYyeblnm,TEACHER,,1815-12-10,Ada@email.com,Ada,Lovelace,Poetical Science
+Teacher5,$2a$10$YwERXDZWXrFrvgAlAEsSouqdGetFdk.BG7o6CZW0gvAL5QsSGtDhi,TEACHER,von,1903-12-28,John@projectY.com,John,Neumann,Operating Systems
+Teacher001,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,TEACHER,van,1980-02-14,teacher001@email.nl,Jan,Dijk,Mathematics
+Teacher002,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,TEACHER,de,1978-06-09,teacher002@email.nl,Petra,Vries,Finance
+Teacher003,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,TEACHER,,1985-11-21,teacher003@email.nl,Kees,Bakker,Computer Science
+Teacher004,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,TEACHER,,1982-03-17,teacher004@email.nl,Marieke,Visser,Data Science
+Teacher005,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,TEACHER,,1979-09-30,teacher005@email.nl,Rob,Kok,Cloud Computing
+Teacher006,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,TEACHER,,1983-12-05,teacher006@email.nl,Anouk,Jansen,Project Management
+Teacher007,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,TEACHER,,1977-07-12,teacher007@email.nl,Erik,Smit,Systems Engineering
+Teacher008,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,TEACHER,,1986-01-28,teacher008@email.nl,Sanne,Mulder,Software Development
+Teacher009,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,TEACHER,de,1981-05-19,teacher009@email.nl,Paul,Boer,Backend Development
+Teacher010,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,TEACHER,van,1976-10-03,teacher010@email.nl,Ingrid,Meer,UX Design
