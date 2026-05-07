@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -52,6 +53,9 @@ public abstract class Person {
     private LocalDate dateOfBirth;
 
     private String email;
+
+    @ManyToMany(mappedBy = "participant")
+    private List<Cohort> cohort = new ArrayList<>();
 
     public Person() {
     }
@@ -184,5 +188,13 @@ public abstract class Person {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    public List<Cohort> getCohort() {
+        return cohort;
+    }
+
+    public void setCohort(List<Cohort> cohort) {
+        this.cohort = cohort;
     }
 }
