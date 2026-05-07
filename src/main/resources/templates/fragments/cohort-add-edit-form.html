@@ -1,0 +1,50 @@
+<div th:fragment="cohort-add-edit-fragment">
+    <form th:action="@{/}" method="post" th:object="${Cohort}">
+    <div class="card shadow-sm p-4 mb-4">
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Cohort Name</label>
+                <input class="form-control rounded-pill mb-2" th:field="*{cohortName}">
+                <div class="text-danger small" th:if="${#fields.hasErrors('username')}" th:errors="*{cohortName}"></div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Description</label>
+                <input class="form-control rounded-pill mb-2" th:field="*{cohortDescription}">
+                <div class="text-danger small" th:if="${#fields.hasErrors('cohortDescription')}"
+                     th:errors="*{cohortDescription}"></div>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Start Date</label>
+                <input type="date" class="form-control rounded-pill mb-2" th:field="*{startDate}">
+                <div class="text-danger small" th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">End Date</label>
+                <input type="date" class="form-control rounded-pill mb-2" th:field="*{endDate}">
+                <div class="text-danger small" th:if="${#fields.hasErrors('lastName')}" th:errors="*{endDate}"></div>
+            </div>
+
+<!--            <div class="col-md-6">-->
+<!--                <label class="form-label">Email</label>-->
+<!--                <input type="email" class="form-control rounded-pill mb-2" th:field="*{email}" required />-->
+<!--            </div>-->
+
+<!--            <div class="col-md-6">-->
+<!--                <label class="form-label">Date of Birth</label>-->
+<!--                <input type="date" class="form-control rounded-pill mb-2" th:field="*{dateOfBirth}"/>-->
+<!--                <div class="text-danger small" th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"></div>-->
+<!--            </div>-->
+
+<!--            <div class="col-md-6">-->
+<!--                <label class="form-label">Profile Image</label>-->
+<!--                <input type="file" class="form-control rounded-pill mb-2" name="imageFile" accept="image/*">-->
+<!--            </div>-->
+        </div>
+    </div>
+    </form>
+</div>

@@ -8,7 +8,7 @@
             <div class="modal-header">
                 <h5 class="modal-title"
                     id="cohortAddEditModalLabel">
-                    Auteur toevoegen
+                    Add or Edit a Cohort
                 </h5>
                 <button type="button" class="btn-close"
                         data-bs-dismiss="modal"
@@ -16,10 +16,7 @@
             </div>
             <!-- Body: hier komt het formulier-->
             <div class="modal-body">
-                <!-- formulierhier-->
-
-<!--TODO formulier met daarin name (van cohort), zoekfunctie voor studenten, toevoegknop naast zoekresultatenlijst-->
-
+<div th:insert="fragments/cohort-add-edit-form.html :: cohort-add-edit-fragment"></div>
             </div>
             <!-- Footer (optioneel)-->
             <div class="modal-footer">
