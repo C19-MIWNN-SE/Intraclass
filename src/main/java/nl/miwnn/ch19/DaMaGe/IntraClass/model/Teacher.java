@@ -21,10 +21,6 @@ public class Teacher extends Person {
 
     private String imageSource;
 
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @ManyToMany(mappedBy = "teacher", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Cohort> cohort = new ArrayList<>();
-
     public String getSpecialty() {
         return specialty;
     }
@@ -41,11 +37,4 @@ public class Teacher extends Person {
         this.imageSource = imageSource;
     }
 
-    public List<Cohort> getCohort() {
-        return cohort;
-    }
-
-    public void setCohort(List<Cohort> cohort) {
-        this.cohort = cohort;
-    }
 }

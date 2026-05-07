@@ -1,4 +1,5 @@
 description,endDate,name,startDate
-test,1999-12-28,Y2K preparation,1997-07-12
-nogEenTest,0001-01-01,Y2K failed,1997-07-13
-nogEentjeDan,2000-01-01,Y2K Success!,1997-07-11
+"A cohort focused on designing, building, and maintaining scalable software systems. Students learn object-oriented programming, software architecture, testing practices, and full-stack development using modern frameworks and tools. The emphasis is on writing clean, maintainable code and working in real-world development teams.",1999-12-28,Software Engineering,1997-07-12
+"A specialized cohort focused on protecting systems, networks, and data from digital threats. Students explore ethical hacking, cryptography, network security, vulnerability analysis, and incident response. The goal is to develop practical skills in identifying and preventing security risks in modern IT environments.",0001-01-01,Cybersecurity,1997-07-13
+"A cohort centered on cloud platforms and distributed systems. Students learn how to deploy, manage, and scale applications using services like AWS, Azure, or Google Cloud. Topics include virtualization, storage solutions, networking, and cloud-native architecture design.",2000-01-01,Cloud computing,1997-07-11
+"A practical cohort focused on bridging development and operations. Students learn CI/CD pipelines, containerization (Docker), orchestration (Kubernetes), infrastructure as code, and automation tools. The goal is to improve software delivery speed, reliability, and scalability through modern DevOps practices.",2026-07-01,DevOps,2025-12-01

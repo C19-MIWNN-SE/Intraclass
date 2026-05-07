@@ -6,6 +6,7 @@ import nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.CohortRepository;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.StudentRepository;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.TeacherRepository;
+import nl.miwnn.ch19.DaMaGe.IntraClass.service.CohortService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -31,9 +32,11 @@ public class CohortController {
             LoggerFactory.getLogger(CohortController.class);
 
     private final CohortRepository cohortRepository;
+    private final CohortService cohortService;
+
     public CohortController(CohortRepository cohortRepository,
-                            TeacherRepository teacherRepository,
-                            StudentRepository studentRepository) {
+                            CohortService cohortService) {
+        this.cohortService = cohortService;
         this.cohortRepository = cohortRepository;
     }
 
@@ -50,16 +53,22 @@ public class CohortController {
     @GetMapping("/cohort/view/{id}")
     public String showCohort(@PathVariable Long id, Model model) {
         log.debug("Retrieving details for cohort {}", id);
-        Optional<Cohort> cohort = cohortRepository.findById(id);
 
-        if (cohort.isEmpty()) {
+        Cohort cohort = cohortService.getCohort(id);
+
+        if (cohort == null) {
             log.warn("Cohort not found {}", id);
             return "redirect:/cohort/overview";
         }
 
-        String pageTitle = String.format("Cohort: %s", cohort.get().getName());
-        model.addAttribute("pageTitle", pageTitle);
-        model.addAttribute("cohort", cohort.get());
+        List<Student> students = cohortService.getStudents(id);
+        List<Teacher> teachers = cohortService.getTeachers(id);
+
+        model.addAttribute("pageTitle", "Cohort: " + cohort.getName());
+        model.addAttribute("cohort", cohort);
+        model.addAttribute("students", students);
+        model.addAttribute("teachers", teachers);
+
         return "cohortView";
     }
 

@@ -59,8 +59,7 @@ public class InitializeController {
         seedCohort();
         seedPeople();
         seedImagesFromCsv();
-        seedManyToManyStudents();
-        seedManyToManyTeachers();
+        seedRelationships();
     }
 
     private void seedPeople() {
@@ -82,6 +81,31 @@ public class InitializeController {
                 Cohort.class,
                 cohortRepository
         );
+    }
+
+    private void seedRelationships() {
+        List<Cohort> cohorts = cohortRepository.findAll();
+
+        List<Student> students = studentRepository.findAll();
+        List<Teacher> teachers = teacherRepository.findAll();
+
+        if (cohorts.isEmpty() || students.isEmpty() || teachers.isEmpty()) {
+            throw new IllegalStateException("Missing seed data for cohort relationships");
+        }
+
+        Cohort cohortA = cohorts.get(0);
+        Cohort cohortB = cohorts.get(1);
+
+        cohortA.getParticipant().add(students.get(0));
+        cohortA.getParticipant().add(students.get(1));
+        cohortA.getParticipant().add(teachers.get(0));
+
+        cohortB.getParticipant().add(students.get(0));
+        cohortB.getParticipant().add(students.get(2));
+        cohortB.getParticipant().add(students.get(4));
+        cohortB.getParticipant().add(students.get(5));
+        cohortB.getParticipant().add(teachers.get(0));
+
     }
 
     //DRY function for data entry. Ask Danylo if it needs to be modified
@@ -113,38 +137,6 @@ public class InitializeController {
             retval = listsize;
         }
         return retval;
-    }
-
-    private void seedManyToManyStudents(){
-            List<Cohort> cohorts = cohortRepository.findAll();
-            List<Student> students = studentRepository.findAll();
-
-            int subListSize = (int) Math.ceil((double) students.size() / cohorts.size());
-            int counter = 0;
-                for(Cohort cohort : cohorts){
-
-                    for(Student student : students.subList(GetStart(counter, subListSize),
-                            GetEnd(counter, students.size(), subListSize))){
-                        cohort.getStudent().add(student);
-                    }
-                    counter++;
-                }
-    }
-
-    private void seedManyToManyTeachers (){
-        List<Cohort> cohorts = cohortRepository.findAll();
-        List<Teacher> teachers = teacherRepository.findAll();
-
-        int subListSize = (int) Math.ceil((double) teachers.size() / cohorts.size());
-        int counter = 0;
-        for(Cohort cohort : cohorts){
-
-            for(Teacher teacher : teachers.subList(GetStart(counter, subListSize),
-                    GetEnd(counter, teachers.size(), subListSize))){
-                cohort.getTeacher().add(teacher);
-            }
-            counter++;
-        }
     }
 
     private Image loadImage(String imageUrl) throws IOException {
