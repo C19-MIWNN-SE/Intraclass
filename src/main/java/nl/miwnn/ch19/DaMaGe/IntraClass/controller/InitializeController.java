@@ -139,38 +139,6 @@ public class InitializeController {
         return retval;
     }
 
-    private void seedManyToManyStudents(){
-            List<Cohort> cohorts = cohortRepository.findAll();
-            List<Student> students = studentRepository.findAll();
-
-            int subListSize = (int) Math.ceil((double) students.size() / cohorts.size());
-            int counter = 0;
-                for(Cohort cohort : cohorts){
-
-                    for(Student student : students.subList(GetStart(counter, subListSize),
-                            GetEnd(counter, students.size(), subListSize))){
-                        cohort.getStudent().add(student);
-                    }
-                    counter++;
-                }
-    }
-
-    private void seedManyToManyTeachers (){
-        List<Cohort> cohorts = cohortRepository.findAll();
-        List<Teacher> teachers = teacherRepository.findAll();
-
-        int subListSize = (int) Math.ceil((double) teachers.size() / cohorts.size());
-        int counter = 0;
-        for(Cohort cohort : cohorts){
-
-            for(Teacher teacher : teachers.subList(GetStart(counter, subListSize),
-                    GetEnd(counter, teachers.size(), subListSize))){
-                cohort.getTeacher().add(teacher);
-            }
-            counter++;
-        }
-    }
-
     private Image loadImage(String imageUrl) throws IOException {
         String filename = "static/img/" + imageUrl;
         ClassPathResource resource = new ClassPathResource(filename);
