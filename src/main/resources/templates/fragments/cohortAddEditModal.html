@@ -1,31 +1,28 @@
-<div class="modalfade" id="cohortAddEditModal"
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<div class="modal fade" id="editCohortModal"
      tabindex="-1"
-     aria-labelledby="cohortAddEditModal"
+     aria-labelledby="editCohortModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <!-- Header-->
+            <!-- Header -->
             <div class="modal-header">
                 <h5 class="modal-title"
-                    id="cohortAddEditModalLabel">
-                    Add or Edit a Cohort
+                    id="editCohortModalLabel">
+                    Add or Edit Cohort
                 </h5>
                 <button type="button" class="btn-close"
                         data-bs-dismiss="modal"
-                        aria-label="Sluiten"></button>
+                        aria-label="Close"></button>
             </div>
-            <!-- Body: hier komt het formulier-->
             <div class="modal-body">
-<div th:insert="fragments/cohort-add-edit-form.html :: cohort-add-edit-fragment"></div>
-            </div>
-            <!-- Footer (optioneel)-->
-            <div class="modal-footer">
-                <button type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal">
-                    Annuleren
-                </button>
+                <form sec:authorize="hasRole('TEACHER')"
+                      th:replace="~{fragments/cohort-add-edit-form :: cohort-add-edit-form}"></form>
             </div>
         </div>
     </div>
 </div>
+
+</html>

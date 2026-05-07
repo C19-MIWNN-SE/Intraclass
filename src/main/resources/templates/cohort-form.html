@@ -7,7 +7,28 @@
 <body>
 <h1>Tijdelijke cohort Add Edit Formulierpagina</h1>
 
-<div th:fragment="cohort-add-edit-fragment"></div>
+<form th:action="@{/cohort/add}" th:object="${cohort}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" th:field="*{name}">
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <input type="text" id="description" th:field="*{description}">
+    </div>
+    <div>
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate"
+               th:field="*{startDate}">
+    </div>
+    <div>
+        <label for="endDate">End Date</label>
+        <input type="date" id="endDate"
+               th:field="*{startDate}">
+    </div>
+    <button type="submit">Add</button>
+</form>
 
 </body>
 </html>

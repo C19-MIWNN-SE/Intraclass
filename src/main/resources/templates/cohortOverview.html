@@ -12,11 +12,9 @@
 <div class="container-fluid p-4">
     <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
         <h1 class="main-title text-primary m-0">Cohort Overview</h1>
-        <a th:href="@{/cohort/add}"
-           class="btn btn-primary shadow-sm"
+        <a class="btn btn-primary shadow-sm"
            data-bs-toggle="modal"
-           data-bs-target="#cohortAddEditModal"
-           sec:authorize="hasRole('TEACHER')">
+           data-bs-target="#editCohortModal">
             <i class="bi bi-plus-lg me-1"></i> Add New Cohort
         </a>
     </div>
@@ -64,10 +62,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
         <h1 class="main-title text-primary m-0">Cohort Overview</h1>
         <a th:href="@{/cohort/add}"
-           class="btn btn-primary shadow-sm"
-           data-bs-toggle="modal"
-           data-bs-target="#cohortAddEditModal"
-           sec:authorize="hasRole('TEACHER')">
+           class="btn btn-primary shadow-sm">
             <i class="bi bi-plus-lg me-1"></i> Add New Cohort
         </a>
     </div>
@@ -122,5 +117,32 @@
 
 <div th:replace="~{fragments/general :: scripts}"></div>
 <footer th:replace="~{fragments/general :: footer}"></footer>
+
+
+<div class="modal fade" id="editCohortModal"
+     tabindex="-1"
+     aria-labelledby="editCohortModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Header -->
+            <div class="modal-header">
+                <h5 class="modal-title"
+                    id="editCohortModalLabel">
+                    Add or Edit Cohort
+                </h5>
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body" th:insert="~{fragments/cohort-add-edit-form :: cohort-add-edit-form}">
+<!--                <form sec:authorize="hasRole('TEACHER')"-->
+<!--                      th:replace="~{fragments/cohort-add-edit-form :: cohort-add-edit-form}"></form>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>

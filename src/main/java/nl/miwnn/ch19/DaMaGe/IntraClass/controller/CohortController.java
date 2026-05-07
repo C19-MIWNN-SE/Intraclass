@@ -1,22 +1,21 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.controller;
 
+import nl.miwnn.ch19.DaMaGe.IntraClass.dto.CohortDTO;
+import nl.miwnn.ch19.DaMaGe.IntraClass.dto.StudentDTO;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Cohort;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Student;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.CohortRepository;
-import nl.miwnn.ch19.DaMaGe.IntraClass.repository.StudentRepository;
-import nl.miwnn.ch19.DaMaGe.IntraClass.repository.TeacherRepository;
 import nl.miwnn.ch19.DaMaGe.IntraClass.service.CohortService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.ArrayList;
+import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author G. Neuteboom
@@ -72,6 +71,30 @@ public class CohortController {
         return "cohortView";
     }
 
+    @GetMapping("/cohort/add")
+    public String showAddCohortForm(@ModelAttribute CohortDTO dto, Model model){
+        log.debug("Form for new Cohort requested");
+        model.addAttribute("cohort", new CohortDTO());
+        return "cohort-form";
+    }
 
+    @PostMapping("/cohort/save")
+    public String saveAddCohort(@ModelAttribute CohortDTO cohortDTO) {
+        log.info("New Cohort added: {}", cohortDTO.getName());
+
+        cohortService.saveCohort(cohortDTO);
+
+        return "redirect:/cohort/overview";
+    }
+
+    @GetMapping("/cohort/edit/{id}")
+    public String showEditForm(@ModelAttribute CohortDTO cohortDTO,
+                               @PathVariable Long id,
+                               Model model) {
+        Cohort cohort = cohortService.getCohort(id);
+        model.addAttribute("cohort", cohort);
+
+        return "cohort-form";
+    }
 
 }

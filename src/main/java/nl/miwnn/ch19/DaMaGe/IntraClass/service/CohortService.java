@@ -1,13 +1,15 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.service;
 
 import jakarta.transaction.Transactional;
-import nl.miwnn.ch19.DaMaGe.IntraClass.model.Cohort;
-import nl.miwnn.ch19.DaMaGe.IntraClass.model.Person;
-import nl.miwnn.ch19.DaMaGe.IntraClass.model.Student;
-import nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher;
+import nl.miwnn.ch19.DaMaGe.IntraClass.dto.CohortDTO;
+import nl.miwnn.ch19.DaMaGe.IntraClass.dto.StudentDTO;
+import nl.miwnn.ch19.DaMaGe.IntraClass.mapper.CohortMapper;
+import nl.miwnn.ch19.DaMaGe.IntraClass.model.*;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.CohortRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -18,9 +20,11 @@ import java.util.List;
 @Transactional
 public class CohortService {
     private final CohortRepository cohortRepository;
+    private final CohortMapper cohortMapper;
 
-    public CohortService(CohortRepository cohortRepository) {
+    public CohortService(CohortRepository cohortRepository, CohortMapper cohortMapper) {
         this.cohortRepository = cohortRepository;
+        this.cohortMapper = cohortMapper;
     }
 
     public List<Student> getStudents(Long cohortId) {
@@ -62,5 +66,10 @@ public class CohortService {
     public Cohort getCohort(Long id) {
         return cohortRepository.findById(id)
                 .orElseThrow();
+    }
+
+    public void saveCohort(CohortDTO dto) {
+        Cohort cohort = cohortMapper.toCohort(dto);
+        cohortRepository.save(cohort);
     }
 }
