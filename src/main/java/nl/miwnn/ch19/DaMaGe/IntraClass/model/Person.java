@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.jspecify.annotations.Nullable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,7 +21,7 @@ import java.util.List;
  */
 @Entity
 @Table
-public class Person {
+public abstract class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -46,7 +47,8 @@ public class Person {
     private String lastName;
 
     @NotNull(message = "Date of birth can't be blank")
-    @CsvDate(value = "yyyy-MM-dd")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @CsvDate("yyyy-MM-dd")
     private LocalDate dateOfBirth;
 
     private String email;
