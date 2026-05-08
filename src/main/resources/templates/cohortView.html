@@ -35,13 +35,11 @@
     </div>
 
     <h3 class="mb-4 text-primary"><i class="fa-solid fa-chalkboard-user"></i> Teachers in this cohort</h3>
-<!--    <div th:replace="~{fragments/carousel :: peopleCarousel(people=${cohort.participant}, id='teacherCarousel')}"></div>-->
-    <div><li th:each="teacher : ${teachers}" th:text="${teacher.fullName}"></li></div>
+    <div th:replace="~{fragments/carousel :: peopleCarousel(people=${teachers}, id='teacherCarousel')}"></div>
     <hr class="my-5">
 
     <h3 class="mb-4 text-info"><i class="bi bi-mortarboard-fill"></i> Students in this cohort</h3>
-<!--    <div th:replace="~{fragments/carousel :: peopleCarousel(people=${cohort.participant}, id='studentCarousel')}"></div>-->
-    <div><li th:each="student : ${students}" th:text="${student.fullName}"></li></div>
+    <div th:replace="~{fragments/carousel :: peopleCarousel(people=${students}, id='studentCarousel')}"></div>
 </div>
 
 <div th:replace="~{fragments/general :: scripts}"></div>
