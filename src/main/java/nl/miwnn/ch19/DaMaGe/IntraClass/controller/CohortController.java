@@ -75,7 +75,7 @@ public class CohortController {
     public String showAddCohortForm(@ModelAttribute CohortDTO dto, Model model){
         log.debug("Form for new Cohort requested");
         model.addAttribute("cohort", new CohortDTO());
-        return "cohort-form";
+        return "redirect:/cohort/overview";
     }
 
     @PostMapping("/cohort/save")
