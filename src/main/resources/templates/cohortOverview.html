@@ -40,8 +40,8 @@
         <td th:text="${cohort.id}">ID</td>
         <td th:text="${cohort.name}">Name</td>
         <td th:text="${cohort.description}">Description</td>
-        <td th:text="${cohort.startDate}">Start Date</td>
-        <td th:text="${cohort.endDate}">End Date</td>
+        <td th:text="${#temporals.format(cohort.startDate, 'dd-mm-yyyy')}">Start Date</td>
+        <td th:text="${#temporals.format(cohort.endDate, 'dd-mm-yyyy')}">End Date</td>
         <td>
             <div class="ms-auto btn-group-sm">
                 <a th:href="@{/cohort/view/{id}(id=${cohort.id})}" class="btn btn-sm btn-outline-primary px-3">View</a>

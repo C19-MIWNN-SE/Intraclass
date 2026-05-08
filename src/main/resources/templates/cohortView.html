@@ -21,8 +21,8 @@
                 <p class="mb-1"><strong>Description:</strong> <span th:text="${cohort.description}">Description</span></p>
             </div>
             <div class="col-md-6 text-md-end">
-                <p class="mb-1 text-muted"><strong>Start:</strong> <span th:text="${cohort.startDate}">1997-01-01</span></p>
-                <p class="mb-1 text-muted"><strong>End:</strong> <span th:text="${cohort.endDate}">1999-12-31</span></p>
+                <p class="mb-1 text-muted"><strong>Start:</strong> <span th:text="${#temporals.format(cohort.startDate, 'dd-mm-yyyy')}">1997-01-01</span></p>
+                <p class="mb-1 text-muted"><strong>End:</strong> <span th:text="${#temporals.format(cohort.endDate, 'dd-mm-yyyy')}">1999-12-31</span></p>
             </div>
             <p> </p>
             <button type="button"

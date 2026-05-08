@@ -78,19 +78,19 @@ public class PersonController {
                 "redirect:/teacher/overview";
     }
 
-    @GetMapping({"student/view/{id}", "teacher/view/{id}"})
-    public String personView(Model model, HttpServletRequest request) {
-
-        model.addAttribute("pageTitle", request.getRequestURI().contains("/student/") ?
-                "Student Details":
-                "Teacher Details");
-
-        model.addAttribute("activePage", request.getRequestURI().contains("/student/") ?
-                "students":
-                "teachers");
-
-        return request.getRequestURI().contains("/student/") ?
-                "studentView" :
-                "teacherView";
-    }
+//    @GetMapping({"student/view/{id}", "teacher/view/{id}"})
+//    public String personView(Model model, HttpServletRequest request) {
+//
+//        model.addAttribute("pageTitle", request.getRequestURI().contains("/student/") ?
+//                "Student Details":
+//                "Teacher Details");
+//
+//        model.addAttribute("activePage", request.getRequestURI().contains("/student/") ?
+//                "students":
+//                "teachers");
+//
+//        return request.getRequestURI().contains("/student/") ?
+//                "studentView" :
+//                "teacherView";
+//    }
 }

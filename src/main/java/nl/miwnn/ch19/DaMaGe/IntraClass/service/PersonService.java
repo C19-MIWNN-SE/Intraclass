@@ -58,19 +58,4 @@ public class PersonService {
         deletePerson(id);
         return true;
     }
-
-    public List<CohortDTO> getEnrolledCohorts(Long personId) {
-
-        Person person = personRepository.findById(personId)
-                .orElseThrow(() -> new RuntimeException("Person not found"));
-
-        return person.getCohort()
-                .stream()
-                .map(cohort -> toDto(cohort))
-                .toList();
-    }
-
-    private CohortDTO toDto(Cohort cohort) {
-        return new CohortDTO(cohort.getId(), cohort.getName());
-    }
 }
