@@ -43,7 +43,6 @@ public class Cohort {
     private List<Person> participant = new ArrayList<>();
 
     public Cohort () {
-
     }
 
     public Long getId() {

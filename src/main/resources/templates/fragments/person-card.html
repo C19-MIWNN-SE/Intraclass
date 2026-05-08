@@ -57,7 +57,13 @@
 
         <div class="cover bg-primary">
             <div class="cover-top-half">
-                <img src="https://placehold.co/4000" class="cover-img">
+                <div class="profile-img-wrapper">
+                    <img th:if="${person.image != null}"
+                         th:src="@{/images/{id}(id=${person.image.id})}">
+                    <span th:if="${person.image == null}">
+                        <i class="bi bi-person-circle placeholder-styling"></i>
+                    </span>
+                </div>
             </div>
             <div class="cover-bottom-half">
                 <h5 th:text="${person.fullName}">Name</h5>

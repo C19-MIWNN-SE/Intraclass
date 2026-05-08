@@ -1,6 +1,8 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.service;
 
 import jakarta.persistence.EntityNotFoundException;
+import nl.miwnn.ch19.DaMaGe.IntraClass.dto.CohortDTO;
+import nl.miwnn.ch19.DaMaGe.IntraClass.model.Cohort;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Person;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Student;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher;
@@ -55,5 +57,20 @@ public class PersonService {
 
         deletePerson(id);
         return true;
+    }
+
+    public List<CohortDTO> getEnrolledCohorts(Long personId) {
+
+        Person person = personRepository.findById(personId)
+                .orElseThrow(() -> new RuntimeException("Person not found"));
+
+        return person.getCohort()
+                .stream()
+                .map(cohort -> toDto(cohort))
+                .toList();
+    }
+
+    private CohortDTO toDto(Cohort cohort) {
+        return new CohortDTO(cohort.getId(), cohort.getName());
     }
 }
