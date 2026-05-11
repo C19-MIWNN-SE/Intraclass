@@ -3,10 +3,10 @@
 
 
 <form th:fragment="cohort-add-edit-form" sec:authorize="hasRole('TEACHER')" th:action="@{/cohort/add}"
-      th:object="${cohort}" method="post" enctype="multipart/form-data" xmlns:sec="http://www.w3.org/1999/xhtml">
+      th:object="${cohortDTO}" method="post" enctype="multipart/form-data" xmlns:sec="http://www.w3.org/1999/xhtml">
 
     <div class="card shadow-sm p-4 mb-4">
-        <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{id(id=${cohortDTO.id})}" />
 
         <div class="row g-3">
             <div class="col-md-6">

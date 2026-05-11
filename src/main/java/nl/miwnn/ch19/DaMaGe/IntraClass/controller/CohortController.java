@@ -40,12 +40,13 @@ public class CohortController {
     }
 
     @GetMapping("/cohort/overview")
-    public String showCohortOverview(Model model) {
+    public String showCohortOverview(@ModelAttribute CohortDTO dto, Model model) {
         List<Cohort> cohorts = cohortRepository.findAll();
         log.debug("Cohort Overview called, {} Cohorts in database", cohorts.size());
         model.addAttribute("pageTitle", "Cohort Overview");
         model.addAttribute("activePage", "cohorts");
         model.addAttribute("cohorts", cohorts);
+        model.addAttribute("cohort", new CohortDTO());
         return "cohortOverview";
     }
 
@@ -84,7 +85,7 @@ public class CohortController {
 
         cohortService.saveCohort(cohortDTO);
 
-        return "redirect:/cohort/overview";
+        return "cohort-form";
     }
 
     @GetMapping("/cohort/edit/{id}")
