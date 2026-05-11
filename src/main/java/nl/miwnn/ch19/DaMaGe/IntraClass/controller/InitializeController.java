@@ -48,7 +48,6 @@ public class InitializeController {
     }
 
 
-//    TODO @ transactional kan mogelijk weg.
     @Transactional
     @EventListener(ContextRefreshedEvent.class)
     public void seed() {
