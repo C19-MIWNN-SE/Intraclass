@@ -4,6 +4,7 @@ import com.opencsv.bean.CsvDate;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -27,10 +28,12 @@ public class Cohort {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @CsvDate(value = "yyyy-MM-dd")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @CsvDate("yyyy-MM-dd")
     private LocalDate startDate;
 
-    @CsvDate(value = "yyyy-MM-dd")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @CsvDate("yyyy-MM-dd")
     private LocalDate endDate;
 
     @OnDelete(action = OnDeleteAction.CASCADE)
