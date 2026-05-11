@@ -8,7 +8,7 @@
 
 <h1>Tijdelijke cohort Add Edit Formulierpagina</h1>
 
-<form th:action="@{/cohort/add}" th:object="${cohort}" method="post">
+<form th:action="@{/cohort/save}" th:object="${cohort}" method="post">
     <input type="hidden" th:field="*{id}" />
     <div>
         <label for="name">Name</label>
@@ -26,9 +26,12 @@
     <div>
         <label for="endDate">End Date</label>
         <input type="date" id="endDate"
-               th:field="*{startDate}">
+               th:field="*{endDate}">
     </div>
-    <button type="submit">Add</button>
+
+    <input type="hidden" th:field="*{participant}" />
+
+    <button type="submit">Save and protect</button>
 </form>
 
 </body>

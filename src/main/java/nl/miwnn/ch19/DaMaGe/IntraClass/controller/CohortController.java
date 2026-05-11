@@ -76,7 +76,7 @@ public class CohortController {
     public String showAddCohortForm(@ModelAttribute CohortDTO dto, Model model){
         log.debug("Form for new Cohort requested");
         model.addAttribute("cohort", new CohortDTO());
-        return "redirect:/cohort/overview";
+        return "cohort-form";
     }
 
     @PostMapping("/cohort/save")
@@ -85,15 +85,19 @@ public class CohortController {
 
         cohortService.saveCohort(cohortDTO);
 
-        return "cohort-form";
+        return "redirect:/cohort/overview";
     }
 
     @GetMapping("/cohort/edit/{id}")
     public String showEditForm(@ModelAttribute CohortDTO cohortDTO,
                                @PathVariable Long id,
                                Model model) {
+        List<Student> students = cohortService.getStudents(id);
+        List<Teacher> teachers = cohortService.getTeachers(id);
         Cohort cohort = cohortService.getCohort(id);
         model.addAttribute("cohort", cohort);
+        model.addAttribute("students", students);
+        model.addAttribute("teachers", teachers);
 
         return "cohort-form";
     }
