@@ -20,18 +20,15 @@ import java.io.IOException;
 @Service
 public class StudentService {
     private final StudentMapper studentMapper;
-    private final PersonRepository personRepository;
     private final ImageRepository imageRepository;
     private final PasswordEncoder passwordEncoder;
     private final StudentRepository studentRepository;
 
     public StudentService(StudentMapper studentMapper,
-                          PersonRepository personRepository,
                           ImageRepository imageRepository,
                           PasswordEncoder passwordEncoder,
                           StudentRepository studentRepository) {
         this.studentMapper = studentMapper;
-        this.personRepository = personRepository;
         this.imageRepository = imageRepository;
         this.passwordEncoder = passwordEncoder;
         this.studentRepository = studentRepository;
@@ -50,7 +47,7 @@ public class StudentService {
         dto.setRole("STUDENT");
 
         Student student = studentMapper.toStudent(dto, passwordEncoder);
-        personRepository.save(student);
+        studentRepository.save(student);
     }
 
     public Student getStudentById(Long id) {
