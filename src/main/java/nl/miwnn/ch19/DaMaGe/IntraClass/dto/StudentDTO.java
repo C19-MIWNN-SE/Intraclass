@@ -1,11 +1,16 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 /**
  * @author My Linh Lu
  */
 public class StudentDTO extends PersonDTO {
+    @NotBlank(message = "Bio can't be blank")
     private String bio;
     private String employer;
+
+    @NotBlank(message = "City can't be blank")
     private String city;
 
     public StudentDTO() {}

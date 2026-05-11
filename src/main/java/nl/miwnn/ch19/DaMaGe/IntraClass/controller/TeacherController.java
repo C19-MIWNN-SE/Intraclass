@@ -1,10 +1,13 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.controller;
 
+import jakarta.validation.Valid;
+import nl.miwnn.ch19.DaMaGe.IntraClass.dto.StudentDTO;
 import nl.miwnn.ch19.DaMaGe.IntraClass.dto.TeacherDTO;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher;
 import nl.miwnn.ch19.DaMaGe.IntraClass.service.TeacherService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -26,22 +29,35 @@ public class TeacherController {
     }
 
     @GetMapping("/add")
-    public String showForm(Model model) {
-        TeacherDTO dto = new TeacherDTO();
+    public String showForm(@ModelAttribute TeacherDTO dto,
+                           Model model) {
+        if (!model.containsAttribute("teacher")) {
+            model.addAttribute("teacher", new TeacherDTO());
+        }
 
-        model.addAttribute("teacher", dto);
+        dto.setRole("TEACHER");
+
         return "teacher-form";
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute TeacherDTO dto,
+    public String save(@Valid @ModelAttribute TeacherDTO dto,
+                       BindingResult bindingResult,
                        @RequestParam("imageFile") MultipartFile imageFile,
                        RedirectAttributes redirectAttributes) throws IOException {
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute(
+                    "org.springframework.validation.BindingResult.teacher",
+                    bindingResult);
+            redirectAttributes.addFlashAttribute("errorMessage", "Error while saving. Please try again.");
+            return "redirect:/login";
+        }
 
         teacherService.saveTeacher(dto,imageFile);
         redirectAttributes.addFlashAttribute("successMessage", "Change to teachers saved.");
 
-        return "redirect:/teacher/overview";
+        return "redirect:/login";
     }
 
     @GetMapping("/edit/{id}")

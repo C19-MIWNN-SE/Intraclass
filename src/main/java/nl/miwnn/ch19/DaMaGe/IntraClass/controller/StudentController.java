@@ -37,7 +37,9 @@ public class StudentController {
     @GetMapping("/add")
     public String showForm(@ModelAttribute StudentDTO dto,
                            Model model) {
-        model.addAttribute("student", new StudentDTO());
+        if (!model.containsAttribute("student")) {
+            model.addAttribute("student", new StudentDTO());
+        }
         dto.setRole("STUDENT");
 
         return "student-form";
@@ -45,13 +47,22 @@ public class StudentController {
 
     @PostMapping("/save")
     public String save(@Valid @ModelAttribute StudentDTO dto,
+                       BindingResult bindingResult,
                        @RequestParam("imageFile") MultipartFile imageFile,
                        RedirectAttributes redirectAttributes) throws IOException {
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute(
+                    "org.springframework.validation.BindingResult.student",
+                    bindingResult);
+            redirectAttributes.addFlashAttribute("errorMessage", "Error while saving. Please try again.");
+            return "redirect:/login";
+        }
 
         studentService.saveStudent(dto, imageFile);
         redirectAttributes.addFlashAttribute("successMessage", "Change to students saved.");
 
-        return "redirect:/student/overview";
+        return "redirect:/login";
     }
 
     @GetMapping("/edit/{id}")

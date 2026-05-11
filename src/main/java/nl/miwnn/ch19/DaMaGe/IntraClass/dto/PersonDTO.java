@@ -1,5 +1,7 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Image;
 
 import java.time.LocalDate;
@@ -14,9 +16,15 @@ public abstract class PersonDTO {
     private Long id;
     private String username;
     private String password;
+
+    @NotBlank(message = "First name can't be blank")
     private String firstName;
     private String affix;
+
+    @NotBlank(message = "Last name can't be blank")
     private String lastName;
+
+    @NotNull(message = "Date of birth can't be blank")
     private LocalDate dateOfBirth;
     private String role;
     private Image image;
