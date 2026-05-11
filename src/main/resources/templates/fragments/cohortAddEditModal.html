@@ -17,12 +17,15 @@
                         data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form sec:authorize="hasRole('TEACHER')"
-                      th:replace="~{fragments/cohort-add-edit-form :: cohort-add-edit-form}"></form>
+            <div class="modal-body" th:insert="~{fragments/cohort-add-edit-form :: cohort-add-edit-form}">
+
             </div>
         </div>
     </div>
 </div>
 
 </html>
+
+<!--sec:authorize="hasRole('TEACHER')"-->
+<!-- <form
+                      th:replace="~{fragments/cohort-add-edit-form :: cohort-add-edit-form}"></form>-->
