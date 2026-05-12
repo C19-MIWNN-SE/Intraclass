@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-
-<!--Made by nimble hands of Danylo Dudar-->
-
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="~{fragments/general :: baseheader(~{:: title})}">
     <title th:text="${pageTitle}"></title>>
@@ -12,30 +8,130 @@
 
 <body>
 <nav th:replace="~{fragments/general :: navbar}"></nav>
+
 <div class="container-fluid p-4">
-    <h3 class="mb-4 text-primary">
-        <i class="fa-solid fa-chalkboard-user"></i>
-        <span th:text="${pageTitle}">Overview</span>
-    </h3>
-
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
-        <div class="col" th:each="p : ${people}"
-             th:if="${p instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher)}">
-
-            <div th:replace="~{fragments/person-card :: personCard(person=${p})}"></div>
-        </div>
-
-        <div class="col">
-            <div th:replace="~{fragments/person-card :: addPersonCard(type='teacher')}"></div>
-        </div>
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+        <h1 class="main-title text-primary m-0"><i class="fa-solid fa-chalkboard-user"></i> Teacher Overview</h1>
+        <a th:href="@{/teacher/add}" class="btn btn-primary shadow-sm bi bi-plus-lg me-1">Add New Teacher</a>
     </div>
 
-    <div th:if="${#lists.isEmpty(people)}" class="text-center mt-5">
-        <p class="text-muted">No entries found.</p>
-        <a th:href="@{/teacher/add}" class="btn btn-primary">Add New Teacher</a>
+    <div class="cohort-banner-block shadow-sm">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Profile Image</th>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Email</th>
+                <th>Specialty</th>
+                <th>Cohort(s)</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="teacher: ${teachers}">
+                <td>
+                    <div class="profile-img-wrapper" style="width: 50px;">
+                        <img th:if="${teacher.image != null}"
+                             th:src="@{/images/{id}(id=${teacher.image.id})}" class="rounded-circle">
+                        <span th:if="${teacher.image == null}">
+                        <i class="bi bi-person-circle placeholder-styling-s"></i>
+                        </span>
+                    </div>
+                </td>
+                <td th:text="${teacher.fullName}">Name</td>
+                <td th:text="${#temporals.format(teacher.dateOfBirth, 'dd-MM-yyyy')}">Date of Birth</td>
+                <td th:text="${teacher.email}">Email</td>
+                <td th:text="${teacher.specialty}">Specialty</td>
+                <td>
+                    <span th:each="cohort, stat : ${teacher.cohort}">
+                        <a th:href="@{/cohort/view/{id}(id=${cohort.id})}" th:text="${cohort.name}"></a>
+                        <span th:if="${!stat.last}">, </span>
+                    </span>
+                </td>
+                <td>
+                    <div class="ms-auto btn-group-sm">
+                        <a th:href="@{/teacher/view/{id}(id=${teacher.id})}" class="btn btn-sm btn-outline-primary px-3">View</a>
+                        <a th:href="@{/teacher/edit/{id}(id=${teacher.id})}" class="btn btn-sm btn-outline-secondary px-3">Edit</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
+
+    <div class="col text-center">
+        <a href="#top" class="btn btn-primary shadow-sm">Go to Top</a>
+    </div>
+
 </div>
+
 <div th:replace="~{fragments/general :: scripts}"></div>
 <footer th:replace="~{fragments/general :: footer}"></footer>
+
+
+<div class="modal fade" id="editCohortModal"
+     tabindex="-1"
+     aria-labelledby="editCohortModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Header -->
+            <div class="modal-header">
+                <h5 class="modal-title"
+                    id="editCohortModalLabel">
+                    Add or Edit Cohort
+                </h5>
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>
+
+<!--<!DOCTYPE html>-->
+
+<!--&lt;!&ndash;Made by nimble hands of Danylo Dudar&ndash;&gt;-->
+
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org"-->
+<!--      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
+
+<!--<head th:replace="~{fragments/general :: baseheader(~{:: title})}">-->
+<!--    <title th:text="${pageTitle}"></title>>-->
+<!--    <meta charset="UTF-8">-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<nav th:replace="~{fragments/general :: navbar}"></nav>-->
+<!--<div class="container-fluid p-4">-->
+<!--    <h3 class="mb-4 text-primary">-->
+<!--        <i class="fa-solid fa-chalkboard-user"></i>-->
+<!--        <span th:text="${pageTitle}">Overview</span>-->
+<!--    </h3>-->
+
+<!--    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">-->
+<!--        <div class="col" th:each="p : ${people}"-->
+<!--             th:if="${p instanceof T(nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher)}">-->
+
+<!--            <div th:replace="~{fragments/person-card :: personCard(person=${p})}"></div>-->
+<!--        </div>-->
+
+<!--        <div class="col">-->
+<!--            <div th:replace="~{fragments/person-card :: addPersonCard(type='teacher')}"></div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div th:if="${#lists.isEmpty(people)}" class="text-center mt-5">-->
+<!--        <p class="text-muted">No entries found.</p>-->
+<!--        <a th:href="@{/teacher/add}" class="btn btn-primary">Add New Teacher</a>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div th:replace="~{fragments/general :: scripts}"></div>-->
+<!--<footer th:replace="~{fragments/general :: footer}"></footer>-->
+<!--</body>-->
+<!--</html>-->

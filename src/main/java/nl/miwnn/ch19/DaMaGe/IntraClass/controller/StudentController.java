@@ -1,9 +1,11 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.controller;
 
 import jakarta.validation.Valid;
+import nl.miwnn.ch19.DaMaGe.IntraClass.dto.CohortDTO;
 import nl.miwnn.ch19.DaMaGe.IntraClass.dto.StudentDTO;
 import nl.miwnn.ch19.DaMaGe.IntraClass.mapper.StudentMapper;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Image;
+import nl.miwnn.ch19.DaMaGe.IntraClass.model.Person;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Student;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.ImageRepository;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.PersonRepository;
@@ -19,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author My Linh Lu
@@ -32,6 +35,16 @@ public class StudentController {
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
+    }
+
+    @GetMapping("/overview")
+    public String showOverview(Model model) {
+        List<Student> students = studentService.getAllStudents();
+
+        model.addAttribute("pageTitle", "Student Overview");
+        model.addAttribute("activePage", "students");
+        model.addAttribute("students", students);
+        return "student-overview";
     }
 
     @GetMapping("/add")

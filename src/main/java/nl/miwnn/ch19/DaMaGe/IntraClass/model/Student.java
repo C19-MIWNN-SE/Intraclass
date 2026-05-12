@@ -22,8 +22,6 @@ public class Student extends Person {
     @NotBlank(message = "City can't be blank")
     private String city;
 
-    private String imageSource;
-
     public String getBio() {
         return bio;
     }
@@ -46,13 +44,5 @@ public class Student extends Person {
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public String getImageSource() {
-        return imageSource;
-    }
-
-    public void setImageSource(String imageSource) {
-        this.imageSource = imageSource;
     }
 }

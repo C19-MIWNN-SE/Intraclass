@@ -47,7 +47,17 @@
                 </li>
 
                 <div class="vr mx-2"></div>
-
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" th:classappend="${activePage == 'cohorts'} ? 'active' : ''"
+                       th:href="@{/cohort/overview}" sec:authorize="hasRole('TEACHER')">
+                        <i class="fa-solid fa-building-columns"></i> Cohorts
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#" sec:authorize="hasRole('STUDENT')">
+                        <i class="fa-solid fa-link"></i> Enrolled Cohorts
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" th:classappend="${activePage == 'students'} ? 'active' : ''"
                        th:href="@{/student/overview}" sec:authorize="hasRole('TEACHER')">
@@ -58,17 +68,6 @@
                     <a class="nav-link" aria-current="page" th:classappend="${activePage == 'teachers'} ? 'active' : ''"
                        th:href="@{/teacher/overview}" sec:authorize="hasRole('TEACHER')">
                         <i class="fa-solid fa-chalkboard-user"></i> Teachers
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" th:classappend="${activePage == 'cohorts'} ? 'active' : ''"
-                       th:href="@{/cohort/overview}" sec:authorize="hasRole('TEACHER')">
-                        <i class="fa-solid fa-building-columns"></i> Cohorts
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#" sec:authorize="hasRole('STUDENT')">
-                        <i class="fa-solid fa-link"></i> Enrolled Cohorts
                     </a>
                 </li>
             </ul>
