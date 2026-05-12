@@ -75,8 +75,8 @@
     </div>
 </div>
 
-<div th:fragment="addPersonCard(type)" class="person-card add-new-card">
-    <a th:href="@{/{role}/add(role=${type})}" class="text-decoration-none">
+<div th:fragment="addPersonCard(type, cohortID)" class="person-card add-new-card">
+    <a th:href="@{/cohort/view/{cID}/{role}/addToCohort(role=${type}) (cId=${cohortId})}" class="text-decoration-none">
         <div class="book">
             <div class="card-content d-flex flex-column align-items-center justify-content-center">
                 <i class="bi bi-plus-circle-dotted display-1 text-primary"></i>

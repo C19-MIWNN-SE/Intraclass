@@ -49,7 +49,8 @@ public abstract class Person {
 
     private String email;
 
-    @ManyToMany(mappedBy = "participants")
+    @ManyToMany(mappedBy = "participants",
+            cascade = CascadeType.ALL)
     private List<Cohort> cohort = new ArrayList<>();
 
     public Person() {
