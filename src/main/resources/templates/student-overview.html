@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
 <head th:replace="~{fragments/general :: baseheader(~{:: title})}">
-    <title th:text="${pageTitle}"></title>>
+    <title th:text="${pageTitle}"></title>
     <meta charset="UTF-8">
 </head>
-
 <body>
 <nav th:replace="~{fragments/general :: navbar}"></nav>
 
 <div class="container-fluid p-4">
     <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
         <h1 class="main-title text-primary m-0"><i class="bi bi-mortarboard-fill"></i> Student Overview</h1>
-        <a th:href="@{/student/add}" class="btn btn-primary shadow-sm bi bi-plus-lg me-1">Add New Student</a>
+        <button type="button"
+                class="btn btn-primary shadow-sm bi bi-plus-lg me-1"
+                data-bs-toggle="modal"
+                data-bs-target="#addStudentModal">
+            Add New Student
+        </button>
     </div>
 
     <div class="cohort-banner-block shadow-sm">
@@ -71,27 +74,40 @@
 <div th:replace="~{fragments/general :: scripts}"></div>
 <footer th:replace="~{fragments/general :: footer}"></footer>
 
-
-<div class="modal fade" id="editCohortModal"
+<div class="modal fade" id="addStudentModal"
      tabindex="-1"
-     aria-labelledby="editCohortModalLabel"
+     aria-labelledby="addStudentModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Header -->
             <div class="modal-header">
                 <h5 class="modal-title"
-                    id="editCohortModalLabel">
-                    Add or Edit Cohort
+                    id="addStudentModalLabel">
+                    Add New Student
                 </h5>
                 <button type="button" class="btn-close"
                         data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
+            <div class="modal-body">
+                <form th:action="@{/student/save}"
+                      th:object="${student}" method="post" enctype="multipart/form-data">
+                    <div th:replace="~{fragments/person-form :: person-form-fragment}"></div>
+                    <div th:replace="~{fragments/person-form :: student-form-fragment}"></div>
+                    <div class="d-flex justify-content-between mt-3">
+                        <button type="button" class="btn btn-secondary rounded mb-2" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+
+                        <button class="btn btn-primary rounded mb-2" type="submit">
+                            <i class="fa-solid fa-floppy-disk"></i> Save
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
-
-
 </body>
 </html>

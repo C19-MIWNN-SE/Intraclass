@@ -44,6 +44,8 @@ public class StudentController {
         model.addAttribute("pageTitle", "Student Overview");
         model.addAttribute("activePage", "students");
         model.addAttribute("students", students);
+        model.addAttribute("student", new StudentDTO());
+
         return "student-overview";
     }
 

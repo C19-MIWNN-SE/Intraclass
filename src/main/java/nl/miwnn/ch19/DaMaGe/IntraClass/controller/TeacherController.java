@@ -37,6 +37,8 @@ public class TeacherController {
         model.addAttribute("pageTitle", "Teacher Overview");
         model.addAttribute("activePage", "teachers");
         model.addAttribute("teachers", teachers);
+        model.addAttribute("teacher", new TeacherDTO());
+
         return "teacher-overview";
     }
 
