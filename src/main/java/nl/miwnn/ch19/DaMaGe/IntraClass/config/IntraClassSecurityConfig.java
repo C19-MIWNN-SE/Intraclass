@@ -37,9 +37,9 @@ public class IntraClassSecurityConfig {
                         ).permitAll()
                         .requestMatchers(
                                 "/cohort/overview",
-                                "/cohort/**",
                                 "/person-form",
-                                "/user/**"
+                                "/user/**",
+                                "/teacher/**"
                         ).hasRole("TEACHER")
                         .requestMatchers(
                                 "/person"

@@ -12,5 +12,4 @@ import java.util.List;
  */
 
 public interface CohortRepository extends JpaRepository<Cohort, Long> {
-    List<Cohort> findByParticipantsContaining(Person person);
 }

@@ -37,27 +37,6 @@ public class PersonController {
         this.personService = personService;
     }
 
-//    @GetMapping({"student/overview", "teacher/overview"})
-//    public String personOverview(Model model, HttpServletRequest request) {
-//
-//        List<Person> people = personService.getAllPeople();
-//
-//        model.addAttribute("pageTitle", request.getRequestURI().contains("/student/") ?
-//                "Student Overview":
-//                "Teacher Overview");
-//        model.addAttribute("people", people);
-//
-//        model.addAttribute("activePage", request.getRequestURI().contains("/student/") ?
-//                "students":
-//                "teachers");
-//
-//        //model.addAttribute("newPerson", new PersonDTO());
-//        //I love ternary operator -(c)Danylo
-//        return request.getRequestURI().contains("/student/") ?
-//                "student-overview" :
-//                "teacher-overview";
-//    }
-
     @GetMapping({"student/delete/{id}", "teacher/delete/{id}"})
     public String remove(@PathVariable Long id,
                          HttpServletRequest request,
@@ -77,20 +56,4 @@ public class PersonController {
                 "redirect:/student/overview" :
                 "redirect:/teacher/overview";
     }
-
-//    @GetMapping({"student/view/{id}", "teacher/view/{id}"})
-//    public String personView(Model model, HttpServletRequest request) {
-//
-//        model.addAttribute("pageTitle", request.getRequestURI().contains("/student/") ?
-//                "Student Details":
-//                "Teacher Details");
-//
-//        model.addAttribute("activePage", request.getRequestURI().contains("/student/") ?
-//                "students":
-//                "teachers");
-//
-//        return request.getRequestURI().contains("/student/") ?
-//                "studentView" :
-//                "teacherView";
-//    }
 }
