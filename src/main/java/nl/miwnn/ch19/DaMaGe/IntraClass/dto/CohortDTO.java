@@ -16,6 +16,8 @@ public class CohortDTO {
     private LocalDate startDate;
     private LocalDate endDate;
     private List<Person> participant;
+    private List<Long> studentIds;
+    private List<Long> teacherIds;
 
     public CohortDTO() {
 
@@ -72,5 +74,21 @@ public class CohortDTO {
 
     public void setParticipant(List<Person> participant) {
         this.participant = participant;
+    }
+
+    public List<Long> getStudentIds() {
+        return studentIds;
+    }
+
+    public void setStudentIds(List<Long> studentIds) {
+        this.studentIds = studentIds;
+    }
+
+    public List<Long> getTeacherIds() {
+        return teacherIds;
+    }
+
+    public void setTeacherIds(List<Long> teacherIds) {
+        this.teacherIds = teacherIds;
     }
 }

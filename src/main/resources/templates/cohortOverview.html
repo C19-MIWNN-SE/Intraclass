@@ -12,7 +12,12 @@
 <div class="container-fluid p-4">
     <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
         <h1 class="main-title text-primary m-0">Cohort Overview</h1>
-            <a th:href="@{/cohort/add}" class="btn btn-primary shadow-sm bi bi-plus-lg me-1">Add New Cohort</a>
+        <button type="button"
+                class="btn btn-primary shadow-sm bi bi-plus-lg me-1"
+                data-bs-toggle="modal"
+                data-bs-target="#addCohortModal">
+            Add New Cohort
+        </button>
     </div>
 
     <div class="cohort-banner-block shadow-sm">
@@ -58,26 +63,25 @@
 <footer th:replace="~{fragments/general :: footer}"></footer>
 
 
-<div class="modal fade" id="editCohortModal"
+<div class="modal fade" id="addCohortModal"
      tabindex="-1"
-     aria-labelledby="editCohortModalLabel"
+     aria-labelledby="addCohortModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Header -->
             <div class="modal-header">
                 <h5 class="modal-title"
-                    id="editCohortModalLabel">
+                    id="addCohortModalLabel">
                     Add or Edit Cohort
                 </h5>
                 <button type="button" class="btn-close"
                         data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
-<!--            <div class="modal-body" th:insert="~{fragments/cohort-add-edit-form :: cohort-add-edit-form}">-->
-<!--&lt;!&ndash;                <form sec:authorize="hasRole('TEACHER')"&ndash;&gt;-->
-<!--&lt;!&ndash;                      th:replace="~{fragments/cohort-add-edit-form :: cohort-add-edit-form}"></form>&ndash;&gt;-->
-<!--            </div>-->
+            <div class="modal-body">
+                <form th:replace="~{fragments/cohort-add-edit-form :: cohort-add-edit-form}"></form>
+            </div>
         </div>
     </div>
 </div>

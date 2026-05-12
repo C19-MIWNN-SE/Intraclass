@@ -2,14 +2,13 @@ package nl.miwnn.ch19.DaMaGe.IntraClass.service;
 
 import jakarta.transaction.Transactional;
 import nl.miwnn.ch19.DaMaGe.IntraClass.dto.CohortDTO;
-import nl.miwnn.ch19.DaMaGe.IntraClass.dto.StudentDTO;
 import nl.miwnn.ch19.DaMaGe.IntraClass.mapper.CohortMapper;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.*;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.CohortRepository;
+import nl.miwnn.ch19.DaMaGe.IntraClass.repository.PersonRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,17 +20,21 @@ import java.util.List;
 public class CohortService {
     private final CohortRepository cohortRepository;
     private final CohortMapper cohortMapper;
+    private final PersonRepository personRepository;
 
-    public CohortService(CohortRepository cohortRepository, CohortMapper cohortMapper) {
+    public CohortService(CohortRepository cohortRepository,
+                         CohortMapper cohortMapper,
+                         PersonRepository personRepository) {
         this.cohortRepository = cohortRepository;
         this.cohortMapper = cohortMapper;
+        this.personRepository = personRepository;
     }
 
     public List<Student> getStudents(Long cohortId) {
         Cohort cohort = cohortRepository.findById(cohortId)
                 .orElseThrow();
 
-        return cohort.getParticipant().stream()
+        return cohort.getParticipants().stream()
                 .filter(participant -> participant instanceof Student)
                 .map(participant -> (Student) participant)
                 .toList();
@@ -41,7 +44,7 @@ public class CohortService {
         Cohort cohort = cohortRepository.findById(cohortId)
                 .orElseThrow();
 
-        return cohort.getParticipant().stream()
+        return cohort.getParticipants().stream()
                 .filter(participant -> participant instanceof Teacher)
                 .map(participant -> (Teacher) participant)
                 .toList();
@@ -51,7 +54,7 @@ public class CohortService {
         Cohort cohort = cohortRepository.findById(cohortId)
                 .orElseThrow();
 
-        cohort.getParticipant().add(person);
+        cohort.getParticipants().add(person);
         cohortRepository.save(cohort);
     }
 
@@ -59,7 +62,7 @@ public class CohortService {
         Cohort cohort = cohortRepository.findById(cohortId)
                 .orElseThrow();
 
-        cohort.getParticipant().remove(person);
+        cohort.getParticipants().remove(person);
         cohortRepository.save(cohort);
     }
 
@@ -70,6 +73,23 @@ public class CohortService {
 
     public void saveCohort(CohortDTO dto) {
         Cohort cohort = cohortMapper.toCohort(dto);
+
+        List<Person> participants = new ArrayList<>();
+
+        if (dto.getStudentIds() != null) {
+            participants.addAll(
+                    personRepository.findAllById(dto.getStudentIds())
+            );
+        }
+
+        if (dto.getTeacherIds() != null) {
+            participants.addAll(
+                    personRepository.findAllById(dto.getTeacherIds())
+            );
+        }
+
+        cohort.setParticipants(participants);
+
         cohortRepository.save(cohort);
     }
 }

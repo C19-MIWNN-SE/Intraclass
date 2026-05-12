@@ -19,7 +19,7 @@ public class CohortMapper {
         cohort.setDescription(cohortDTO.getDescription());
         cohort.setStartDate(cohortDTO.getStartDate());
         cohort.setEndDate(cohortDTO.getEndDate());
-        cohort.setParticipant(cohortDTO.getParticipant());
+        cohort.setParticipants(cohortDTO.getParticipant());
 
         return cohort;
     }
