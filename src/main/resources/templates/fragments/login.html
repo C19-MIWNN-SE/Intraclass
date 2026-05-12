@@ -13,33 +13,34 @@
      style="width: 100%">
     <div sec:authorize="isAnonymous()" class="d-block p-2 mb-4 my-account">
         <div class="d-flex flex-column justify-content-center align-items-center p-4 rounded" style="width: 100%">
-    <div class="d-block">
-        <h1 class="main-title-dark"><i class="bi bi-box-arrow-in-right"></i> Log In</h1>
-    </div>
-    <!-- Content for visitor without login -->
-    <div sec:authorize="isAnonymous()" class="d-block p-2 mb-4" style="width: 20%">
-        <form class="text-center" th:action="@{/login}" method="post">
-
-            <div th:if="${param.error}" class="form-control is-invalid">
-                <p>Login failed. Try again.</p>
+            <div class="d-block">
+                <h1 class="main-title-dark"><i class="bi bi-box-arrow-in-right"></i> Log In</h1>
             </div>
+            <!-- Content for visitor without login -->
+            <div sec:authorize="isAnonymous()" class="d-block p-2 mb-4" style="width: 20%">
+                <form class="text-center" th:action="@{/login}" method="post">
 
-            <label for="username"></label>
-            <input type="text"  class="form-control rounded-pill" id="username" name="username" placeholder="Username">
+                    <div th:if="${param.error}" class="form-control is-invalid">
+                        <p>Login failed. Try again.</p>
+                    </div>
 
-            <label for="password"></label>
-            <input type="password" class="form-control rounded-pill mb-4"
-                   id="password" name="password" placeholder="Password">
-            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <label for="username"></label>
+                    <input type="text" class="form-control rounded-pill" id="username" name="username"
+                           placeholder="Username">
 
-            <button type="submit" class="btn btn-primary rounded mb-2">Sign in</button>
+                    <label for="password"></label>
+                    <input type="password" class="form-control rounded-pill mb-4"
+                           id="password" name="password" placeholder="Password">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 
-            <div th:if="${param.logout}">
-                <p>You've been logged out.</p>
+                    <button type="submit" class="btn btn-primary rounded mb-2">Sign in</button>
+
+                    <div th:if="${param.logout}">
+                        <p>You've been logged out.</p>
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-    </div>
+        </div>
     </div>
     <!-- Content for TEACHER or STUDENT-->
     <div sec:authorize="isAuthenticated()" class="d-block p-2 mb-4 my-account" style="width: 100%">
@@ -50,10 +51,10 @@
         </h1>
         <nav th:replace="~{fragments/general :: navbar}"></nav>
         <div class="d-flex">
-            <div  class="w-25 d-flex flex-column justify-content-center align-items-center p-4">
+            <div class="w-25 d-flex flex-column justify-content-center align-items-center p-4">
                 <div class="profile-img-wrapper">
-                <img th:if="${person.image != null}"
-                     th:src="@{/images/{id}(id=${person.image.id})}" class="rounded-circle">
+                    <img th:if="${person.image != null}"
+                         th:src="@{/images/{id}(id=${person.image.id})}" class="rounded-circle">
                 </div>
             </div>
             <div class="w-50 d-flex flex-column justify-content-top align-items-left p-4">
@@ -87,9 +88,9 @@
                         <a th:href="@{/cohort/view/{id}(id=${cohort.id})}" th:text="${cohort.name}"></a>
                         <span th:if="${!stat.last}">, </span>
                 </span>
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 </html>

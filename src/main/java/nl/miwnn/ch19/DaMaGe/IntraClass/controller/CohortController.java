@@ -108,7 +108,9 @@ public class CohortController {
                                Model model) {
         List<Student> students = cohortService.getStudents(id);
         List<Teacher> teachers = cohortService.getTeachers(id);
+
         Cohort cohort = cohortService.getCohort(id);
+
         model.addAttribute("cohort", cohort);
         model.addAttribute("students", students);
         model.addAttribute("teachers", teachers);
