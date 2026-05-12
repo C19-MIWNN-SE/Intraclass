@@ -37,26 +37,26 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping({"student/overview", "teacher/overview"})
-    public String personOverview(Model model, HttpServletRequest request) {
-
-        List<Person> people = personService.getAllPeople();
-
-        model.addAttribute("pageTitle", request.getRequestURI().contains("/student/") ?
-                "Student Overview":
-                "Teacher Overview");
-        model.addAttribute("people", people);
-
-        model.addAttribute("activePage", request.getRequestURI().contains("/student/") ?
-                "students":
-                "teachers");
-
-        //model.addAttribute("newPerson", new PersonDTO());
-        //I love ternary operator -(c)Danylo
-        return request.getRequestURI().contains("/student/") ?
-                "student-overview" :
-                "teacher-overview";
-    }
+//    @GetMapping({"student/overview", "teacher/overview"})
+//    public String personOverview(Model model, HttpServletRequest request) {
+//
+//        List<Person> people = personService.getAllPeople();
+//
+//        model.addAttribute("pageTitle", request.getRequestURI().contains("/student/") ?
+//                "Student Overview":
+//                "Teacher Overview");
+//        model.addAttribute("people", people);
+//
+//        model.addAttribute("activePage", request.getRequestURI().contains("/student/") ?
+//                "students":
+//                "teachers");
+//
+//        //model.addAttribute("newPerson", new PersonDTO());
+//        //I love ternary operator -(c)Danylo
+//        return request.getRequestURI().contains("/student/") ?
+//                "student-overview" :
+//                "teacher-overview";
+//    }
 
     @GetMapping({"student/delete/{id}", "teacher/delete/{id}"})
     public String remove(@PathVariable Long id,

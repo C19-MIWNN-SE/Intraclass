@@ -3,6 +3,7 @@ package nl.miwnn.ch19.DaMaGe.IntraClass.controller;
 import jakarta.validation.Valid;
 import nl.miwnn.ch19.DaMaGe.IntraClass.dto.StudentDTO;
 import nl.miwnn.ch19.DaMaGe.IntraClass.dto.TeacherDTO;
+import nl.miwnn.ch19.DaMaGe.IntraClass.model.Student;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher;
 import nl.miwnn.ch19.DaMaGe.IntraClass.service.TeacherService;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author My Linh Lu
@@ -26,6 +28,18 @@ public class TeacherController {
 
     public TeacherController(TeacherService teacherService) {
         this.teacherService = teacherService;
+    }
+
+    @GetMapping("/overview")
+    public String showOverview(Model model) {
+        List<Teacher> teachers = teacherService.getAllTeachers();
+
+        model.addAttribute("pageTitle", "Teacher Overview");
+        model.addAttribute("activePage", "teachers");
+        model.addAttribute("teachers", teachers);
+        model.addAttribute("teacher", new TeacherDTO());
+
+        return "teacher-overview";
     }
 
     @GetMapping("/add")

@@ -91,7 +91,13 @@ public class Cohort {
     public List<Person> getParticipant() {
         return participant;
     }
+
     public void setParticipant(List<Person> participants) {
         this.participant = participants;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
