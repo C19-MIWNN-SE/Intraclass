@@ -1,37 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/general :: baseheader(~{:: title})}">
+    <title th:text="${pageTitle}">Edit Cohort</title>
     <meta charset="UTF-8">
-    <title>Tijdelijke cohort add edit formulierpagina</title>
 </head>
 <body>
 
-<h1>Tijdelijke cohort Add Edit Formulierpagina</h1>
+<h1>Edit Cohort</h1>
 
-<form th:action="@{/cohort/save}" th:object="${cohort}" method="post">
-    <input type="hidden" th:field="*{id}" />
-    <div>
-        <label for="name">Name</label>
-        <input type="text" id="name" th:field="*{name}">
-    </div>
-    <div>
-        <label for="description">Description</label>
-        <input type="text" id="description" th:field="*{description}">
-    </div>
-    <div>
-        <label for="startDate">Start Date</label>
-        <input type="date" id="startDate"
-               th:field="*{startDate}">
-    </div>
-    <div>
-        <label for="endDate">End Date</label>
-        <input type="date" id="endDate"
-               th:field="*{endDate}">
+<form th:fragment="cohort-add-edit-form" sec:authorize="hasRole('TEACHER')" th:action="@{/cohort/save}"
+      th:object="${cohortDTO}" method="post" enctype="multipart/form-data" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+    <div class="card shadow-sm p-4 mb-4">
+        <input type="hidden" th:field="*{id}" th:value="${cohort.id}">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Cohort Name</label>
+                <input type="text" class="form-control rounded-pill mb-2" th:field="*{name}">
+                <div class="text-danger small" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Description</label>
+                <input type="text" class="form-control rounded-pill mb-2" th:field="*{description}">
+                <div class="text-danger small" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Start Date</label>
+                <input type="date" class="form-control rounded-pill mb-2" th:field="*{startDate}">
+                <div class="text-danger small" th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></div>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">End Date</label>
+                <input type="date" class="form-control rounded-pill mb-2" th:field="*{endDate}">
+                <div class="text-danger small" th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Students</label>
+
+                <select class="form-select mb-2"
+                        th:field="*{studentIds}"
+                        multiple>
+                    <option th:each="student : ${students}"
+                            th:value="${student.id}"
+                            th:text="${student.fullName}">
+                    </option>
+                </select>
+                <div class="text-danger small"
+                     th:if="${#fields.hasErrors('studentIds')}"
+                     th:errors="*{student.id}">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Teachers</label>
+
+                <select class="form-select mb-2"
+                        th:field="*{teacherIds}"
+                        multiple>
+                    <option th:each="teacher : ${teachers}"
+                            th:value="${teacher.id}"
+                            th:text="${teacher.fullName}">
+                    </option>
+                </select>
+                <div class="text-danger small"
+                     th:if="${#fields.hasErrors('teacherIds')}"
+                     th:errors="*{student.id}">
+                </div>
+            </div>
+
+        </div>
     </div>
 
-    <input type="hidden" th:field="*{participant}" />
+    <div class="d-flex justify-content-between mt-3">
+        <button type="button" class="btn btn-secondary rounded mb-2" data-bs-dismiss="modal">
+            Cancel
+        </button>
 
-    <button type="submit">Save and protect</button>
+        <button class="btn btn-primary rounded mb-2" type="submit">
+            <i class="fa-solid fa-floppy-disk"></i> Save
+        </button>
+    </div>
 </form>
 
 </body>

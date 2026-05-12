@@ -95,15 +95,15 @@ public class InitializeController {
         Cohort cohortA = cohorts.get(0);
         Cohort cohortB = cohorts.get(1);
 
-        cohortA.getParticipant().add(students.get(0));
-        cohortA.getParticipant().add(students.get(1));
-        cohortA.getParticipant().add(teachers.get(0));
+        cohortA.getParticipants().add(students.get(0));
+        cohortA.getParticipants().add(students.get(1));
+        cohortA.getParticipants().add(teachers.get(0));
 
-        cohortB.getParticipant().add(students.get(0));
-        cohortB.getParticipant().add(students.get(2));
-        cohortB.getParticipant().add(students.get(4));
-        cohortB.getParticipant().add(students.get(5));
-        cohortB.getParticipant().add(teachers.get(0));
+        cohortB.getParticipants().add(students.get(0));
+        cohortB.getParticipants().add(students.get(2));
+        cohortB.getParticipants().add(students.get(4));
+        cohortB.getParticipants().add(students.get(5));
+        cohortB.getParticipants().add(teachers.get(0));
 
     }
 

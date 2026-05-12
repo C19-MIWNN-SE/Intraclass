@@ -1,12 +1,13 @@
 package nl.miwnn.ch19.DaMaGe.IntraClass.controller;
 
 import nl.miwnn.ch19.DaMaGe.IntraClass.dto.CohortDTO;
-import nl.miwnn.ch19.DaMaGe.IntraClass.dto.StudentDTO;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Cohort;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Student;
 import nl.miwnn.ch19.DaMaGe.IntraClass.model.Teacher;
 import nl.miwnn.ch19.DaMaGe.IntraClass.repository.CohortRepository;
 import nl.miwnn.ch19.DaMaGe.IntraClass.service.CohortService;
+import nl.miwnn.ch19.DaMaGe.IntraClass.service.StudentService;
+import nl.miwnn.ch19.DaMaGe.IntraClass.service.TeacherService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -32,21 +33,31 @@ public class CohortController {
 
     private final CohortRepository cohortRepository;
     private final CohortService cohortService;
+    private final StudentService studentService;
+    private final TeacherService teacherService;
 
     public CohortController(CohortRepository cohortRepository,
-                            CohortService cohortService) {
+                            CohortService cohortService,
+                            StudentService studentService, TeacherService teacherService) {
         this.cohortService = cohortService;
         this.cohortRepository = cohortRepository;
+        this.studentService = studentService;
+        this.teacherService = teacherService;
     }
 
     @GetMapping("/cohort/overview")
     public String showCohortOverview(@ModelAttribute CohortDTO dto, Model model) {
         List<Cohort> cohorts = cohortRepository.findAll();
+
         log.debug("Cohort Overview called, {} Cohorts in database", cohorts.size());
+
         model.addAttribute("pageTitle", "Cohort Overview");
         model.addAttribute("activePage", "cohorts");
         model.addAttribute("cohorts", cohorts);
         model.addAttribute("cohort", new CohortDTO());
+        model.addAttribute("students", studentService.getAllStudents());
+        model.addAttribute("teachers", teacherService.getAllTeachers());
+
         return "cohortOverview";
     }
 
@@ -76,6 +87,8 @@ public class CohortController {
     public String showAddCohortForm(@ModelAttribute CohortDTO dto, Model model){
         log.debug("Form for new Cohort requested");
         model.addAttribute("cohort", new CohortDTO());
+        model.addAttribute("students", studentService.getAllStudents());
+
         return "cohort-form";
     }
 

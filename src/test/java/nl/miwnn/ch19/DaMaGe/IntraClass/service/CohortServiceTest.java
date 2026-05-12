@@ -59,7 +59,7 @@ class CohortServiceTest {
         Long id = 1L;
         Student student = new Student();
         Teacher teacher = new Teacher();
-        cohort.setParticipant(new ArrayList<>(List.of(student, teacher)));
+        cohort.setParticipants(new ArrayList<>(List.of(student, teacher)));
 
         when(cohortRepository.findById(id)).thenReturn(Optional.of(cohort));
 
@@ -77,7 +77,7 @@ class CohortServiceTest {
         // Arrange
         Long id = 1L;
         Person person = new Student();
-        cohort.setParticipant(new ArrayList<>());
+        cohort.setParticipants(new ArrayList<>());
 
         when(cohortRepository.findById(id)).thenReturn(Optional.of(cohort));
 
@@ -85,7 +85,7 @@ class CohortServiceTest {
         cohortService.addPersonToCohort(id, person);
 
         // Assert
-        assertTrue(cohort.getParticipant().contains(person));
+        assertTrue(cohort.getParticipants().contains(person));
         verify(cohortRepository).save(cohort);
     }
 

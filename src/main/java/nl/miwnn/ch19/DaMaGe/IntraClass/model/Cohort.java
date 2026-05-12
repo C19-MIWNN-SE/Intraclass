@@ -43,7 +43,7 @@ public class Cohort {
             joinColumns = @JoinColumn(name = "cohort_id"),
             inverseJoinColumns = @JoinColumn(name = "person_id")
     )
-    private List<Person> participant = new ArrayList<>();
+    private List<Person> participants = new ArrayList<>();
 
     public Cohort () {
     }
@@ -88,12 +88,12 @@ public class Cohort {
         this.endDate = endDate;
     }
 
-    public List<Person> getParticipant() {
-        return participant;
+    public List<Person> getParticipants() {
+        return participants;
     }
 
-    public void setParticipant(List<Person> participants) {
-        this.participant = participants;
+    public void setParticipants(List<Person> participants) {
+        this.participants = participants;
     }
 
     @Override
