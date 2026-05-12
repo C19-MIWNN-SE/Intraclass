@@ -51,7 +51,7 @@ public class TeacherControllerTest {
         teacher.setId(id);
         when(teacherService.getTeacherById(id)).thenReturn(teacher);
         //Act & Assert 1
-        mockMvc.perform(get("/student/edit/1"))
+        mockMvc.perform(get("/teacher/edit/1"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("teacher-form"))
                 .andExpect(model().attributeExists("teacher"));
