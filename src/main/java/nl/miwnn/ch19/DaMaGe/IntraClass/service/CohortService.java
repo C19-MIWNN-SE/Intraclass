@@ -57,10 +57,10 @@ public class CohortService {
         cohort.getParticipants().add(person);
         cohortRepository.save(cohort);
     }
-
     public void removePersonFromCohort(Long cohortId, Person person) {
         Cohort cohort = cohortRepository.findById(cohortId)
                 .orElseThrow();
+
 
         cohort.getParticipants().remove(person);
         cohortRepository.save(cohort);
@@ -91,5 +91,9 @@ public class CohortService {
         cohort.setParticipants(participants);
 
         cohortRepository.save(cohort);
+    }
+
+    public List<Cohort> getCohortsForPerson(Person person) {
+        return cohortRepository.findByParticipantsContaining(person);
     }
 }

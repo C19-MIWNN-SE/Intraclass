@@ -38,7 +38,8 @@ public class CohortController {
 
     public CohortController(CohortRepository cohortRepository,
                             CohortService cohortService,
-                            StudentService studentService, TeacherService teacherService) {
+                            StudentService studentService,
+                            TeacherService teacherService) {
         this.cohortService = cohortService;
         this.cohortRepository = cohortRepository;
         this.studentService = studentService;

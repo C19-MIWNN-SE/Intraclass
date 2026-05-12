@@ -81,6 +81,12 @@
                                                            data-bs-target="#editPersonModal">Edit details</a>
                 </p>
             </div>
+            <div class="w-50 d-flex flex-column justify-content-top align-items-left p-4">
+                <h2>My Cohorts</h2>
+                <span th:each="cohort, stat : ${person.cohort}">
+                        <a th:href="@{/cohort/view/{id}(id=${cohort.id})}" th:text="${cohort.name}"></a>
+                        <span th:if="${!stat.last}">, </span>
+                </span>
         </div>
     </div>
 </div>
