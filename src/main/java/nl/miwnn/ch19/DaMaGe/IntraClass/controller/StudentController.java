@@ -84,6 +84,7 @@ public class StudentController {
     public String showEditForm(@ModelAttribute StudentDTO dto,
                                @PathVariable Long id,
                                Model model) {
+
         Student student = studentService.getStudentById(id);
         model.addAttribute("student", student);
 

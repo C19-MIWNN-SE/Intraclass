@@ -1,4 +1,4 @@
-<div th:fragment="peopleCarousel(people, id)" th:id="${id}" class="carousel slide" data-bs-ride="false">
+<div th:fragment="peopleCarousel(people, id, type)" th:id="${id}" class="carousel slide" data-bs-ride="false">
     <div class="carousel-inner">
         <div th:each="i : ${#numbers.sequence(0, (people.size() > 0 ? people.size() - 1 : 0), 3)}"
              class="carousel-item" th:classappend="${i == 0} ? 'active'">
@@ -6,12 +6,10 @@
                 <div th:each="j : ${#numbers.sequence(i, i + 2)}" th:if="${j < people.size()}" class="col-md-4 d-flex justify-content-center">
                         <div th:replace="~{fragments/person-card :: personCard(person=${people[j]})}"></div>
                 </div>
+                <div th:replace="~{fragments/person-card :: addPersonCard(type=${type}, cohortID=${id})}"></div>
             </div>
         </div>
 
-        <div th:if="${#lists.isEmpty(people)}" class="text-center p-5">
-            <p class="text-muted">No one assigned to this cohort yet.</p>
-        </div>
     </div>
 
     <div th:if="${people.size() > 3}">

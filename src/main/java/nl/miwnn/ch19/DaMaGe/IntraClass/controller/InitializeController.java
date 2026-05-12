@@ -16,7 +16,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.*;
 
 /**
  * @author Danylo Dudar
@@ -30,21 +31,16 @@ public class InitializeController {
     private final PersonRepository personRepository;
     private final StudentRepository studentRepository;
     private final TeacherRepository teacherRepository;
-    private final ImageRepository imageRepository;
-    private final PasswordEncoder passwordEncoder;
 
     public InitializeController(
             CohortRepository cohortRepository,
             PersonRepository personRepository,
             StudentRepository studentRepository,
-            TeacherRepository teacherRepository, ImageRepository imageRepository,
-            PasswordEncoder passwordEncoder) {
+            TeacherRepository teacherRepository) {
         this.cohortRepository = cohortRepository;
         this.personRepository = personRepository;
         this.studentRepository = studentRepository;
         this.teacherRepository = teacherRepository;
-        this.imageRepository = imageRepository;
-        this.passwordEncoder = passwordEncoder;
     }
 
 
@@ -83,6 +79,7 @@ public class InitializeController {
     }
 
     private void seedRelationships() {
+
         List<Cohort> cohorts = cohortRepository.findAll();
 
         List<Student> students = studentRepository.findAll();
@@ -92,19 +89,77 @@ public class InitializeController {
             throw new IllegalStateException("Missing seed data for cohort relationships");
         }
 
-        Cohort cohortA = cohorts.get(0);
-        Cohort cohortB = cohorts.get(1);
+        Random random = new Random();
 
-        cohortA.getParticipants().add(students.get(0));
-        cohortA.getParticipants().add(students.get(1));
-        cohortA.getParticipants().add(teachers.get(0));
+        Map<Long, List<Cohort>> studentAssignments = new HashMap<>();
 
-        cohortB.getParticipants().add(students.get(0));
-        cohortB.getParticipants().add(students.get(2));
-        cohortB.getParticipants().add(students.get(4));
-        cohortB.getParticipants().add(students.get(5));
-        cohortB.getParticipants().add(teachers.get(0));
+        for (Student student : students) {
+            studentAssignments.put(student.getId(), new ArrayList<>());
+        }
 
+        for (Cohort cohort : cohorts) {
+
+            Collections.shuffle(teachers);
+
+            int teacherCount = Math.min(teachers.size(), random.nextInt(3) + 1);
+
+            for (int i = 0; i < teacherCount; i++) {
+                cohort.getParticipants().add(teachers.get(i));
+            }
+
+            Collections.shuffle(students);
+
+            int studentCount = random.nextInt(16) + 10;
+
+            int added = 0;
+
+            for (Student student : students) {
+
+                if (added >= studentCount) {
+                    break;
+                }
+
+                List<Cohort> existing = studentAssignments.get(student.getId());
+
+                boolean overlaps = existing.stream().anyMatch(c ->
+                        datesOverlap(
+                                cohort.getStartDate(),
+                                cohort.getEndDate(),
+                                c.getStartDate(),
+                                c.getEndDate()
+                        )
+                );
+
+                if (!overlaps) {
+                    cohort.getParticipants().add(student);
+                    existing.add(cohort);
+                    added++;
+                }
+            }
+        }
+
+        cohortRepository.saveAll(cohorts);
+    }
+
+    private boolean datesOverlap(
+            LocalDate start1,
+            LocalDate end1,
+            LocalDate start2,
+            LocalDate end2
+    ) {
+        if (start1 == null || start2 == null) {
+            return false;
+        }
+
+        if (end1 == null) {
+            end1 = LocalDate.MAX;
+        }
+
+        if (end2 == null) {
+            end2 = LocalDate.MAX;
+        }
+
+        return !(end1.isBefore(start2) || end2.isBefore(start1));
     }
 
     //DRY function for data entry. Ask Danylo if it needs to be modified
@@ -122,20 +177,6 @@ public class InitializeController {
         } catch (IOException e) {
             throw new RuntimeException("Can not read "+ tableName, e);
         }
-    }
-
-//    TODO dit moet nog eens worden aangepast (t/m regel 176):
-    private int GetStart(int counter, int sublistsize){
-        int retval = counter*sublistsize;
-        return retval;
-    }
-
-    private int GetEnd(int counter, int listsize, int sublistsize){
-        int retval = (counter +1)*sublistsize;
-        if(retval > listsize){
-            retval = listsize;
-        }
-        return retval;
     }
 
     private Image loadImage(String imageUrl) throws IOException {

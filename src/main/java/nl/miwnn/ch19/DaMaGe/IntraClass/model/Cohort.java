@@ -37,7 +37,7 @@ public class Cohort {
     private LocalDate endDate;
 
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "cohort_person",
             joinColumns = @JoinColumn(name = "cohort_id"),
