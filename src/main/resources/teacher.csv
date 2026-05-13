@@ -2,8 +2,8 @@ username,password,role,affix,dateOfBirth,email,firstName,lastName,specialty
 Teacher1,$2a$10$lqKkZdFUe/u3NNpMsiS.Z.Yi3oCGAC7wdm.xT/lLysIkEqSwlNjma,TEACHER,,1969-12-28,teacher101@email.nl,James,Mulder,Linux
 Teacher2,$2a$10$IJpfbBfvyfuPzsrqigIGXO4l4xMLkJ1Set3hRdnVzshcNWTm24K/.,TEACHER,de,1956-01-31,teacher201@email.nl,Mila,Groot,Python
 Teacher3,$2a$10$9H63Eey5aTV.WjuYaSsRVuDlmYZolZ47v4IXvZHyZ/KlxYvWL.vjS,TEACHER,,1955-05-19,teacher301@email.nl,Lucas,Bos,Java
-Teacher4,$2a$10$bLEkjx8dLFXm8yMzhuJiwOkdJzKnViBzfjShxsTSU6vLyeYyeblnm,TEACHER,,1815-12-10,teacher401@email.nl,Yara,Peters,Systems Engineering
-Teacher5,$2a$10$YwERXDZWXrFrvgAlAEsSouqdGetFdk.BG7o6CZW0gvAL5QsSGtDhi,TEACHER,de,1903-12-28,teacher501@email.nl,Milou,Graaf,Operating Systems
+Teacher4,$2a$10$bLEkjx8dLFXm8yMzhuJiwOkdJzKnViBzfjShxsTSU6vLyeYyeblnm,TEACHER,,1976-12-10,teacher401@email.nl,Yara,Peters,Systems Engineering
+Teacher5,$2a$10$YwERXDZWXrFrvgAlAEsSouqdGetFdk.BG7o6CZW0gvAL5QsSGtDhi,TEACHER,de,1990-12-28,teacher501@email.nl,Milou,Graaf,Operating Systems
 Teacher001,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,TEACHER,van,1980-02-14,teacher001@email.nl,Jan,Dijk,Mathematics
 Teacher002,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,TEACHER,de,1978-06-09,teacher002@email.nl,Petra,Vries,Finance
 Teacher003,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,TEACHER,,1985-11-21,teacher003@email.nl,Kees,Bakker,Computer Science

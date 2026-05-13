@@ -1,14 +1,14 @@
 username,password,role,affix,dateOfBirth,email,firstName,lastName,bio,city,employer
-Student1,$2a$10$bOVTn2gpCgw6bnwuPPluD.4Y9cQqunsC7Mu3.izpdroimel.jjEUy,STUDENT,de,1550-02-01,student101@email.nl,Noah,Jong,React developer student,Edinburgh,FinEdge BV
-Student2,$2a$10$V4IQJJev9GTRojBxWVs4quASFVAT1AEuJTQE//ZI1gcEqmZXcec2e,STUDENT,"",1574-03-05,student201@email.nl,Noor,Jansen,Fintech student,Albury,NeuroTech Labs
-Student3,$2a$10$bw.ADJyoVIovtZOyj/499eSV3gCUdQZccfurE7uF4cr2FvZ5ut062,STUDENT,de,1623-06-19,student301@email.nl,Liam,Vries,Cloud student,Clermont-Ferrand,CloudNation NL
-Student4,$2a$10$cy3KsCL522Z97I8W0up5aeL23o5RjeXBlzZqF.E.6vHknrg/xsmgy,STUDENT,van den,1646-07-01,student401@email.nl,Olivia,Berg,Backend student,Leipzig,TechNova BV
-Student5,$2a$10$YQCJylDXzw6460koe9gbFOj.L0u1WeQiLMdfR9CpMZFCxh21eTlUi,STUDENT,van,1752-07-07,student501@email.nl,Luca,Dijk,Mobile dev student,Lyon,DesignWorks NL
-Student6,$2a$10$qXh6nOAJU0MjPZ56.QZTOeSPM9KB1PAeYClX1ijldeq7XlwQdccPS,STUDENT,,1815-11-02,student601@email.nl,Nora,Bakker,QA engineering student,London,SecureNet BV
-Student7,$2a$10$zBAsA8zW4uJ6SI5dW7QvPOgKBK4q7uDlqzq12/tnddjscMQioVvZG,STUDENT,,1860-02-29,student701@email.nl,Herman,Visser,Full stack development student,Buffalo,PeopleSoft NL
-Student8,$2a$10$rnsPBVlcD/5apos.Sa7KKOvZDQZ8oqSCHbO8mnAvA.ny8Q2y5oVwu,STUDENT,,1912-06-23,student801@email.nl,Sem,Smit,Mobile dev student,Bletchley,NeuroTech Labs
-Student9,$2a$10$CMboZ2AOvZvkl4hK48T2tOEp66HrRwXtr5rh2K2XBhdjfPc2Mfs1y,STUDENT,de,1910-06-22,student901@email.nl,Julia,Boer,Microservices learner,Berlin,AgileWorks NL
-Student0,$2a$10$9KyIuhMYRTD/mhc.kIwzl.0/Wi0qGevRaPkfKtm8D6DfYtgnMK9ey,STUDENT,,1923-08-19,student000@email.nl,Edgar,Codd,HR tech student,Fortuneswell,DeltaFinance Group
+Student1,$2a$10$bOVTn2gpCgw6bnwuPPluD.4Y9cQqunsC7Mu3.izpdroimel.jjEUy,STUDENT,de,1990-02-14,student101@email.nl,Noah,Jong,React developer student,Edinburgh,FinEdge BV
+Student2,$2a$10$V4IQJJev9GTRojBxWVs4quASFVAT1AEuJTQE//ZI1gcEqmZXcec2e,STUDENT,"",1988-03-15,student201@email.nl,Noor,Jansen,Fintech student,Albury,NeuroTech Labs
+Student3,$2a$10$bw.ADJyoVIovtZOyj/499eSV3gCUdQZccfurE7uF4cr2FvZ5ut062,STUDENT,de,1996-06-09,student301@email.nl,Liam,Vries,Cloud student,Clermont-Ferrand,CloudNation NL
+Student4,$2a$10$cy3KsCL522Z97I8W0up5aeL23o5RjeXBlzZqF.E.6vHknrg/xsmgy,STUDENT,van den,1985-07-22,student401@email.nl,Olivia,Berg,Backend student,Leipzig,TechNova BV
+Student5,$2a$10$YQCJylDXzw6460koe9gbFOj.L0u1WeQiLMdfR9CpMZFCxh21eTlUi,STUDENT,van,2001-01-18,student501@email.nl,Luca,Dijk,Mobile dev student,Lyon,DesignWorks NL
+Student6,$2a$10$qXh6nOAJU0MjPZ56.QZTOeSPM9KB1PAeYClX1ijldeq7XlwQdccPS,STUDENT,,2002-03-11,student601@email.nl,Nora,Bakker,QA engineering student,London,SecureNet BV
+Student7,$2a$10$zBAsA8zW4uJ6SI5dW7QvPOgKBK4q7uDlqzq12/tnddjscMQioVvZG,STUDENT,,1997-10-06,student701@email.nl,Herman,Visser,Full stack development student,Buffalo,PeopleSoft NL
+Student8,$2a$10$rnsPBVlcD/5apos.Sa7KKOvZDQZ8oqSCHbO8mnAvA.ny8Q2y5oVwu,STUDENT,,1998-08-18,student801@email.nl,Sem,Smit,Mobile dev student,Bletchley,NeuroTech Labs
+Student9,$2a$10$CMboZ2AOvZvkl4hK48T2tOEp66HrRwXtr5rh2K2XBhdjfPc2Mfs1y,STUDENT,de,1999-02-23,student901@email.nl,Julia,Boer,Microservices learner,Berlin,AgileWorks NL
+Student0,$2a$10$9KyIuhMYRTD/mhc.kIwzl.0/Wi0qGevRaPkfKtm8D6DfYtgnMK9ey,STUDENT,,2003-04-06,student000@email.nl,Edgar,Quaasteniet,HR tech student,Fortuneswell,DeltaFinance Group
 Student001,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,van,1998-01-12,student001@email.nl,Bram,Dijk,Software engineering student,Groningen,TechNova BV
 Student002,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,de,1997-03-25,student002@email.nl,Lisa,Vries,Finance student,Amsterdam,DeltaFinance Group
 Student003,$2a$10$t.bGxk5.zdTheie1KDjeVurqfM4vrm7tivGLmOSrLIR5z25XiGZ26,STUDENT,,1999-07-14,student003@email.nl,Tom,Bakker,Frontend development enthusiast,Utrecht,WebCore Solutions
